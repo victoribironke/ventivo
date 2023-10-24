@@ -19,7 +19,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         <main
           className={classNames(
             onest.className,
-            "min-h-screen w-full flex items-center justify-start"
+            "min-h-screen w-full flex items-center justify-center py-6"
           )}
         >
           <Component {...pageProps} />

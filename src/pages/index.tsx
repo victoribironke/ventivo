@@ -1,118 +1,138 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
+import HeadTemplate from "@/components/general/HeadTemplate";
+import { IMAGES } from "@/constants/images";
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import toast from "react-hot-toast";
+import { isValidEmail } from "@/utils/helpers";
+import { supabase } from "@/services/supabase";
+import { TABLES } from "@/constants/tables";
 
-const inter = Inter({ subsets: ['latin'] })
+const Home = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+  });
+  const [disabled, setDisabled] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-export default function Home() {
+  const addToWaitlist = async () => {
+    const { name, email } = formData;
+
+    if (!name) {
+      toast.error("Please enter your name.");
+      return;
+    }
+
+    if (!email || !isValidEmail(email)) {
+      toast.error("Please enter a valid email.");
+      return;
+    }
+
+    setDisabled(true);
+    setLoading(true);
+
+    const { error } = await supabase.from(TABLES.waitlist).insert({
+      name,
+      email,
+    });
+
+    setDisabled(false);
+    setLoading(false);
+
+    if (error) {
+      console.log(error);
+      toast.error("An error occured.");
+      return;
+    }
+
+    toast.success("You've been added to the waitlist.");
+    setFormData({ name: "", email: "" });
+  };
+
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/pages/index.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
+    <>
+      <HeadTemplate />
+
+      <section className="w-full max-w-[60rem] h-[80vh] flex mx-6 gap-6">
+        <div className="w-full md:w-[70%] h-full flex items-center md:items-start justify-center flex-col">
+          <p className="mb-6 max-w-lg text-3xl md:text-4xl text-center md:text-left text-blue font-semibold">
+            Supercharge your event space business
+          </p>
+
+          <p className="mb-6 max-w-lg text-lg md:text-xl text-center md:text-left">
+            List your venue, effortlessly manage bookings, and securely receive
+            payments, all in one place.
+          </p>
+
+          <p className="mb-6 max-w-lg text-lg md:text-xl text-center md:text-left">
+            Experience the convenience and efficiency of Ventivo that simplifies
+            every aspect of managing your venue. From effortless booking
+            management to secure payment processing, we're here to support your
+            success.
+          </p>
+
+          <div className="w-full max-w-lg flex gap-4">
+            <input
+              type="text"
+              placeholder="Name"
+              value={formData.name}
+              className="w-full p-3 border-2 border-blue outline-none rounded-lg"
+              onChange={(e) =>
+                setFormData((k) => {
+                  return {
+                    ...k,
+                    name: e.target.value,
+                  };
+                })
+              }
+              max={100}
             />
-          </a>
+
+            <input
+              type="email"
+              placeholder="Email"
+              value={formData.email}
+              className="w-full p-3 border-2 border-blue outline-none rounded-lg"
+              onChange={(e) =>
+                setFormData((k) => {
+                  return {
+                    ...k,
+                    email: e.target.value,
+                  };
+                })
+              }
+              max={100}
+            />
+          </div>
+
+          <button
+            className="bg-blue max-w-lg flex items-center justify-center gap-3 w-full text-white py-3.5 mt-6 rounded-lg font-medium  disabled:cursor-not-allowed disabled:opacity-70"
+            onClick={addToWaitlist}
+            disabled={disabled}
+          >
+            Join the waitlist{" "}
+            {loading && <AiOutlineLoading3Quarters className="animate-spin" />}
+          </button>
         </div>
-      </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+        <Link
+          href="https://unsplash.com/photos/black-and-white-heart-illustration-f8sDFh-So88"
+          className="hidden md:block"
           target="_blank"
-          rel="noopener noreferrer"
         >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+          <Image
+            src={IMAGES.placeholderVertical.src}
+            width={IMAGES.placeholderVertical.w}
+            height={IMAGES.placeholderVertical.h}
+            alt="art"
+            className="h-[80vh] w-auto rounded-lg max-h-[50rem]"
+          />
+        </Link>
+      </section>
+    </>
+  );
+};
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
-}
+export default Home;
