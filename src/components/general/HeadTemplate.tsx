@@ -8,6 +8,35 @@ const HeadTemplate = ({ title }: HeadTemplateProps) => {
       <title>{title ?? "Ventivo"}</title>
       <link rel="shortcut-icon" href={IMAGES.logo.src} type="image/x-icon" />
       <link rel="icon" href={IMAGES.logo.src} type="image/x-icon" />
+      <meta
+        name="description"
+        content="List your space, get bookings and get paid from one place."
+      />
+      {/* <!-- Facebook Meta Tags --> */}
+      <meta property="og:url" content="https://www.ventivo.co" />
+      <meta property="og:type" content="website" />
+      <meta property="og:title" content="Ventivo" />
+      <meta
+        property="og:description"
+        content="List your space, get bookings and get paid from one place."
+      />
+      <meta
+        property="og:image"
+        content="https://www.ventivo.co/logo-padding.png"
+      />
+      {/* <!-- Twitter Meta Tags --> */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta property="twitter:domain" content="www.ventivo.co" />
+      <meta property="twitter:url" content="https://www.ventivo.co" />
+      <meta name="twitter:title" content="Ventivo" />
+      <meta
+        name="twitter:description"
+        content="List your space, get bookings and get paid from one place."
+      />
+      <meta
+        name="twitter:image"
+        content="https://www.ventivo.co/logo-padding.png"
+      />
     </Head>
   );
 };
