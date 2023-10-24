@@ -69,7 +69,7 @@ const Home = () => {
           <p className="mb-6 max-w-lg text-lg md:text-xl text-center md:text-left">
             Experience the convenience and efficiency of Ventivo that simplifies
             every aspect of managing your venue. From effortless booking
-            management to secure payment processing, we're here to support your
+            management to secure payment processing, we are here to support your
             success.
           </p>
 
