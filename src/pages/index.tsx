@@ -69,12 +69,12 @@ const Home = () => {
             Supercharge your event space business
           </p>
 
-          <p className="mb-6 max-w-lg text-lg md:text-xl text-center md:text-left">
+          <p className="mb-6 max-w-lg text-lg md:text-xl text-center md:text-left text-white">
             List your venue, effortlessly manage bookings, and securely receive
             payments, all in one place.
           </p>
 
-          <p className="mb-6 max-w-lg text-lg md:text-xl text-center md:text-left">
+          <p className="mb-6 max-w-lg text-lg md:text-xl text-center md:text-left text-white">
             Experience the convenience and efficiency of Ventivo that simplifies
             every aspect of managing your venue. From effortless booking
             management to secure payment processing, we are here to support your
@@ -86,7 +86,7 @@ const Home = () => {
               type="text"
               placeholder="Name"
               value={formData.name}
-              className="w-full p-3 border-2 border-blue outline-none rounded-lg"
+              className="w-full p-3 border-2 border-white bg-transparent text-white focus-ithin:border-blue outline-none rounded-lg"
               onChange={(e) =>
                 setFormData((k) => {
                   return {
@@ -102,7 +102,7 @@ const Home = () => {
               type="email"
               placeholder="Email"
               value={formData.email}
-              className="w-full p-3 border-2 border-blue outline-none rounded-lg"
+              className="w-full p-3 border-2 border-white bg-transparent text-white focus-ithin:border-blue outline-none rounded-lg"
               onChange={(e) =>
                 setFormData((k) => {
                   return {
@@ -116,7 +116,7 @@ const Home = () => {
           </div>
 
           <button
-            className="bg-blue max-w-lg flex items-center justify-center gap-3 w-full text-white py-3.5 my-6 rounded-lg font-medium  disabled:cursor-not-allowed disabled:opacity-70"
+            className="max-w-lg flex items-center justify-center gap-3 w-full bg-white py-3.5 my-6 rounded-lg font-medium  disabled:cursor-not-allowed disabled:opacity-70"
             onClick={addToWaitlist}
             disabled={disabled}
           >
@@ -126,13 +126,13 @@ const Home = () => {
 
           <div className="flex gap-3">
             <Link href="https://www.instagram.com/ventivo_">
-              <FaInstagram className="text-blue text-2xl" />
+              <FaInstagram className="text-white text-2xl" />
             </Link>
             <Link href="https://twitter.com/ventivo_">
-              <FaXTwitter className="text-blue text-2xl hidden" />
+              <FaXTwitter className="text-white text-2xl hidden" />
             </Link>
             <Link href="https://www.facebook.com/ventivo.co">
-              <FaFacebookF className="text-blue text-2xl hidden" />
+              <FaFacebookF className="text-white text-2xl hidden" />
             </Link>
           </div>
         </div>
