@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 import { isValidEmail } from "@/utils/helpers";
 import { supabase } from "@/services/supabase";
 import { TABLES } from "@/constants/tables";
+import { FaXTwitter, FaInstagram, FaFacebookF } from "react-icons/fa6";
 
 const Home = () => {
   const [formData, setFormData] = useState({
@@ -108,13 +109,25 @@ const Home = () => {
           </div>
 
           <button
-            className="bg-blue max-w-lg flex items-center justify-center gap-3 w-full text-white py-3.5 mt-6 rounded-lg font-medium  disabled:cursor-not-allowed disabled:opacity-70"
+            className="bg-blue max-w-lg flex items-center justify-center gap-3 w-full text-white py-3.5 my-6 rounded-lg font-medium  disabled:cursor-not-allowed disabled:opacity-70"
             onClick={addToWaitlist}
             disabled={disabled}
           >
             Join the waitlist{" "}
             {loading && <AiOutlineLoading3Quarters className="animate-spin" />}
           </button>
+
+          <div className="flex gap-3">
+            <Link href="https://www.instagram.com/ventivo_">
+              <FaInstagram className="text-blue text-2xl" />
+            </Link>
+            <Link href="https://twitter.com/ventivo_">
+              <FaXTwitter className="text-blue text-2xl hidden" />
+            </Link>
+            <Link href="https://www.facebook.com/ventivo.co">
+              <FaFacebookF className="text-blue text-2xl hidden" />
+            </Link>
+          </div>
         </div>
 
         <Link
