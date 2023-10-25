@@ -6,7 +6,7 @@ import { classNames } from "@/utils/helpers";
 import { RecoilRoot } from "recoil";
 import { Toaster } from "react-hot-toast";
 
-const onest = Onest({ subsets: ["latin"], display: "swap" });
+const onest = Onest({ subsets: ["latin"] });
 const queryClient = new QueryClient({
   defaultOptions: { queries: { refetchOnWindowFocus: false } },
 });

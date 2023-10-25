@@ -39,17 +39,24 @@ const Home = () => {
       email,
     });
 
-    setDisabled(false);
-    setLoading(false);
-
     if (error) {
-      console.log(error);
       toast.error("An error occured.");
       return;
     }
 
-    toast.success("You've been added to the waitlist.");
-    setFormData({ name: "", email: "" });
+    try {
+      await (
+        await fetch(`/api/send-email?email=${email}&name=${name.split(" ")[0]}`)
+      ).json();
+
+      toast.success("You've been added to the waitlist.");
+      setFormData({ name: "", email: "" });
+    } catch (e) {
+      toast.error("An error occured.");
+    } finally {
+      setDisabled(false);
+      setLoading(false);
+    }
   };
 
   return (
