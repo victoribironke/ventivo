@@ -9,6 +9,7 @@ import { isValidEmail } from "@/utils/helpers";
 import { supabase } from "@/services/supabase";
 import { TABLES } from "@/constants/tables";
 import { FaXTwitter, FaInstagram, FaFacebookF } from "react-icons/fa6";
+import { ENDPOINTS } from "@/constants/endpoints";
 
 const Home = () => {
   const [formData, setFormData] = useState({
@@ -46,7 +47,9 @@ const Home = () => {
 
     try {
       await (
-        await fetch(`/api/send-email?email=${email}&name=${name.split(" ")[0]}`)
+        await fetch(
+          ENDPOINTS.sendWaitlistConfirmation(name.split(" ")[0], email)
+        )
       ).json();
 
       toast.success("You've been added to the waitlist.");

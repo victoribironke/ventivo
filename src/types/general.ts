@@ -11,7 +11,3 @@ export type HeadTemplateProps = {
 export type PageLoaderProps = {
   type: "full" | "small";
 };
-
-export type EmailTemplateProps = {
-  firstName: string;
-};
