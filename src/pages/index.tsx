@@ -65,7 +65,7 @@ const Home = () => {
 
       <section className="w-full max-w-[60rem] h-[80vh] flex mx-6 gap-6">
         <div className="w-full md:w-[70%] h-full flex items-center md:items-start justify-center flex-col">
-          <p className="mb-6 max-w-lg text-3xl md:text-4xl text-center md:text-left text-blue font-semibold">
+          <p className="mb-6 max-w-lg text-3xl md:text-4xl text-center md:text-left text-blue font-medium">
             Supercharge your event space business
           </p>
 
