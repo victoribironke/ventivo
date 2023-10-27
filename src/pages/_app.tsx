@@ -5,6 +5,7 @@ import { classNames } from "@/utils/helpers";
 import { RecoilRoot } from "recoil";
 import { Toaster } from "react-hot-toast";
 import localFont from "next/font/local";
+import { Analytics } from "@vercel/analytics/react";
 
 const queryClient = new QueryClient({
   defaultOptions: { queries: { refetchOnWindowFocus: false } },
@@ -49,6 +50,7 @@ const App = ({ Component, pageProps }: AppProps) => {
     <RecoilRoot>
       <QueryClientProvider client={queryClient}>
         <Toaster toastOptions={{ className: gt.className }} />
+        <Analytics />
         <main
           className={classNames(
             gt.className,
