@@ -72,12 +72,12 @@ const Home = () => {
             Supercharge your event space business
           </p>
 
-          <p className="mb-6 max-w-lg text-lg md:text-xl text-center md:text-left">
+          <p className="mb-6 max-w-lg text-lg md:text-xl text-center md:text-left text-white">
             List your venue, effortlessly manage bookings, and securely receive
             payments, all in one place.
           </p>
 
-          <p className="mb-6 max-w-lg text-lg md:text-xl text-center md:text-left">
+          <p className="mb-6 max-w-lg text-lg md:text-xl text-center md:text-left text-white">
             Experience the convenience and efficiency of Ventivo that simplifies
             every aspect of managing your venue. From effortless booking
             management to secure payment processing, we are here to support your
@@ -89,7 +89,7 @@ const Home = () => {
               type="text"
               placeholder="Name"
               value={formData.name}
-              className="w-full p-3 border-2 border-blue outline-none rounded-lg"
+              className="w-full p-3 border-2 bg-transparent text-white outline-none rounded-lg"
               onChange={(e) =>
                 setFormData((k) => {
                   return {
@@ -105,7 +105,7 @@ const Home = () => {
               type="email"
               placeholder="Email"
               value={formData.email}
-              className="w-full p-3 border-2 border-blue outline-none rounded-lg"
+              className="w-full p-3 border-2 bg-transparent text-white outline-none rounded-lg"
               onChange={(e) =>
                 setFormData((k) => {
                   return {
