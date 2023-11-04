@@ -129,10 +129,10 @@ const Home = () => {
 
           <div className="flex gap-3">
             <Link href="https://www.instagram.com/ventivo_">
-              <FaInstagram className="text-blue text-2xl" />
+              <FaInstagram className="text-white text-2xl" />
             </Link>
             <Link href="https://twitter.com/ventivo_">
-              <FaXTwitter className="text-blue text-2xl hidden" />
+              <FaXTwitter className="text-white text-2xl" />
             </Link>
             <Link href="https://www.facebook.com/ventivo.co">
               <FaFacebookF className="text-blue text-2xl hidden" />
