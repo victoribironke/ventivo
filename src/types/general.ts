@@ -1,9 +1,3 @@
-export type ModalProps = {
-  header: string;
-  dismiss: () => void;
-  children: React.ReactNode;
-};
-
 export type HeadTemplateProps = {
   title?: string;
 };
