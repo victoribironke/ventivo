@@ -2,7 +2,7 @@ import HeadTemplate from "@/components/general/HeadTemplate";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { IMAGES, TABLES } from "@/constants/constants";
-import { cn } from "@/lib/utils";
+import { cn, isValidEmail } from "@/lib/utils";
 import { supabase } from "@/services/supabase";
 import Image from "next/image";
 import { useState } from "react";
@@ -14,6 +14,12 @@ const Home = () => {
   const [email, setEmail] = useState("");
 
   const JoinWaitlist = async () => {
+    if (!isValidEmail(email)) {
+      toast.error("Email address is invalid");
+
+      return;
+    }
+
     setLoading(true);
 
     const { error } = await supabase.from(TABLES.waitlist).insert({
