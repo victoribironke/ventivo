@@ -20,10 +20,7 @@ const HeadTemplate = ({ title }: HeadTemplateProps) => {
         property="og:description"
         content="Get real-time charts around your Firebase data."
       />
-      {/* <meta
-        property="og:image"
-        content="https://app.ventivo.co/logo-padding.png"
-      /> */}
+      <meta property="og:image" content="https://ventivo.co/og-image.png" />
       {/* <!-- Twitter Meta Tags --> */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta property="twitter:domain" content="ventivo.co" />
@@ -33,10 +30,7 @@ const HeadTemplate = ({ title }: HeadTemplateProps) => {
         name="twitter:description"
         content="Get real-time charts around your Firebase data."
       />
-      {/* <meta
-        name="twitter:image"
-        content="https://ventivo.co/logo-padding.png"
-      /> */}
+      <meta name="twitter:image" content="https://ventivo.co/og-image.png" />
     </Head>
   );
 };
