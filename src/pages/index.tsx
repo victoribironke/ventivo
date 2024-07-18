@@ -59,7 +59,7 @@ const Home = () => {
         </p>
 
         <p className="w-full max-w-sm font-light text-lg text-gray-400 mb-6">
-          Get real-time charts around your Firebase data. Join the waitlist.
+          Get real-time charts around your Firebase data.
         </p>
 
         {/* <Input
