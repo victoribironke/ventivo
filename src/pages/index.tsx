@@ -5,6 +5,7 @@ import { IMAGES, TABLES } from "@/constants/constants";
 import { cn, isValidEmail } from "@/lib/utils";
 import { supabase } from "@/services/supabase";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
@@ -61,26 +62,31 @@ const Home = () => {
           Get real-time charts around your Firebase data. Join the waitlist.
         </p>
 
-        <Input
+        {/* <Input
           type="email"
           placeholder="Email"
           value={email}
           className="bg-black max-w-sm text-white font-light"
           onChange={(e) => setEmail(e.target.value)}
-        />
+        /> */}
 
-        <Button
-          className="bg-white font-normal text-black w-full max-w-sm hover:bg-white/90 flex items-center justify-center gap-2"
-          disabled={loading}
-          onClick={JoinWaitlist}
+        <Link
+          href="https://app.ventivo.co/auth/login"
+          className="w-full max-w-sm"
         >
-          <p>
-            <AiOutlineLoading3Quarters
-              className={cn("animate-spin", loading ? "block" : "hidden")}
-            />
-          </p>
-          Join the waitlist
-        </Button>
+          <Button className="bg-zinc-700 font-normal text-white w-full hover:bg-zinc-700/90 flex items-center justify-center gap-2">
+            Login
+          </Button>
+        </Link>
+
+        <Link
+          href="https://app.ventivo.co/auth/signup"
+          className="w-full max-w-sm"
+        >
+          <Button className="bg-zinc-700 font-normal text-white w-full hover:bg-zinc-700/90 flex items-center justify-center gap-2">
+            Sign up
+          </Button>
+        </Link>
       </div>
     </>
   );
