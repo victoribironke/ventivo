@@ -2,15 +2,15 @@ const Steps = () => {
   const steps = [
     {
       title: "Create a user",
-      desc: "Create a new user to grant read-only access to your collections",
+      desc: "Create a new user to grant read-only access to your collections.",
     },
     {
       title: "Add your credentials",
-      desc: "Fill in your web app's config details, give your project a name and update your security rules",
+      desc: "Fill in your web app's config details, give your project a name and update your security rules.",
     },
     {
       title: "Create a chart",
-      desc: "Enter the path to the collection you want to track, select the field and the type of chart",
+      desc: "Enter the path to the collection you want to track, select the field and the type of chart.",
     },
     {
       title: "Track your metrics",
