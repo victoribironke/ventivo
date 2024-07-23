@@ -17,7 +17,7 @@ const FAQ = () => {
     },
     {
       q: "What types of charts can I create?",
-      a: "You can create various types of charts, including bar charts and pie charts. Line charts will be added soon.",
+      a: "You can create various types of charts, including bar, line and pie charts.",
     },
     {
       q: "Is my data secure?",
