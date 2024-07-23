@@ -1,93 +1,51 @@
 import HeadTemplate from "@/components/general/HeadTemplate";
+import PageLoader from "@/components/general/PageLoader";
+import Header from "@/components/Header";
+import Hero from "@/components/Hero";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { IMAGES, TABLES } from "@/constants/constants";
 import { cn, isValidEmail } from "@/lib/utils";
-import { supabase } from "@/services/supabase";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { createClient } from "@supabase/supabase-js";
+import Statistics from "@/components/Statistics";
+import Features from "@/components/Features";
+import Footer from "@/components/Footer";
+import Steps from "@/components/Steps";
+import FAQ from "@/components/FAQ";
 
-const Home = () => {
-  const [loading, setLoading] = useState(false);
-  const [email, setEmail] = useState("");
+export const getStaticProps = async () => {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+  const supabase = createClient(supabaseUrl, supabaseKey);
 
-  const JoinWaitlist = async () => {
-    if (!isValidEmail(email)) {
-      toast.error("Email address is invalid");
+  const { count: projects } = await supabase
+    .from(TABLES.projects)
+    .select("*", { count: "exact", head: true });
 
-      return;
-    }
+  const { count: charts } = await supabase
+    .from(TABLES.charts)
+    .select("*", { count: "exact", head: true });
 
-    setLoading(true);
+  return { props: { charts, projects } };
+};
 
-    const { error } = await supabase.from(TABLES.waitlist).insert({
-      email,
-    });
-
-    if (error) {
-      toast.error("An error occured");
-      return;
-    }
-
-    toast.success("You've been added to the waitlist");
-    setEmail("");
-
-    setLoading(false);
-  };
-
+const Home = ({ charts, projects }: { charts: number; projects: number }) => {
   return (
     <>
-      <HeadTemplate title="Home" />
+      <HeadTemplate title="Charts around your Firebase data" />
 
-      <div className="w-full min-h-screen flex items-center justify-center flex-col p-6 gap-2">
-        <div className="w-full max-w-sm mb-4">
-          <Image
-            src={IMAGES.logo.src}
-            width={IMAGES.logo.w}
-            height={IMAGES.logo.h}
-            alt="Logo"
-            className="w-10 rounded-md self-start"
-            priority={true}
-          />
-        </div>
-
-        <p className="text-3xl font-medium w-full max-w-sm text-white">
-          Ventivo
-        </p>
-
-        <p className="w-full max-w-sm font-light text-lg text-gray-400 mb-6">
-          Get real-time charts around your Firebase data.
-        </p>
-
-        {/* <Input
-          type="email"
-          placeholder="Email"
-          value={email}
-          className="bg-black max-w-sm text-white font-light"
-          onChange={(e) => setEmail(e.target.value)}
-        /> */}
-
-        <Link
-          href="https://app.ventivo.co/auth/login"
-          className="w-full max-w-sm"
-        >
-          <Button className="bg-zinc-700 font-normal text-white w-full hover:bg-zinc-700/90 flex items-center justify-center gap-2">
-            Login
-          </Button>
-        </Link>
-
-        <Link
-          href="https://app.ventivo.co/auth/signup"
-          className="w-full max-w-sm"
-        >
-          <Button className="bg-zinc-700 font-normal text-white w-full hover:bg-zinc-700/90 flex items-center justify-center gap-2">
-            Sign up
-          </Button>
-        </Link>
-      </div>
+      <Header />
+      <Hero />
+      <Statistics c={charts} p={projects} />
+      <Features />
+      <Steps />
+      <FAQ />
+      <Footer />
     </>
   );
 };

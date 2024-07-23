@@ -6,8 +6,12 @@ const HeadTemplate = ({ title }: HeadTemplateProps) => {
   return (
     <Head>
       <title>{title ? `${title} ~ Ventivo` : "Ventivo"}</title>
-      <link rel="shortcut-icon" href={IMAGES.logo.src} type="image/x-icon" />
-      <link rel="icon" href={IMAGES.logo.src} type="image/x-icon" />
+      <link
+        rel="shortcut-icon"
+        href={IMAGES.logo_transparent.src}
+        type="image/x-icon"
+      />
+      <link rel="icon" href={IMAGES.logo_transparent.src} type="image/x-icon" />
       <meta
         name="description"
         content="Get real-time charts around your Firebase data."
