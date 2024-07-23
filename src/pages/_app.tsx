@@ -6,12 +6,14 @@ import Head from "next/head";
 import { Bricolage_Grotesque } from "next/font/google";
 import { ErrorBoundary } from "react-error-boundary";
 import { Toaster } from "react-hot-toast";
+import { Analytics } from "@vercel/analytics/react";
 
 export const bg = Bricolage_Grotesque({ display: "swap", subsets: ["latin"] });
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
     <>
+      <Analytics />
       <Toaster
         toastOptions={{
           className: bg.className,
