@@ -26,7 +26,7 @@ const Features = () => {
         </div>
       </div>
 
-      <div className="w-full flex items-center justify-center gap-2">
+      <div className="w-full flex items-center justify-center gap-2 flex-wrap">
         {features.map((f, i) => (
           <p
             className="text-green flex items-center justify-center gap-2"

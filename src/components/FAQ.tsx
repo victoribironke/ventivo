@@ -46,7 +46,7 @@ const FAQ = () => {
             value={i.toString()}
             key={i}
           >
-            <AccordionTrigger>{a.q}</AccordionTrigger>
+            <AccordionTrigger className="text-left">{a.q}</AccordionTrigger>
             <AccordionContent>{a.a}</AccordionContent>
           </AccordionItem>
         ))}

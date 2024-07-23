@@ -24,7 +24,7 @@ const Header = () => {
 
         <Link
           href={PAGES.login}
-          className="hover:bg-gray-100 py-1.5 px-4 rounded-md"
+          className="hover:bg-gray-100 py-1.5 px-4 rounded-md hidden sm:block"
         >
           Login
         </Link>
