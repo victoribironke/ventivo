@@ -30,8 +30,8 @@ const FAQ = () => {
   ];
 
   return (
-    <section className="w-full max-w-5xl flex flex-col gap-6">
-      <h1 className="text-xl font-semibold tracking-tight sm:text-2xl xl:text-3xl text-center">
+    <section className="w-full max-w-5xl flex flex-col gap-8">
+      <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl xl:text-4xl text-center">
         <span className="text-firebase-orange">Frequently</span> Asked Questions
       </h1>
 

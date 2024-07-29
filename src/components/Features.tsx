@@ -15,13 +15,13 @@ const Features = () => {
   return (
     <section className="w-full max-w-5xl flex items-center justify-center flex-col gap-6">
       <div className="flex items-center justify-center flex-col lg:flex-row gap-4">
-        <div className="w-full bg-white p-4 rounded-xl border">
+        <div className="w-full bg-white rounded-2xl">
           <Image
             alt="Charts screenshot"
             src={IMAGES.charts_display.src}
             width={IMAGES.charts_display.w}
             height={IMAGES.charts_display.h}
-            className="w-full"
+            className="w-full rounded-2xl border"
           />
         </div>
       </div>

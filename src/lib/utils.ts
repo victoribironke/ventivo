@@ -5,3 +5,5 @@ export const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs));
 
 export const isValidEmail = (email: string) =>
   /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,})+$/.test(email);
+
+export const formatNumber = (num: number) => num.toLocaleString("en-US");

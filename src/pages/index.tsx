@@ -17,6 +17,8 @@ import Features from "@/components/Features";
 import Footer from "@/components/Footer";
 import Steps from "@/components/Steps";
 import FAQ from "@/components/FAQ";
+import Pricing from "@/components/Pricing";
+import { FaCheck } from "react-icons/fa";
 
 // export const getStaticProps = async () => {
 //   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
@@ -34,6 +36,13 @@ import FAQ from "@/components/FAQ";
 //   return { props: { charts, projects } };
 // };
 
+const includedFeatures = [
+  "Private forum access",
+  "Member resources",
+  "Entry to annual conference",
+  "Official member t-shirt",
+];
+
 const Home = () => {
   return (
     <>
@@ -44,6 +53,7 @@ const Home = () => {
       {/* <Statistics c={charts} p={projects} /> */}
       <Features />
       <Steps />
+      <Pricing />
       <FAQ />
       <Footer />
     </>
