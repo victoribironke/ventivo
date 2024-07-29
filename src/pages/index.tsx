@@ -36,13 +36,6 @@ import { FaCheck } from "react-icons/fa";
 //   return { props: { charts, projects } };
 // };
 
-const includedFeatures = [
-  "Private forum access",
-  "Member resources",
-  "Entry to annual conference",
-  "Official member t-shirt",
-];
-
 const Home = () => {
   return (
     <>
