@@ -58,11 +58,11 @@ const BlogPost = () => {
           Understand Your Data Structure
         </h2>
         <p className="text-lg mb-4">
-          Before writing security rules, it's crucial to understand your data
-          structure. Knowing how your data is organized will help you write
+          Before writing security rules, it&apos;s crucial to understand your
+          data structure. Knowing how your data is organized will help you write
           precise rules that minimize the risk of unauthorized access. Use
-          Firestore's hierarchical data structure to your advantage by setting
-          rules at different levels.
+          Firestore&apos;s hierarchical data structure to your advantage by
+          setting rules at different levels.
         </p>
 
         <h2 className="text-2xl font-semibold mt-8 mb-4">Use Granular Rules</h2>
@@ -80,8 +80,8 @@ const BlogPost = () => {
           Integrate Firebase Authentication with your security rules to control
           access based on user identity. You can use authentication tokens to
           verify users and grant them appropriate permissions. For example, you
-          can restrict write access to a user's own data by comparing the user
-          ID in the authentication token to the user ID in the database.
+          can restrict write access to a user&apos;s own data by comparing the
+          user ID in the authentication token to the user ID in the database.
         </p>
 
         <h2 className="text-2xl font-semibold mt-8 mb-4">
@@ -128,8 +128,8 @@ const BlogPost = () => {
 
         <p className="text-lg mb-4">
           Implementing these best practices will help you optimize your Firebase
-          Security Rules and protect your application's data. At Ventivo, we
-          prioritize security and can help you ensure your data remains safe
+          Security Rules and protect your application&apos;s data. At Ventivo,
+          we prioritize security and can help you ensure your data remains safe
           while providing powerful data visualization solutions.
         </p>
       </section>

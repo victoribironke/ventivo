@@ -32,13 +32,8 @@ const Blog = () => {
 
       <div className="w-full grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 justify-center gap-6">
         {posts.map((p, i) => (
-          <Link href={p.link}>
-            <div
-              className={cn(
-                "bg-white rounded-2xl py-6 flex flex-col justify-center items-center gap-6 border group hover:border-firebase-orange"
-              )}
-              key={i}
-            >
+          <Link href={p.link} key={i}>
+            <div className="bg-white rounded-2xl py-6 flex flex-col justify-center items-center gap-6 border group hover:border-firebase-orange">
               <p className="text-lg md:text-xl text-black px-6 font-semibold w-full group-hover:underline">
                 {p.title}
               </p>

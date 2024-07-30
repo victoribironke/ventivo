@@ -48,13 +48,13 @@ const BlogPost = () => {
         />
 
         <p className="text-lg my-4">
-          In today's data-driven world, businesses are generating and
+          In today&apos;s data-driven world, businesses are generating and
           accumulating vast amounts of data at an unprecedented rate. From
           customer behavior and sales figures to market trends and operational
           metrics, the ability to harness and make sense of this data is crucial
           for staying competitive. This is where{" "}
           <span className="text-[#ff9100]">data visualization</span> comes into
-          play. In this blog post, we'll explore the importance of data
+          play. In this blog post, we&apos;ll explore the importance of data
           visualization in modern business and how it can transform raw data
           into actionable insights.
         </p>
@@ -168,11 +168,11 @@ const BlogPost = () => {
         </p>
         <p className="text-lg mb-4">
           At Ventivo, we understand the power of data visualization, which is
-          why we've built our platform to help you visualize your Firebase data
-          effortlessly. Whether you're a developer, data analyst, or business
-          manager, Ventivo can help you unlock the full potential of your data.
-          Explore Ventivo today and see how it can transform your data into
-          actionable insights.
+          why we&apos;ve built our platform to help you visualize your Firebase
+          data effortlessly. Whether you&apos;re a developer, data analyst, or
+          business manager, Ventivo can help you unlock the full potential of
+          your data. Explore Ventivo today and see how it can transform your
+          data into actionable insights.
         </p>
       </section>
 
