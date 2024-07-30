@@ -33,6 +33,10 @@ const App = ({ Component, pageProps }: AppProps) => {
         >
           <Head>
             <title>Ventivo</title>
+            <meta
+              name="google-site-verification"
+              content="TXBmC1FVqyiPogzJvLfPdiI5Ot6__fS9z-48FsWmMUU"
+            />
           </Head>
 
           <Component {...pageProps} />
