@@ -19,6 +19,7 @@ import Steps from "@/components/Steps";
 import FAQ from "@/components/FAQ";
 import Pricing from "@/components/Pricing";
 import { FaCheck } from "react-icons/fa";
+import Blog from "@/components/Blog";
 
 // export const getStaticProps = async () => {
 //   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
@@ -47,6 +48,7 @@ const Home = () => {
       <Features />
       <Steps />
       <Pricing />
+      <Blog />
       <FAQ />
       <Footer />
     </>

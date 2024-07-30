@@ -2,7 +2,7 @@ import { IMAGES } from "@/constants/constants";
 import { HeadTemplateProps } from "@/types/general";
 import Head from "next/head";
 
-const HeadTemplate = ({ title }: HeadTemplateProps) => {
+const HeadTemplate = ({ title, children }: HeadTemplateProps) => {
   return (
     <Head>
       <title>{title ? `${title} ~ Ventivo` : "Ventivo"}</title>
@@ -35,6 +35,8 @@ const HeadTemplate = ({ title }: HeadTemplateProps) => {
         content="Get real-time charts around your Firebase data."
       />
       <meta name="twitter:image" content="https://ventivo.co/og-image.png" />
+
+      {children}
     </Head>
   );
 };

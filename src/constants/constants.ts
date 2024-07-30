@@ -9,6 +9,10 @@ export const IMAGES = {
   logo_transparent: { src: "/logo-transparent.png", w: 500, h: 500 },
   projects_display: { src: "/projects-display.png", w: 1920, h: 880 },
   charts_display: { src: "/charts-display.png", w: 1920, h: 880 },
+
+  data_visualization: { src: "/blog/data-visualization.jpg", w: 3008, h: 1504 },
+  coding: { src: "/blog/coding.jpg", w: 5184, h: 2592 },
+  security_rules: { src: "/blog/security-rules.jpg", w: 3840, h: 1920 },
 };
 
 export const PAGES = {
@@ -16,6 +20,16 @@ export const PAGES = {
 
   login: "https://app.ventivo.co/auth/login",
   signup: "https://app.ventivo.co/auth/signup",
+
+  blog: {
+    importance_of_data_visualization:
+      BASE_URL + "/blog/importance-of-data-visualization",
+    firebase_the_best_option:
+      BASE_URL + "/blog/why-firebase-is-the-go-to-for-developers",
+    security_rules:
+      BASE_URL +
+      "/blog/optimizing-firebase-security-rules-for-your-application",
+  },
 };
 
 export const TABLES = {
