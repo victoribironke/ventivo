@@ -37,3 +37,8 @@ export const TABLES = {
   charts: "charts",
   waitlist: "waitlist",
 };
+
+export const PAYMENT_LINKS = {
+  nigeria: "https://paystack.com/pay/5rxhm8bjn-",
+  other: "https://paystack.com/pay/536yd2cf23",
+};

@@ -1,8 +1,5 @@
-import { cn } from "@/lib/utils";
-import { useState } from "react";
 import Image from "next/image";
 import { IMAGES, PAGES } from "@/constants/constants";
-import toast from "react-hot-toast";
 import Link from "next/link";
 
 const Header = () => {

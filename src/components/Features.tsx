@@ -1,8 +1,5 @@
 import { IMAGES } from "@/constants/constants";
 import Image from "next/image";
-import { FaCheck } from "react-icons/fa";
-import { IoCheckmarkDone, IoCheckmarkDoneOutline } from "react-icons/io5";
-import { LuCheckCheck } from "react-icons/lu";
 
 const Features = () => {
   const features = [

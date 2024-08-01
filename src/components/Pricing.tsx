@@ -1,4 +1,3 @@
-import { FaCheck } from "react-icons/fa";
 import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
 import Link from "next/link";
@@ -6,24 +5,24 @@ import { PAGES } from "@/constants/constants";
 import { IoCheckmarkOutline } from "react-icons/io5";
 import { cn, formatNumber } from "@/lib/utils";
 
-const pricing = [
-  {
-    title: "Free",
-    features: ["1 project", "3 charts", "Future feature updates"],
-    price: 0,
-  },
-  {
-    title: "Pro",
-    features: [
-      "Unlimited projects",
-      "Unlimited charts",
-      "Future feature updates",
-    ],
-    price: 7500,
-  },
-];
+const Pricing = ({ country }: { country: string }) => {
+  const pricing = [
+    {
+      title: "Free",
+      features: ["1 project", "3 charts", "Future feature updates"],
+      price: 0,
+    },
+    {
+      title: "Pro",
+      features: [
+        "Unlimited projects",
+        "Unlimited charts",
+        "Future feature updates",
+      ],
+      price: country === "Nigeria" ? 7500 : 50000,
+    },
+  ];
 
-const Pricing = () => {
   return (
     <section className="w-full max-w-5xl flex flex-col gap-8">
       <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl xl:text-4xl text-center">
