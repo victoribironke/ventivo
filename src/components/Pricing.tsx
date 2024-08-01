@@ -5,7 +5,7 @@ import { PAGES } from "@/constants/constants";
 import { IoCheckmarkOutline } from "react-icons/io5";
 import { cn, formatNumber } from "@/lib/utils";
 
-const Pricing = ({ country }: { country: string }) => {
+const Pricing = () => {
   const pricing = [
     {
       title: "Free",
@@ -19,7 +19,7 @@ const Pricing = ({ country }: { country: string }) => {
         "Unlimited charts",
         "Future feature updates",
       ],
-      price: country === "Nigeria" ? 7500 : 50000,
+      price: 7500,
     },
   ];
 
