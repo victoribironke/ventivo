@@ -21,6 +21,9 @@ export const PAGES = {
   login: "https://app.ventivo.co/auth/login",
   signup: "https://app.ventivo.co/auth/signup",
 
+  terms: "/terms",
+  privacy_policy: "/privacy-policy",
+
   blog: {
     importance_of_data_visualization:
       BASE_URL + "/blog/importance-of-data-visualization",

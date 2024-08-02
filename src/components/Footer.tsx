@@ -1,5 +1,6 @@
-import { IMAGES } from "@/constants/constants";
+import { IMAGES, PAGES } from "@/constants/constants";
 import Image from "next/image";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -17,6 +18,16 @@ const Footer = () => {
       <p className="text-gray-400 text-sm">
         ©️ {new Date().getFullYear()} Ventivo.
       </p>
+
+      <div className="text-sm text-gray-400 flex items-center gap-2">
+        <Link href={PAGES.terms} className="hover:underline">
+          Terms
+        </Link>
+        •
+        <Link href={PAGES.privacy_policy} className="hover:underline">
+          Privacy Policy
+        </Link>
+      </div>
     </footer>
   );
 };
