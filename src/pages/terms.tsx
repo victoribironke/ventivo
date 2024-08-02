@@ -10,7 +10,7 @@ const TermsOfService = () => {
       <Header />
 
       <section className="min-h-screen mt-36">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           <h1 className="text-3xl font-semibold text-gray-800 mb-6">
             Terms of Service
           </h1>
