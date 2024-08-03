@@ -28,6 +28,19 @@ const Footer = () => {
           Privacy Policy
         </Link>
       </div>
+
+      <a
+        href="https://www.producthunt.com/posts/ventivo?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-ventivo"
+        target="_blank"
+      >
+        <img
+          src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=474416&theme=light"
+          alt="Ventivo - Real&#0045;time&#0032;charts&#0032;around&#0032;your&#0032;Firebase&#0032;data | Product Hunt"
+          style={{ width: "250px", height: "54px" }}
+          width="250"
+          height="54"
+        />
+      </a>
     </footer>
   );
 };
