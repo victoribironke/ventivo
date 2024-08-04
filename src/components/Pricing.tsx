@@ -19,7 +19,7 @@ const Pricing = () => {
         "Unlimited charts",
         "Future feature updates",
       ],
-      price: 7500,
+      price: 10000,
     },
   ];
 
