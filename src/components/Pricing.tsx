@@ -9,7 +9,7 @@ const Pricing = () => {
   const pricing = [
     {
       title: "Free",
-      features: ["1 project", "3 charts", "Future feature updates"],
+      features: ["1 project", "3 charts", "Watermark on exported charts"],
       price: 0,
     },
     {
@@ -17,9 +17,9 @@ const Pricing = () => {
       features: [
         "Unlimited projects",
         "Unlimited charts",
-        "Future feature updates",
+        "No watermark on exported charts",
       ],
-      price: 10000,
+      price: 50,
     },
   ];
 
@@ -46,10 +46,10 @@ const Pricing = () => {
 
             <p className="w-full flex gap-1 items-end px-6">
               <span className="text-firebase-orange text-4xl md:text-5xl font-bold">
-                ₦{formatNumber(p.price)}
+                ${formatNumber(p.price)}
               </span>
               {p.price !== 0 && (
-                <span className="text-gray-400">billed once</span>
+                <span className="text-gray-400">one-time payment</span>
               )}
             </p>
 
