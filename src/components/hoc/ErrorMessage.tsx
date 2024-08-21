@@ -15,7 +15,7 @@ const ErrorMessage = () => {
       >
         <div className="text-center">
           <p className="text-lg font-bold text-red">Error.</p>
-          <h1 className="mt-4 text-3xl font-bold tracking-tight sm:text-5xl text-white">
+          <h1 className="mt-4 text-3xl font-bold tracking-tight sm:text-5xl">
             An error occured
           </h1>
           <p className="mt-6 text-lg leading-7 text-gray-400">
