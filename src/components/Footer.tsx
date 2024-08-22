@@ -28,6 +28,12 @@ const Footer = () => {
           Privacy Policy
         </Link>
       </div>
+      <Link
+        href={PAGES.query_generator}
+        className="hover:underline text-sm text-firebase-orange"
+      >
+        Free tool - Firestore query generator
+      </Link>
 
       <a
         href="https://www.producthunt.com/posts/ventivo?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-ventivo"

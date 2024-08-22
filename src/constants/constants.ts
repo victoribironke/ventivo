@@ -24,6 +24,8 @@ export const PAGES = {
   terms: "/terms",
   privacy_policy: "/privacy-policy",
 
+  query_generator: "/tools/query-generator",
+
   blog: {
     importance_of_data_visualization:
       BASE_URL + "/blog/importance-of-data-visualization",
