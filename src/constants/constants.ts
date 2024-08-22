@@ -23,6 +23,7 @@ export const PAGES = {
 
   terms: "/terms",
   privacy_policy: "/privacy-policy",
+  twitter: "https://twitter.com/ventivo_",
 
   query_generator: "/tools/query-generator",
 

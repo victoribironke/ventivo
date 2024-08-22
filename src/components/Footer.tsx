@@ -27,6 +27,15 @@ const Footer = () => {
         <Link href={PAGES.privacy_policy} className="hover:underline">
           Privacy Policy
         </Link>
+        •
+        <Link
+          href={PAGES.twitter}
+          className="hover:underline"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Twitter
+        </Link>
       </div>
       <Link
         href={PAGES.query_generator}
