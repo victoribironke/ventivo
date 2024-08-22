@@ -53,19 +53,19 @@ const Header = () => {
 
         <nav className="hidden md:flex items-center gap-8">
           <Link
-            href="#features"
+            href={`${PAGES.home}#features`}
             className="text-gray-700 hover:text-firebase-orange transition-colors duration-300"
           >
             Features
           </Link>
           <Link
-            href="#pricing"
+            href={`${PAGES.home}#pricing`}
             className="text-gray-700 hover:text-firebase-orange transition-colors duration-300"
           >
             Pricing
           </Link>
           <Link
-            href="#blog"
+            href={`${PAGES.home}#blog`}
             className="text-gray-700 hover:text-firebase-orange transition-colors duration-300"
           >
             Blog
