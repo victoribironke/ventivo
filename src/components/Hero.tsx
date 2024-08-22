@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Button } from "./ui/button";
-import { IMAGES, PAGES } from "@/constants/constants";
-import Image from "next/image";
+import { PAGES } from "@/constants/constants";
 
 // const Hero = () => {
 //   return (
