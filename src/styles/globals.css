@@ -96,9 +96,9 @@
   scroll-behavior: smooth;
 }
 
-body {
+/* body {
   background-color: #f9fafb;
-}
+} */
 
 ::-webkit-scrollbar {
   display: none;

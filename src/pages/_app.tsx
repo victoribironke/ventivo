@@ -3,12 +3,12 @@ import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import { Bricolage_Grotesque } from "next/font/google";
+import { Instrument_Sans } from "next/font/google";
 import { ErrorBoundary } from "react-error-boundary";
 import { Toaster } from "react-hot-toast";
 import { Analytics } from "@vercel/analytics/react";
 
-export const bg = Bricolage_Grotesque({ display: "swap", subsets: ["latin"] });
+export const bg = Instrument_Sans({ display: "swap", subsets: ["latin"] });
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
