@@ -28,14 +28,20 @@ const QueryGenerator = () => {
         <meta property="og:url" content={meta.url} />
         <meta property="og:title" content={meta.title} />
         <meta property="og:description" content={meta.desc} />
-        <meta property="og:image" content="https://ventivo.co/og-image.png" />
+        <meta
+          property="og:image"
+          content="https://ventivo.co/query-generator.png"
+        />
         {/* <!-- Twitter Meta Tags --> */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="twitter:domain" content="ventivo.co" />
         <meta property="twitter:url" content={meta.url} />
         <meta name="twitter:title" content={meta.title} />
         <meta name="twitter:description" content={meta.desc} />
-        <meta name="twitter:image" content="https://ventivo.co/og-image.png" />
+        <meta
+          name="twitter:image"
+          content="https://ventivo.co/query-generator.png"
+        />
       </HeadTemplate>
 
       <Header />
