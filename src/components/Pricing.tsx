@@ -18,7 +18,7 @@ const Pricing = () => {
         "Unlimited charts",
         "No watermark on exported charts",
       ],
-      price: 60,
+      price: 30,
     },
   ];
 
