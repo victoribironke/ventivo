@@ -8,7 +8,7 @@ export const useToggle = (defaultValue: boolean): [boolean, () => void] => {
   return [value, toggleValue];
 };
 
-const useAutosizeTextArea = (
+export const useAutosizeTextArea = (
   textAreaRef: HTMLTextAreaElement | null,
   value: string
 ) => {
@@ -24,5 +24,3 @@ const useAutosizeTextArea = (
     }
   }, [textAreaRef, value]);
 };
-
-export default useAutosizeTextArea;

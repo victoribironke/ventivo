@@ -13,18 +13,18 @@ export const bg = Instrument_Sans({ display: "swap", subsets: ["latin"] });
 const App = ({ Component, pageProps }: AppProps) => {
   return (
     <>
-      <Analytics />
-      <Toaster
-        toastOptions={{
-          className: bg.className,
-          // style: {
-          //   backgroundColor: "rgb(63 63 70)",
-          //   color: "#fff",
-          //   border: "1px solid rgb(63 63 70 / 0.4)",
-          // },
-        }}
-      />
       <ErrorBoundary FallbackComponent={ErrorMessage}>
+        <Analytics />
+        <Toaster
+          toastOptions={{
+            className: bg.className,
+            // style: {
+            //   backgroundColor: "rgb(63 63 70)",
+            //   color: "#fff",
+            //   border: "1px solid rgb(63 63 70 / 0.4)",
+            // },
+          }}
+        />
         <main
           className={cn(
             "w-full min-h-screen flex justify-start items-center flex-col gap-20 px-6 pb-16",

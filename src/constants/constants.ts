@@ -18,8 +18,8 @@ export const IMAGES = {
 export const PAGES = {
   home: "/",
 
-  login: "https://app.ventivo.co/auth/login",
-  signup: "https://app.ventivo.co/auth/signup",
+  login: "https://firebase.ventivo.co/auth/login",
+  signup: "https://firebase.ventivo.co/auth/signup",
 
   terms: "/terms",
   privacy_policy: "/privacy-policy",
