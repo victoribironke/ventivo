@@ -27,7 +27,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         />
         <main
           className={cn(
-            "w-full min-h-screen flex justify-start items-center flex-col gap-20 px-6 pb-16",
+            "w-full min-h-screen flex justify-center items-center flex-col gap-20 px-6",
             bg.className
           )}
         >

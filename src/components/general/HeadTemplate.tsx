@@ -5,12 +5,8 @@ import Head from "next/head";
 const HeadTemplate = ({ title, children }: HeadTemplateProps) => {
   return (
     <Head>
-      <link
-        rel="shortcut-icon"
-        href={IMAGES.logo_transparent.src}
-        type="image/x-icon"
-      />
-      <link rel="icon" href={IMAGES.logo_transparent.src} type="image/x-icon" />
+      <link rel="shortcut-icon" href={IMAGES.logo.src} type="image/x-icon" />
+      <link rel="icon" href={IMAGES.logo.src} type="image/x-icon" />
 
       {children ? (
         children
@@ -27,7 +23,7 @@ const HeadTemplate = ({ title, children }: HeadTemplateProps) => {
           <meta property="og:title" content="Ventivo" />
           <meta
             property="og:description"
-            content="Get real-time charts around your Firebase data."
+            content="Get real-time charts around your data."
           />
           <meta property="og:image" content="https://ventivo.co/og-image.png" />
           {/* <!-- Twitter Meta Tags --> */}
@@ -37,7 +33,7 @@ const HeadTemplate = ({ title, children }: HeadTemplateProps) => {
           <meta name="twitter:title" content="Ventivo" />
           <meta
             name="twitter:description"
-            content="Get real-time charts around your Firebase data."
+            content="Get real-time charts around your data."
           />
           <meta
             name="twitter:image"
