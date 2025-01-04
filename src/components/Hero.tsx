@@ -37,15 +37,17 @@ const Hero = () => {
   return (
     <section className="bg-white border-2 flex items-center justify-between flex-col w-full p-6 min-h-[calc(100vh-3rem)] gap-20 rounded-xl">
       <div className="w-full flex items-center justify-between gap-4">
-        <Image
-          src={IMAGES.logo_transparent.src}
-          alt="Ventivo Logo"
-          width={IMAGES.logo_transparent.w}
-          height={IMAGES.logo_transparent.h}
-          className="w-8 aspect-square"
-        />
-
         <Link href="/">
+          <Image
+            src={IMAGES.logo_transparent.src}
+            alt="Ventivo Logo"
+            width={IMAGES.logo_transparent.w}
+            height={IMAGES.logo_transparent.h}
+            className="w-8 aspect-square"
+          />
+        </Link>
+
+        <Link href={PAGES.login}>
           <span className="bg-white font-medium text-[0.9375rem] hover:bg-firebase-orange hover:text-white py-2 px-3 rounded-lg transition">
             Log in
           </span>
