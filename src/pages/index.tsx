@@ -11,6 +11,7 @@ import Hero from "@/components/Hero";
 import { TbBrandMongodb } from "react-icons/tb";
 import { SiFirebase } from "react-icons/si";
 import Databases from "@/components/Databases";
+import Steps from "@/components/Steps";
 
 const Home = () => {
   return (
@@ -19,6 +20,7 @@ const Home = () => {
 
       <Hero />
       <Databases />
+      <Steps />
     </>
   );
 };
