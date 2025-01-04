@@ -3,12 +3,17 @@ import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import { Instrument_Sans } from "next/font/google";
+import { Instrument_Sans, Spectral } from "next/font/google";
 import { ErrorBoundary } from "react-error-boundary";
 import { Toaster } from "react-hot-toast";
 import { Analytics } from "@vercel/analytics/react";
 
 export const bg = Instrument_Sans({ display: "swap", subsets: ["latin"] });
+export const sp = Spectral({
+  display: "swap",
+  subsets: ["latin"],
+  weight: ["200", "300", "400", "500", "600", "700", "800"],
+});
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
@@ -27,7 +32,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         />
         <main
           className={cn(
-            "w-full min-h-screen flex justify-center items-center flex-col gap-20 px-6",
+            "w-full min-h-screen flex justify-start items-center flex-col gap-6 p-6 max-w-4xl",
             bg.className
           )}
         >
