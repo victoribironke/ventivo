@@ -5,8 +5,12 @@ import Head from "next/head";
 const HeadTemplate = ({ title, children }: HeadTemplateProps) => {
   return (
     <Head>
-      <link rel="shortcut-icon" href={IMAGES.logo.src} type="image/x-icon" />
-      <link rel="icon" href={IMAGES.logo.src} type="image/x-icon" />
+      <link
+        rel="shortcut-icon"
+        href={IMAGES.logo_transparent.src}
+        type="image/x-icon"
+      />
+      <link rel="icon" href={IMAGES.logo_transparent.src} type="image/x-icon" />
 
       {children ? (
         children

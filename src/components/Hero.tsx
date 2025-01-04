@@ -13,7 +13,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
+} from "./ui/tooltip";
 
 const Hero = () => {
   const steps = [
@@ -35,7 +35,7 @@ const Hero = () => {
   ];
 
   return (
-    <section className="bg-white border-2 flex items-center justify-between flex-col w-full p-6 min-h-[calc(100vh-3rem)] rounded-xl">
+    <section className="bg-white border-2 flex items-center justify-between flex-col w-full p-6 min-h-[calc(100vh-3rem)] gap-20 rounded-xl">
       <div className="w-full flex items-center justify-between gap-4">
         <Image
           src={IMAGES.logo_transparent.src}
