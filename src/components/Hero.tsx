@@ -25,7 +25,7 @@ const Hero = () => {
     {
       content: "Create your charts",
       icon: ChartLine,
-      color: "#eab308",
+      color: "#ffc400",
     },
     {
       content: "Tracking your key metrics",

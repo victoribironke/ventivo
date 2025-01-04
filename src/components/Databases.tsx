@@ -1,7 +1,9 @@
-import { SiFirebase } from "react-icons/si";
+import { SiAppwrite, SiFirebase } from "react-icons/si";
 import { TbBrandMongodb } from "react-icons/tb";
 import { SiPostgresql } from "react-icons/si";
+import { BiLogoPostgresql } from "react-icons/bi";
 import { RiSupabaseFill } from "react-icons/ri";
+import { IoEllipsisHorizontal } from "react-icons/io5";
 import {
   Tooltip,
   TooltipContent,
@@ -25,10 +27,16 @@ const Databases = () => {
         content: "MongoDB",
         isAvailable: false,
       },
+      {
+        icon: SiAppwrite,
+        color: "#ef4444",
+        content: "Appwrite",
+        isAvailable: false,
+      },
     ],
     relational: [
       {
-        icon: SiPostgresql,
+        icon: BiLogoPostgresql,
         color: "#3b82f6",
         content: "PostgreSQL",
         isAvailable: false,
@@ -38,6 +46,12 @@ const Databases = () => {
         color: "#22c55e",
         content: "Supabase",
         isAvailable: false,
+      },
+      {
+        icon: IoEllipsisHorizontal,
+        color: "#ff9100",
+        content: "More",
+        isAvailable: true,
       },
     ],
   };
