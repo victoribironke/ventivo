@@ -45,7 +45,7 @@ const Databases = () => {
   return (
     <section className="w-full flex items-stretch justify-center gap-6 flex-col sm:flex-row">
       <div className="bg-white border-2 flex items-center justify-center flex-col gap-6 w-full sm:w-1/2 p-6 rounded-xl">
-        <p className="text-lg font-medium">
+        <p className="text-lg font-medium text-center">
           <span className="text-firebase-orange">Document-oriented</span>{" "}
           databases
         </p>
@@ -76,7 +76,7 @@ const Databases = () => {
       </div>
 
       <div className="bg-white border-2 flex items-center justify-center flex-col gap-6 w-full sm:w-1/2 p-6 rounded-xl">
-        <p className="text-lg font-medium">
+        <p className="text-lg font-medium text-center">
           <span className="text-firebase-orange">Relational</span> databases
         </p>
 
