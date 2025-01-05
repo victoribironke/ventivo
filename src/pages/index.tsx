@@ -13,6 +13,7 @@ import { SiFirebase } from "react-icons/si";
 import Databases from "@/components/Databases";
 import Steps from "@/components/Steps";
 import Pricing from "@/components/Pricing";
+import Footer from "@/components/Footer";
 
 const Home = () => {
   return (
@@ -23,6 +24,7 @@ const Home = () => {
       <Databases />
       <Steps />
       <Pricing />
+      <Footer />
     </>
   );
 };
