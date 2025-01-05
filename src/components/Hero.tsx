@@ -28,7 +28,7 @@ const Hero = () => {
       color: "#ffc400",
     },
     {
-      content: "Tracking your key metrics",
+      content: "Track your key metrics",
       icon: FileChartColumnIncreasing,
       color: "#22c55e",
     },
