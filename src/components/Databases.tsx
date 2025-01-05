@@ -1,6 +1,5 @@
 import { SiAppwrite, SiFirebase } from "react-icons/si";
 import { TbBrandMongodb } from "react-icons/tb";
-import { SiPostgresql } from "react-icons/si";
 import { BiLogoPostgresql } from "react-icons/bi";
 import { RiSupabaseFill } from "react-icons/ri";
 import { IoEllipsisHorizontal } from "react-icons/io5";
