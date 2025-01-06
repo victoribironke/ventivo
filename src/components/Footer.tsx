@@ -38,7 +38,7 @@ const Footer = () => {
         </div>
 
         <Link
-          href={PAGES.query_generator}
+          href={PAGES.firestore_query_generator}
           className="hover:underline text-sm text-firebase-orange mt-2"
         >
           Free tool - Firestore Query Generator

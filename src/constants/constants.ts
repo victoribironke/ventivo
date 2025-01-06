@@ -25,7 +25,7 @@ export const PAGES = {
   privacy_policy: "/privacy-policy",
   twitter: "https://twitter.com/ventivo_",
 
-  query_generator: "/tools/query-generator",
+  firestore_query_generator: "/tools/firestore-query-generator",
 
   blog: {
     importance_of_data_visualization:
