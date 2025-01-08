@@ -6,7 +6,7 @@ import { Switch } from "./ui/switch";
 import { useState } from "react";
 
 const Pricing = () => {
-  const [isMonthly, setIsMonthly] = useState(true);
+  const [isMonthly, setIsMonthly] = useState(false);
   const tiers = [
     {
       plan: "Free",
