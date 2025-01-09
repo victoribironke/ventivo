@@ -1,10 +1,5 @@
 import { IMAGES, PAGES } from "@/constants/constants";
-import {
-  ChartLine,
-  Database,
-  FileChartColumnIncreasing,
-  icons,
-} from "lucide-react";
+import { ChartLine, Database, FileChartColumnIncreasing } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "./ui/button";

@@ -5,7 +5,8 @@ const Steps = () => {
     <>
       <section className="my-10 py-6 px-10 w-full flex items-start justify-center flex-col gap-4">
         <h1 className="text-4xl font-bold text-gray-900">
-          It's <span className="text-firebase-orange">easy</span> to get started
+          It&apos;s <span className="text-firebase-orange">easy</span> to get
+          started
         </h1>
 
         <p className="text-lg">Get up and running in three steps.</p>
