@@ -37,16 +37,6 @@ const Footer = () => {
           ©️ {new Date().getFullYear()} Ventivo.
         </p>
 
-        <div className="text-sm text-gray-400 flex flex-row items-center gap-2">
-          <Link href={PAGES.terms} className="hover:underline">
-            Terms
-          </Link>
-          <span>•</span>
-          <Link href={PAGES.privacy_policy} className="hover:underline">
-            Privacy Policy
-          </Link>
-        </div>
-
         <div className="flex flex-row items-center gap-6">
           {socials.map((s, i) => (
             <Link
@@ -59,6 +49,20 @@ const Footer = () => {
               <s.icon size={20} fill="#374151" />
             </Link>
           ))}
+        </div>
+
+        <div className="text-sm text-gray-400 flex flex-row items-center gap-2">
+          <Link href={PAGES.terms} className="hover:underline">
+            Terms
+          </Link>
+          <span>•</span>
+          <Link href={PAGES.privacy_policy} className="hover:underline">
+            Privacy Policy
+          </Link>
+          <span>•</span>
+          <Link href={PAGES.blog} className="hover:underline">
+            Blog
+          </Link>
         </div>
 
         <Link

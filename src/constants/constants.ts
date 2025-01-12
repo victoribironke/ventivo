@@ -23,6 +23,7 @@ export const PAGES = {
 
   terms: "/terms",
   privacy_policy: "/privacy-policy",
+  blog: "/blog",
 
   twitter: "https://twitter.com/ventivo_",
   instagram: "https://instagram.com/ventivo_",
@@ -30,15 +31,15 @@ export const PAGES = {
 
   firestore_query_generator: "/tools/firestore-query-generator",
 
-  blog: {
-    importance_of_data_visualization:
-      BASE_URL + "/blog/importance-of-data-visualization",
-    firebase_the_best_option:
-      BASE_URL + "/blog/why-firebase-is-the-go-to-for-developers",
-    security_rules:
-      BASE_URL +
-      "/blog/optimizing-firebase-security-rules-for-your-application",
-  },
+  // blog: {
+  //   importance_of_data_visualization:
+  //     BASE_URL + "/blog/importance-of-data-visualization",
+  //   firebase_the_best_option:
+  //     BASE_URL + "/blog/why-firebase-is-the-go-to-for-developers",
+  //   security_rules:
+  //     BASE_URL +
+  //     "/blog/optimizing-firebase-security-rules-for-your-application",
+  // },
 };
 
 export const TABLES = {
