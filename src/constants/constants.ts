@@ -23,7 +23,10 @@ export const PAGES = {
 
   terms: "/terms",
   privacy_policy: "/privacy-policy",
+
   twitter: "https://twitter.com/ventivo_",
+  instagram: "https://instagram.com/ventivo_",
+  tiktok: "https://tiktok.com/ventivo_",
 
   firestore_query_generator: "/tools/firestore-query-generator",
 

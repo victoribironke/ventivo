@@ -1,11 +1,30 @@
 import { IMAGES, PAGES } from "@/constants/constants";
 import Image from "next/image";
 import Link from "next/link";
+import { FaXTwitter, FaInstagram, FaTiktok } from "react-icons/fa6";
 
 const Footer = () => {
+  const socials = [
+    {
+      name: "Twitter",
+      href: PAGES.twitter,
+      icon: FaXTwitter,
+    },
+    {
+      name: "Instagram",
+      href: PAGES.instagram,
+      icon: FaInstagram,
+    },
+    {
+      name: "TikTok",
+      href: PAGES.tiktok,
+      icon: FaTiktok,
+    },
+  ];
+
   return (
     <footer className="w-full my-10">
-      <div className="mx-auto flex flex-col items-center text-center gap-4">
+      <div className="mx-auto flex flex-col items-center text-center gap-6">
         <Image
           alt="Logo"
           src={IMAGES.logo_transparent.src}
@@ -18,28 +37,33 @@ const Footer = () => {
           ©️ {new Date().getFullYear()} Ventivo.
         </p>
 
-        <div className="text-sm text-gray-400 flex flex-col md:flex-row items-center gap-2">
+        <div className="text-sm text-gray-400 flex flex-row items-center gap-2">
           <Link href={PAGES.terms} className="hover:underline">
             Terms
           </Link>
-          <span className="hidden md:block">•</span>
+          <span>•</span>
           <Link href={PAGES.privacy_policy} className="hover:underline">
             Privacy Policy
           </Link>
-          <span className="hidden md:block">•</span>
-          <Link
-            href={PAGES.twitter}
-            className="hover:underline"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Twitter
-          </Link>
+        </div>
+
+        <div className="flex flex-row items-center gap-6">
+          {socials.map((s, i) => (
+            <Link
+              key={i}
+              href={s.href}
+              className="hover:underline"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <s.icon size={20} fill="#374151" />
+            </Link>
+          ))}
         </div>
 
         <Link
           href={PAGES.firestore_query_generator}
-          className="hover:underline text-sm text-firebase-orange mt-2"
+          className="hover:underline text-sm text-firebase-orange"
         >
           Free tool - Firestore Query Generator
         </Link>
@@ -52,7 +76,7 @@ const Footer = () => {
           <img
             src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=474416&theme=light"
             alt="Ventivo - Real-time charts around your Firebase data | Product Hunt"
-            className="w-[250px] h-[54px] mt-4"
+            className="w-[250px] h-[54px]"
           />
         </a>
       </div>
