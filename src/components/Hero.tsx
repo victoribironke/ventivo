@@ -41,7 +41,7 @@ const Hero = () => {
       )}
     >
       <div className="w-full flex items-center justify-between gap-4">
-        <Link href="/">
+        <Link href="/" className="mr-auto">
           <Image
             src={IMAGES.logo_transparent.src}
             alt="Ventivo Logo"
@@ -52,9 +52,15 @@ const Hero = () => {
         </Link>
 
         <Link href={PAGES.login}>
-          <span className="bg-white font-medium text-[0.9375rem] hover:bg-firebase-orange hover:text-white py-2 px-3 rounded-lg transition">
+          <Button className="bg-white text-black hover:bg-white hover:underline py-2 px-3 rounded-lg">
             Log in
-          </span>
+          </Button>
+        </Link>
+
+        <Link href={PAGES.signup}>
+          <Button className="bg-firebase-orange text-white py-2 px-4 rounded-lg  hover:bg-firebase-orange">
+            Get started
+          </Button>
         </Link>
       </div>
 
