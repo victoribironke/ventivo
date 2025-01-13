@@ -2,7 +2,7 @@ import Footer from "@/components/Footer";
 import HeadTemplate from "@/components/general/HeadTemplate";
 import Hero from "@/components/Hero";
 import { Button } from "@/components/ui/button";
-import { PAGES } from "@/constants/constants";
+import { PAGES, TABLES } from "@/constants/constants";
 import Link from "next/link";
 
 const Blog = () => {
