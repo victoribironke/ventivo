@@ -1,34 +1,41 @@
 import Footer from "@/components/Footer";
 import HeadTemplate from "@/components/general/HeadTemplate";
 import Hero from "@/components/Hero";
+import { PAGES } from "@/constants/constants";
 
 const TermsOfService = () => {
+  const meta = {
+    title: "Terms of Service ~ Ventivo",
+    url: PAGES.terms,
+    desc: "Terms of Service for Ventivo.",
+    og_image: "https://ventivo.co/og-image.png",
+  };
+
   return (
     <>
-      <HeadTemplate title="Terms of service" />
+      <HeadTemplate meta={meta} />
 
       <Hero />
 
-      <main className="my-36 w-full">
-        <div className="max-w-3xl mx-auto">
-          <h1 className="text-3xl font-semibold text-gray-800 mb-6">
-            Terms of Service
-          </h1>
+      <main className="my-20 max-w-3xl w-full">
+        <h1 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-6">
+          Terms of Service
+        </h1>
 
-          <p className="text-gray-600 mb-4">Effective Date: 2nd August, 2024</p>
+        <p className="text-gray-600 mb-4">Effective Date: 2nd August, 2024</p>
 
-          <section className="mb-8">
-            <h2 className="text-xl font-semibold text-gray-800 mb-2">
-              Introduction
-            </h2>
-            <p className="text-gray-600">
-              Welcome to Ventivo. These Terms of Service govern your use of our
-              application and services. By using Ventivo, you agree to comply
-              with and be bound by these terms.
-            </p>
-          </section>
+        <section className="mb-8">
+          <h2 className="text-xl font-semibold text-gray-800 mb-2">
+            Introduction
+          </h2>
+          <p className="text-gray-600">
+            Welcome to Ventivo. These Terms of Service govern your use of our
+            application and services. By using Ventivo, you agree to comply with
+            and be bound by these terms.
+          </p>
+        </section>
 
-          {/* <section className="mb-8">
+        {/* <section className="mb-8">
             <h2 className="text-xl font-semibold text-gray-800 mb-2">
               Account Registration
             </h2>
@@ -40,54 +47,53 @@ const TermsOfService = () => {
             </p>
           </section> */}
 
-          <section className="mb-8">
-            <h2 className="text-xl font-semibold text-gray-800 mb-2">
-              User Responsibilities
-            </h2>
-            <p className="text-gray-600">
-              You are responsible for all activity that occurs under your
-              account. You agree to use Ventivo in compliance with all
-              applicable laws and not to engage in any activity that could harm
-              our service or other users.
-            </p>
-          </section>
+        <section className="mb-8">
+          <h2 className="text-xl font-semibold text-gray-800 mb-2">
+            User Responsibilities
+          </h2>
+          <p className="text-gray-600">
+            You are responsible for all activity that occurs under your account.
+            You agree to use Ventivo in compliance with all applicable laws and
+            not to engage in any activity that could harm our service or other
+            users.
+          </p>
+        </section>
 
-          <section className="mb-8">
-            <h2 className="text-xl font-semibold text-gray-800 mb-2">
-              Payment and Subscriptions
-            </h2>
-            <p className="text-gray-600">
-              Certain features of Ventivo may require payment. By selecting a
-              paid plan, you agree to pay the applicable fees and taxes.
-              Payments are non-refundable, except as described in our Refund
-              Policy below.
-            </p>
-          </section>
+        <section className="mb-8">
+          <h2 className="text-xl font-semibold text-gray-800 mb-2">
+            Payment and Subscriptions
+          </h2>
+          <p className="text-gray-600">
+            Certain features of Ventivo may require payment. By selecting a paid
+            plan, you agree to pay the applicable fees and taxes. Payments are
+            non-refundable, except as described in our Refund Policy below.
+          </p>
+        </section>
 
-          <section className="mb-8">
-            <h2 className="text-xl font-semibold text-gray-800 mb-2">
-              Refund Policy
-            </h2>
-            <p className="text-gray-600">
-              We want you to be satisfied with our service. If you are not
-              satisfied with Ventivo, you may request a refund within 14 days of
-              your purchase. To request a refund, please contact us at
-              support@ventivo.co.
-            </p>
-          </section>
+        <section className="mb-8">
+          <h2 className="text-xl font-semibold text-gray-800 mb-2">
+            Refund Policy
+          </h2>
+          <p className="text-gray-600">
+            We want you to be satisfied with our service. If you are not
+            satisfied with Ventivo, you may request a refund within 14 days of
+            your purchase. To request a refund, please contact us at
+            support@ventivo.co.
+          </p>
+        </section>
 
-          <section className="mb-8">
-            <h2 className="text-xl font-semibold text-gray-800 mb-2">
-              Termination
-            </h2>
-            <p className="text-gray-600">
-              We may suspend or terminate your access to Ventivo at any time,
-              without notice, for conduct that we believe violates these Terms
-              of Service or is harmful to other users or the service.
-            </p>
-          </section>
+        <section className="mb-8">
+          <h2 className="text-xl font-semibold text-gray-800 mb-2">
+            Termination
+          </h2>
+          <p className="text-gray-600">
+            We may suspend or terminate your access to Ventivo at any time,
+            without notice, for conduct that we believe violates these Terms of
+            Service or is harmful to other users or the service.
+          </p>
+        </section>
 
-          {/* <section className="mb-8">
+        {/* <section className="mb-8">
             <h2 className="text-xl font-semibold text-gray-800 mb-2">
               Limitation of Liability
             </h2>
@@ -100,16 +106,15 @@ const TermsOfService = () => {
             </p>
           </section> */}
 
-          <section>
-            <h2 className="text-xl font-semibold text-gray-800 mb-2">
-              Contact Us
-            </h2>
-            <p className="text-gray-600">
-              If you have any questions about these Terms of Service, please
-              contact us at support@ventivo.co
-            </p>
-          </section>
-        </div>
+        <section>
+          <h2 className="text-xl font-semibold text-gray-800 mb-2">
+            Contact Us
+          </h2>
+          <p className="text-gray-600">
+            If you have any questions about these Terms of Service, please
+            contact us at support@ventivo.co
+          </p>
+        </section>
       </main>
 
       <Footer />
