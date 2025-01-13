@@ -14,35 +14,14 @@ const QueryGenerator = () => {
     title: "Cloud Firestore Query Generator ~ Ventivo",
     url: PAGES.firestore_query_generator,
     desc: "Simple query generator for Firebase firestore and realtime database.",
+    og_image: "https://ventivo.co/query-generator.png",
   };
 
   const tabs = ["Get data", "Add data", "Update data", "Delete data"];
 
   return (
     <>
-      <HeadTemplate>
-        <title>{meta.title}</title>
-
-        <meta name="description" content={meta.desc} />
-        {/* <!-- Facebook Meta Tags --> */}
-        <meta property="og:url" content={meta.url} />
-        <meta property="og:title" content={meta.title} />
-        <meta property="og:description" content={meta.desc} />
-        <meta
-          property="og:image"
-          content="https://ventivo.co/query-generator.png"
-        />
-        {/* <!-- Twitter Meta Tags --> */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta property="twitter:domain" content="ventivo.co" />
-        <meta property="twitter:url" content={meta.url} />
-        <meta name="twitter:title" content={meta.title} />
-        <meta name="twitter:description" content={meta.desc} />
-        <meta
-          name="twitter:image"
-          content="https://ventivo.co/query-generator.png"
-        />
-      </HeadTemplate>
+      <HeadTemplate meta={meta} />
 
       <Hero />
 

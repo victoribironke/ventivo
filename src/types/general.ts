@@ -2,7 +2,12 @@ import React from "react";
 
 export type HeadTemplateProps = {
   title?: string;
-  children?: React.ReactNode;
+  meta?: {
+    title: string;
+    url: string;
+    desc: string;
+    og_image: string;
+  };
 };
 
 export type PageLoaderProps = {
