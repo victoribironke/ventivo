@@ -3,9 +3,40 @@ import HeadTemplate from "@/components/general/HeadTemplate";
 import Hero from "@/components/Hero";
 import { Button } from "@/components/ui/button";
 import { PAGES, TABLES } from "@/constants/constants";
+import { Article } from "@/types/general";
+import { GetServerSideProps } from "next";
 import Link from "next/link";
+import { useEffect } from "react";
+import { FaAnglesRight } from "react-icons/fa6";
 
-const Blog = () => {
+export const getServerSideProps: GetServerSideProps = async () => {
+  const BASE_URL =
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:3000"
+      : "https://ventivo.co";
+
+  try {
+    const { articles } = await (
+      await fetch(`${BASE_URL}/api/get-all-articles`)
+    ).json();
+
+    return {
+      props: {
+        articles,
+      },
+    };
+  } catch (e) {
+    console.log(e);
+
+    return {
+      props: {
+        articles: [],
+      },
+    };
+  }
+};
+
+const Blog = ({ articles }: { articles: Article[] }) => {
   const meta = {
     title: "Blog ~ Ventivo",
     url: PAGES.blog,
@@ -24,31 +55,40 @@ const Blog = () => {
           Blog
         </h1>
 
-        <div className="flex flex-col items-center justify-center gap-8">
-          <section className="flex flex-col sm:flex-row items-start justify-center gap-2 sm:gap-8">
-            <h2 className="text-gray-600 mb-2 sm:mt-4 whitespace-nowrap w-full sm:w-1/6">
-              Jan 13, 2025
-            </h2>
+        <section className="flex flex-col items-center justify-center gap-8">
+          {articles.map((a) => {
+            const date = new Date(a.date_published).toLocaleDateString(
+              "en-US",
+              { dateStyle: "medium" }
+            );
 
-            <Link href={""} className="w-full sm:w-5/6">
-              <div className="w-full flex flex-col gap-2 bg-white hover:bg-gray-50 border transition rounded-lg p-4">
-                <h6 className="text-lg font-medium">
-                  This is the title of the blog
-                </h6>
+            return (
+              <div
+                key={a.id}
+                className="flex flex-col sm:flex-row items-start justify-center gap-2 sm:gap-8 group transition-all w-full"
+              >
+                <h2 className="text-gray-600 mb-2 sm:mt-4 whitespace-nowrap w-full sm:w-1/6">
+                  {date}
+                </h2>
 
-                <p className="text-gray-600">
-                  Welcome to Ventivo. These Terms of Service govern your use of
-                  our application and services. By using Ventivo, you agree to
-                  comply with and be bound by these terms.
-                </p>
+                <Link
+                  href={PAGES.blog_post(a.slug)}
+                  className="w-full sm:w-5/6"
+                >
+                  <div className="w-full flex flex-col gap-3 bg-white hover:bg-gray-50 border rounded-lg p-4">
+                    <h6 className="text-lg font-medium">{a.title}</h6>
 
-                <Button className="bg-transparent w-fit text-blue hover:bg-transparent hover:underline p-0">
-                  Read article
-                </Button>
+                    <p className="text-gray-600">{a.description}</p>
+
+                    <span className="bg-transparent flex items-center justify-center gap-1 group-hover:gap-2 text-sm w-fit text-blue hover:bg-transparent hover:underline">
+                      Read article <FaAnglesRight fill="#3b82f6" size={12} />
+                    </span>
+                  </div>
+                </Link>
               </div>
-            </Link>
-          </section>
-        </div>
+            );
+          })}
+        </section>
       </main>
 
       <Footer />

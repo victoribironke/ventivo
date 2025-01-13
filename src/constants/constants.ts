@@ -31,6 +31,7 @@ export const PAGES = {
 
   firestore_query_generator: "/tools/firestore-query-generator",
 
+  blog_post: (slug: string) => `/blog/${slug}`,
   // blog: {
   //   importance_of_data_visualization:
   //     BASE_URL + "/blog/importance-of-data-visualization",
