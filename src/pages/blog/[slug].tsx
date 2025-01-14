@@ -7,13 +7,13 @@ import { BlogPostData } from "@/types/general";
 import { GetServerSideProps } from "next";
 import slugify from "slugify";
 
+const BASE_URL =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:3000"
+    : "https://ventivo.co";
+
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const { slug } = params as { slug: string };
-
-  const BASE_URL =
-    process.env.NODE_ENV === "development"
-      ? "http://localhost:3000"
-      : "https://ventivo.co";
 
   try {
     const data = await (
@@ -41,12 +41,13 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 };
 
 const BlogPost = ({ data }: { data: BlogPostData }) => {
-  // UPDATE THIS WHEN THE DATA COMES BACK
+  const ogImage = `${BASE_URL}/api/og?title=${encodeURIComponent(data.title)}`;
+
   const meta = {
     title: data.title,
     url: PAGES.blog_post(slugify(data.title).toLowerCase()),
     desc: data.description,
-    og_image: "https://ventivo.co/og-image.png", // figure out a way to get this
+    og_image: ogImage,
   };
 
   const date = new Date(data.date_published).toLocaleDateString("en-US", {

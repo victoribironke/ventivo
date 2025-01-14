@@ -3,7 +3,7 @@ import {
   PartialBlockObjectResponse,
 } from "@notionhq/client/build/src/api-endpoints";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { vs } from "react-syntax-highlighter/dist/esm/styles/prism";
+// import { vs } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 export default function NotionBlockRenderer({
   block,
@@ -110,7 +110,7 @@ export default function NotionBlockRenderer({
 
           <SyntaxHighlighter
             language={language}
-            style={vs}
+            // style={vs}
             customStyle={{
               borderRadius: "0.5rem",
               fontSize: "0.875rem",
