@@ -23,18 +23,18 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     );
 
     if (!article) {
-      throw new Error("Invalid slug.");
+      res.status(200).json({ content: null });
     }
 
     let blocks = await notion.blocks.children.list({
-      block_id: article.id,
+      block_id: article!.id,
     });
 
     content = [...blocks.results];
 
     while (blocks.has_more) {
       blocks = await notion.blocks.children.list({
-        block_id: article.id,
+        block_id: article!.id,
         start_cursor: blocks.next_cursor as string | undefined,
       });
 
@@ -43,9 +43,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     res.status(200).json({
       content,
-      title: article.title,
-      date_published: article.date_published,
-      description: article.description,
+      title: article!.title,
+      date_published: article!.date_published,
+      description: article!.description,
     });
   } catch (e) {
     console.log(e);

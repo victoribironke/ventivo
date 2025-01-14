@@ -1,14 +1,10 @@
+import NotionBlockRenderer from "@/components/blog/NotionBlockRenderer";
 import Footer from "@/components/Footer";
 import HeadTemplate from "@/components/general/HeadTemplate";
 import Hero from "@/components/Hero";
-import { Button } from "@/components/ui/button";
-import { PAGES, TABLES } from "@/constants/constants";
-import { Article, BlogPostData } from "@/types/general";
+import { PAGES } from "@/constants/constants";
+import { BlogPostData } from "@/types/general";
 import { GetServerSideProps } from "next";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
-import { FaAnglesRight } from "react-icons/fa6";
 import slugify from "slugify";
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
@@ -24,6 +20,13 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
       await fetch(`${BASE_URL}/api/get-article-content?slug=${slug}`)
     ).json();
 
+    if (!data.content) {
+      return {
+        props: {},
+        notFound: true,
+      };
+    }
+
     return {
       props: {
         data,
@@ -38,7 +41,6 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 };
 
 const BlogPost = ({ data }: { data: BlogPostData }) => {
-  //   console.log(data);
   // UPDATE THIS WHEN THE DATA COMES BACK
   const meta = {
     title: data.title,
@@ -47,10 +49,9 @@ const BlogPost = ({ data }: { data: BlogPostData }) => {
     og_image: "https://ventivo.co/og-image.png", // figure out a way to get this
   };
 
-  //   const {
-  //     query: { slug },
-  //   } = useRouter();
-  //   console.log(data.content[0]);
+  const date = new Date(data.date_published).toLocaleDateString("en-US", {
+    dateStyle: "full",
+  });
 
   return (
     <>
@@ -58,7 +59,19 @@ const BlogPost = ({ data }: { data: BlogPostData }) => {
 
       <Hero />
 
-      <main className="my-20 max-w-3xl w-full"></main>
+      <main className="my-20 max-w-3xl w-full space-y-4">
+        <h1 className="w-full text-center text-4xl font-bold text-gray-800 px-4">
+          {data.title}
+        </h1>
+
+        <p className="w-full text-center text-gray-400 px-4">{date}</p>
+
+        <div className="p-4 space-y-6">
+          {data.content.map((block) => (
+            <NotionBlockRenderer key={block.id} block={block} />
+          ))}
+        </div>
+      </main>
 
       <Footer />
     </>
