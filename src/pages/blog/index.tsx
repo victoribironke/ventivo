@@ -8,12 +8,12 @@ import Link from "next/link";
 import { FaAnglesRight } from "react-icons/fa6";
 import slugify from "slugify";
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const BASE_URL =
-    process.env.NODE_ENV === "development"
-      ? "http://localhost:3000"
-      : "https://ventivo.co";
+const BASE_URL =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:3000"
+    : "https://ventivo.co";
 
+export const getServerSideProps: GetServerSideProps = async () => {
   try {
     const { articles } = await (
       await fetch(`${BASE_URL}/api/get-all-articles`)
@@ -36,11 +36,13 @@ export const getServerSideProps: GetServerSideProps = async () => {
 };
 
 const Blog = ({ articles }: { articles: Article[] }) => {
+  const ogImage = `${BASE_URL}/api/og?title=${encodeURIComponent("Blog")}`;
+
   const meta = {
     title: "Blog ~ Ventivo",
     url: PAGES.blog,
     desc: "Blog posts for Ventivo.",
-    og_image: "https://ventivo.co/og-image.png",
+    og_image: ogImage,
   };
 
   return (
