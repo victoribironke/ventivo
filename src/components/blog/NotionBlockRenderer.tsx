@@ -2,7 +2,9 @@ import {
   BlockObjectResponse,
   PartialBlockObjectResponse,
 } from "@notionhq/client/build/src/api-endpoints";
+import React from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+// import { vs } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 export default function NotionBlockRenderer({
   block,
@@ -11,9 +13,19 @@ export default function NotionBlockRenderer({
 }) {
   const { id, type } = block;
 
-  // Helper function to render rich text with links
-  const renderRichText = (richText: any[]) => {
-    return richText.map((rt: any, index: number) => {
+  // Function to render rich text with annotations and links
+  const renderRichText = (richTextArray: any[]) => {
+    return richTextArray.map((rt, index) => {
+      const { bold, italic, underline, strikethrough, code, color } =
+        rt.annotations || {};
+      const style: React.CSSProperties = {};
+
+      // Handle color annotations
+      if (color && color !== "default") {
+        style.color = color === "gray" ? "#6b7280" : color; // Example mapping for gray
+      }
+
+      // Handle links (anchor tags)
       if (rt.href) {
         return (
           <a
@@ -21,13 +33,34 @@ export default function NotionBlockRenderer({
             href={rt.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-500 underline"
+            className={[
+              "text-blue-500",
+              bold ? "font-bold" : "",
+              italic ? "italic" : "",
+              underline ? "underline" : "",
+              strikethrough ? "line-through" : "",
+            ].join(" ")}
           >
             {rt.plain_text}
           </a>
         );
       }
-      return <span key={index}>{rt.plain_text}</span>;
+
+      return (
+        <span
+          key={index}
+          style={style}
+          className={[
+            bold ? "font-bold" : "",
+            italic ? "italic" : "",
+            underline ? "underline" : "",
+            strikethrough ? "line-through" : "",
+            code ? "font-mono bg-gray-100 px-1 py-0.5 rounded text-sm" : "",
+          ].join(" ")}
+        >
+          {rt.plain_text}
+        </span>
+      );
     });
   };
 
@@ -86,35 +119,6 @@ export default function NotionBlockRenderer({
       );
     }
 
-    case "code": {
-      const codeContent = block.code.rich_text
-        .map((rt: any) => rt.plain_text)
-        .join("");
-      const language = block.code.language || "plaintext";
-
-      return (
-        <div key={id} className="my-4">
-          {block.code.language && (
-            <span className="text-sm text-gray-400 block mb-2">
-              Language: {block.code.language}
-            </span>
-          )}
-          <SyntaxHighlighter
-            language={language}
-            customStyle={{
-              borderRadius: "0.5rem",
-              fontSize: "0.875rem",
-              lineHeight: "1.5",
-              padding: "1rem",
-              backgroundColor: "#f9fafb",
-            }}
-          >
-            {codeContent}
-          </SyntaxHighlighter>
-        </div>
-      );
-    }
-
     case "quote": {
       return (
         <blockquote
@@ -143,30 +147,58 @@ export default function NotionBlockRenderer({
       );
     }
 
-    case "divider": {
-      return <hr key={id} className="border-t border-gray-300 my-6" />;
-    }
+    case "code": {
+      const codeContent = block.code.rich_text
+        .map((rt: any) => rt.plain_text)
+        .join("");
+      const language = block.code.language || "plaintext";
 
-    case "bookmark": {
       return (
-        <a
-          key={id}
-          href={block.bookmark.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block p-4 border rounded-lg shadow-md bg-gray-50 hover:bg-gray-100 transition"
-        >
-          <p className="text-blue-500 underline">{block.bookmark.url}</p>
-        </a>
+        <div key={id} className="my-4">
+          {block.code.language && (
+            <span className="text-sm text-gray-400 block mb-2">
+              Language: {block.code.language}
+            </span>
+          )}
+
+          <SyntaxHighlighter
+            language={language}
+            // style={vs}
+            customStyle={{
+              borderRadius: "0.5rem",
+              fontSize: "0.875rem",
+              lineHeight: "1.5",
+              padding: "1rem",
+              backgroundColor: "#f9fafb",
+            }}
+          >
+            {codeContent}
+          </SyntaxHighlighter>
+        </div>
       );
     }
 
-    default: {
+    case "image": {
+      return (
+        <img
+          key={id}
+          src={
+            block.image.type === "external"
+              ? block.image.external.url
+              : block.image.file.url
+          }
+          alt={block.image.caption[0] ? block.image.caption[0].plain_text : ""}
+          className="w-full my-4 rounded-lg"
+        />
+      );
+    }
+
+    // Add support for more block types as needed
+    default:
       return (
         <div key={id} className="text-sm text-gray-500">
           Unsupported block type: {type}
         </div>
       );
-    }
   }
 }
