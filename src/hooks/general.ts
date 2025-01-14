@@ -24,3 +24,24 @@ export const useAutosizeTextArea = (
     }
   }, [textAreaRef, value]);
 };
+
+export const useCopyToClipboard = (resetInterval: number, code: string) => {
+  const [isCopied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(code);
+  };
+
+  useEffect(() => {
+    let timeout: any;
+
+    if (isCopied && resetInterval)
+      timeout = setTimeout(() => setCopied(false), resetInterval);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [isCopied, resetInterval]);
+
+  return [isCopied, handleCopy] as const;
+};

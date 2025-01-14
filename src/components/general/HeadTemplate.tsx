@@ -7,6 +7,11 @@ const HeadTemplate = ({ title, meta }: HeadTemplateProps) => {
     return (
       <Head>
         <title>{meta.title}</title>
+        <link
+          rel="icon"
+          href={IMAGES.logo_transparent.src}
+          type="image/x-icon"
+        />
 
         <meta name="description" content={meta.desc} />
         {/* <!-- Facebook Meta Tags --> */}

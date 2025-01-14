@@ -1,3 +1,8 @@
+import {
+  BlockObjectResponse,
+  PartialBlockObjectResponse,
+} from "@notionhq/client/build/src/api-endpoints";
+
 export type HeadTemplateProps = {
   title?: string;
   meta?: {
@@ -15,7 +20,47 @@ export type PageLoaderProps = {
 export type Article = {
   id: string;
   title: string;
-  slug: string;
   date_published: string;
   description: string;
 };
+
+export type BlogPostData = {
+  content: (PartialBlockObjectResponse | BlockObjectResponse)[];
+  title: string;
+  date_published: string;
+  description: string;
+};
+
+export type Language =
+  | "markup"
+  | "bash"
+  | "clike"
+  | "c"
+  | "cpp"
+  | "css"
+  | "javascript"
+  | "jsx"
+  | "coffeescript"
+  | "actionscript"
+  | "css-extr"
+  | "diff"
+  | "git"
+  | "go"
+  | "graphql"
+  | "handlebars"
+  | "json"
+  | "less"
+  | "makefile"
+  | "markdown"
+  | "objectivec"
+  | "ocaml"
+  | "python"
+  | "reason"
+  | "sass"
+  | "scss"
+  | "sql"
+  | "stylus"
+  | "tsx"
+  | "typescript"
+  | "wasm"
+  | "yaml";

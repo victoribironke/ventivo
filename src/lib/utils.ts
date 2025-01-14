@@ -106,3 +106,9 @@ export const getDeleteSnippet = () => {
 
   return queryStr;
 };
+
+export const formatHashLink = (slug: string) => {
+  if (typeof window !== "undefined") {
+    return slug.toLowerCase().replace(/ /g, "-");
+  }
+};

@@ -19,7 +19,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       return {
         id,
         title: properties?.Title.title[0].plain_text || "",
-        slug: properties?.Slug.rich_text[0]?.plain_text || "",
         date_published: properties?.Date.date.start || "",
         description: properties?.Description.rich_text[0]?.plain_text || "",
       };

@@ -8,6 +8,7 @@ import { GetServerSideProps } from "next";
 import Link from "next/link";
 import { useEffect } from "react";
 import { FaAnglesRight } from "react-icons/fa6";
+import slugify from "slugify";
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const BASE_URL =
@@ -61,6 +62,7 @@ const Blog = ({ articles }: { articles: Article[] }) => {
               "en-US",
               { dateStyle: "medium" }
             );
+            const slug = slugify(a.title).toLowerCase();
 
             return (
               <div
@@ -71,10 +73,7 @@ const Blog = ({ articles }: { articles: Article[] }) => {
                   {date}
                 </h2>
 
-                <Link
-                  href={PAGES.blog_post(a.slug)}
-                  className="w-full sm:w-5/6"
-                >
+                <Link href={PAGES.blog_post(slug)} className="w-full sm:w-5/6">
                   <div className="w-full flex flex-col gap-3 bg-white hover:bg-gray-50 border rounded-lg p-4">
                     <h6 className="text-lg font-medium">{a.title}</h6>
 
