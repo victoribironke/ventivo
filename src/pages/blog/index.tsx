@@ -1,12 +1,10 @@
 import Footer from "@/components/Footer";
 import HeadTemplate from "@/components/general/HeadTemplate";
 import Hero from "@/components/Hero";
-import { Button } from "@/components/ui/button";
-import { PAGES, TABLES } from "@/constants/constants";
+import { PAGES } from "@/constants/constants";
 import { Article } from "@/types/general";
 import { GetServerSideProps } from "next";
 import Link from "next/link";
-import { useEffect } from "react";
 import { FaAnglesRight } from "react-icons/fa6";
 import slugify from "slugify";
 

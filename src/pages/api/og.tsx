@@ -1,5 +1,5 @@
 import { ImageResponse } from "@vercel/og";
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextApiRequest } from "next";
 
 export const config = {
   runtime: "edge",
@@ -24,7 +24,7 @@ const loadGoogleFont = async (text: string) => {
   throw new Error("failed to load font data");
 };
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+export default async (req: NextApiRequest) => {
   const { searchParams } = new URL(req.url as string);
 
   const title = searchParams.get("title") ?? "";

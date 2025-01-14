@@ -13,35 +13,39 @@ export default function NotionBlockRenderer({
   const { id, type } = block;
 
   switch (type) {
-    case "paragraph":
+    case "paragraph": {
       return (
         <p key={id} className="text-base text-gray-800 leading-relaxed mb-4">
           {block.paragraph.rich_text.map((rt: any) => rt.plain_text).join("")}
         </p>
       );
+    }
 
-    case "heading_1":
+    case "heading_1": {
       return (
         <h1 key={id} className="text-3xl font-bold text-gray-900 mb-6">
           {block.heading_1.rich_text.map((rt: any) => rt.plain_text).join("")}
         </h1>
       );
+    }
 
-    case "heading_2":
+    case "heading_2": {
       return (
         <h2 key={id} className="text-2xl font-semibold text-gray-900 mb-4">
           {block.heading_2.rich_text.map((rt: any) => rt.plain_text).join("")}
         </h2>
       );
+    }
 
-    case "heading_3":
+    case "heading_3": {
       return (
         <h3 key={id} className="text-xl font-medium text-gray-900 mb-3">
           {block.heading_3.rich_text.map((rt: any) => rt.plain_text).join("")}
         </h3>
       );
+    }
 
-    case "bulleted_list_item":
+    case "bulleted_list_item": {
       return (
         <li
           key={id}
@@ -52,8 +56,9 @@ export default function NotionBlockRenderer({
             .join("")}
         </li>
       );
+    }
 
-    case "numbered_list_item":
+    case "numbered_list_item": {
       return (
         <li
           key={id}
@@ -64,8 +69,9 @@ export default function NotionBlockRenderer({
             .join("")}
         </li>
       );
+    }
 
-    case "image":
+    case "image": {
       return (
         <img
           key={id}
@@ -78,8 +84,9 @@ export default function NotionBlockRenderer({
           className="w-full h-auto rounded-lg shadow-md my-6"
         />
       );
+    }
 
-    case "video":
+    case "video": {
       return (
         <video key={id} controls className="w-full rounded-lg shadow-md my-6">
           <source
@@ -93,8 +100,9 @@ export default function NotionBlockRenderer({
           Your browser does not support the video tag.
         </video>
       );
+    }
 
-    case "code":
+    case "code": {
       const codeContent = block.code.rich_text
         .map((rt: any) => rt.plain_text)
         .join("");
@@ -123,8 +131,9 @@ export default function NotionBlockRenderer({
           </SyntaxHighlighter>
         </div>
       );
+    }
 
-    case "quote":
+    case "quote": {
       return (
         <blockquote
           key={id}
@@ -133,8 +142,9 @@ export default function NotionBlockRenderer({
           {block.quote.rich_text.map((rt: any) => rt.plain_text).join("")}
         </blockquote>
       );
+    }
 
-    case "to_do":
+    case "to_do": {
       return (
         <div
           key={id}
@@ -151,11 +161,13 @@ export default function NotionBlockRenderer({
           </span>
         </div>
       );
+    }
 
-    case "divider":
+    case "divider": {
       return <hr key={id} className="border-t border-gray-300 my-6" />;
+    }
 
-    case "embed":
+    case "embed": {
       return (
         <iframe
           key={id}
@@ -164,8 +176,9 @@ export default function NotionBlockRenderer({
           allowFullScreen
         />
       );
+    }
 
-    case "file":
+    case "file": {
       return (
         <a
           key={id}
@@ -181,8 +194,9 @@ export default function NotionBlockRenderer({
           Download File
         </a>
       );
+    }
 
-    case "bookmark":
+    case "bookmark": {
       return (
         <a
           key={id}
@@ -194,6 +208,7 @@ export default function NotionBlockRenderer({
           <p className="text-blue-500 underline">{block.bookmark.url}</p>
         </a>
       );
+    }
 
     default:
       return (
