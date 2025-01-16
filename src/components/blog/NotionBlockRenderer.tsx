@@ -193,6 +193,10 @@ export default function NotionBlockRenderer({
       );
     }
 
+    case "divider": {
+      return <hr key={id} className="border-t border-gray-300 my-6" />;
+    }
+
     // Add support for more block types as needed
     default:
       return (
