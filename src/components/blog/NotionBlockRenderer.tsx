@@ -34,7 +34,7 @@ export default function NotionBlockRenderer({
             target="_blank"
             rel="noopener noreferrer"
             className={[
-              "text-blue-500",
+              "text-blue underline",
               bold ? "font-bold" : "",
               italic ? "italic" : "",
               underline ? "underline" : "",
