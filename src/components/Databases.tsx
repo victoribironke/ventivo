@@ -38,13 +38,13 @@ const Databases = () => {
         icon: BiLogoPostgresql,
         color: "#3b82f6",
         content: "PostgreSQL",
-        isAvailable: false,
+        isAvailable: true,
       },
       {
         icon: RiSupabaseFill,
         color: "#22c55e",
         content: "Supabase",
-        isAvailable: false,
+        isAvailable: true,
       },
       {
         icon: IoEllipsisHorizontal,
