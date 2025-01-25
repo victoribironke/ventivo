@@ -7,8 +7,11 @@ import { Instrument_Sans, Spectral } from "next/font/google";
 import { ErrorBoundary } from "react-error-boundary";
 import { Toaster } from "react-hot-toast";
 import { Analytics } from "@vercel/analytics/react";
+import { Epilogue } from "next/font/google";
 
-export const bg = Instrument_Sans({ display: "swap", subsets: ["latin"] });
+export const bg = Epilogue({ subsets: ["latin"] });
+
+// Instrument_Sans({ display: "swap", subsets: ["latin"] });
 export const sp = Spectral({
   display: "swap",
   subsets: ["latin"],
