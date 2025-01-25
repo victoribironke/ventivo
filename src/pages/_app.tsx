@@ -3,11 +3,10 @@ import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import { Instrument_Sans, Spectral } from "next/font/google";
+import { Spectral, Epilogue } from "next/font/google";
 import { ErrorBoundary } from "react-error-boundary";
 import { Toaster } from "react-hot-toast";
 import { Analytics } from "@vercel/analytics/react";
-import { Epilogue } from "next/font/google";
 
 export const bg = Epilogue({ subsets: ["latin"] });
 
