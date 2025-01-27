@@ -17,7 +17,7 @@ const PageLoader = ({ type }: PageLoaderProps) => {
         xmlns="http://www.w3.org/2000/svg"
         className="w-12 h-12 z-10"
       >
-        <g clip-path="url(#clip0_1_4)">
+        <g clipPath="url(#clip0_1_4)">
           <rect x="60" y="266.6" width="70" height="250" rx="15" fill="#DD2C00">
             <animate
               attributeName="height"
