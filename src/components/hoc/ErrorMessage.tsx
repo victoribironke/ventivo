@@ -1,5 +1,3 @@
-import { cn } from "@/lib/utils";
-import { bg } from "@/pages/_app";
 import { useRouter } from "next/router";
 
 const ErrorMessage = () => {
@@ -7,12 +5,7 @@ const ErrorMessage = () => {
 
   return (
     <>
-      <section
-        className={cn(
-          "w-full grid min-h-screen place-items-center px-6 lg:px-8",
-          bg.className
-        )}
-      >
+      <section className="w-full grid min-h-screen place-items-center px-6 lg:px-8">
         <div className="text-center">
           <p className="text-lg font-bold text-red">Error.</p>
           <h1 className="mt-4 text-3xl font-bold tracking-tight sm:text-5xl">

@@ -6,7 +6,7 @@ export const config = {
 };
 
 const loadGoogleFont = async (text: string) => {
-  const url = `https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@600&display=swap&text=${encodeURIComponent(
+  const url = `https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap&text=${encodeURIComponent(
     text
   )}`;
   const css = await (await fetch(url)).text();
@@ -100,7 +100,7 @@ export default async (req: NextApiRequest) => {
       height: 630,
       fonts: [
         {
-          name: "Instrument Sans",
+          name: "Geist",
           data: await loadGoogleFont(title),
           style: "normal",
         },

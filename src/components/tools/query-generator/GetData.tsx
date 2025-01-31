@@ -1,7 +1,7 @@
 import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Switch } from "@/components/ui/switch";
-import { cn, getGetSnippet, getValueFromTitle } from "@/lib/utils";
+import { getGetSnippet, getValueFromTitle } from "@/lib/utils";
 import { useEffect, useRef, useState } from "react";
 import {
   Select,
@@ -12,7 +12,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { bg } from "@/pages/_app";
 import { Button } from "@/components/ui/button";
 import { useAutosizeTextArea } from "@/hooks/general";
 import toast from "react-hot-toast";
@@ -139,7 +138,7 @@ const GetData = () => {
                 <SelectTrigger className="w-1/3">
                   <SelectValue placeholder="Select an operator" />
                 </SelectTrigger>
-                <SelectContent className={cn("border", bg.className)}>
+                <SelectContent className="border">
                   <SelectGroup>
                     <SelectLabel>Operators</SelectLabel>
                     {operators.map((f, i) => (
