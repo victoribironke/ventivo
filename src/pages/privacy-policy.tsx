@@ -58,15 +58,6 @@ const PrivacyPolicy = () => {
             data includes your Firebase credentials and the authentication
             information for secure read access.
           </p>
-
-          {/* <h3 className="text-lg font-semibold text-gray-800 mb-1 mt-4">
-              3. Usage Data
-            </h3>
-            <p className="text-gray-600">
-              We may automatically collect information about how you interact
-              with our app, including your IP address, device type, operating
-              system, and browsing behavior.
-            </p> */}
         </section>
 
         <section className="mb-8">
