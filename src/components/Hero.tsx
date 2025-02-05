@@ -13,73 +13,38 @@ import { useRouter } from "next/router";
 import { cn } from "@/lib/utils";
 
 const Hero = () => {
-  const { pathname } = useRouter();
-
-  const steps = [
-    {
-      content: "Connect your data source",
-      icon: Database,
-      color: "#3b82f6",
-    },
-    {
-      content: "Create your charts",
-      icon: ChartLine,
-      color: "#ffc400",
-    },
-    {
-      content: "Track your key metrics",
-      icon: FileChartColumnIncreasing,
-      color: "#22c55e",
-    },
-  ];
-
   return (
-    <section className="bg-white border flex items-center justify-between flex-col w-full py-20 px-3 gap-20 rounded-xl">
-      <div className="flex flex-col items-center justify-center gap-6">
-        <div className="w-full flex items-center justify-evenly gap-4">
-          {steps.map((s, i) => (
-            <TooltipProvider key={i}>
-              <Tooltip>
-                <TooltipTrigger>
-                  <div className="aspect-square p-2.5 bg-gray-50 rounded-lg grid place-content-center">
-                    <s.icon color={s.color} size={35} />
-                  </div>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>{s.content}</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          ))}
+    <section className="bg-gray-100 border w-full mt-14 xl:mt-20 p-2 rounded-xl">
+      <div className="bg-white border flex items-center justify-between flex-col lg:flex-row w-full px-8 lg:px-0 lg:py-8 gap-0 lg:gap-10 lg:gap-0 rounded-lg">
+        <div className="w-full max-w-xl md:max-w-2xl lg:max-w-full lg:w-1/2 py-8 lg:py-0 px-8">
+          <div className="animate-move-up z-[3] w-full flex-col items-center p-4 text-center lg:items-start lg:text-left">
+            <div className="flex flex-col pb-3.5 items-center text-center lg:items-start gap-4 lg:text-left">
+              <h1 className="font-semibold text-5xl leading-none lg:text-6xl">
+                Get realtime charts from your data
+              </h1>
+              <p className="max-w-md text-base text-[#898989] lg:max-w-2xl lg:text-lg">
+                Connect your data source, create your charts and start tracking
+                your key metrics.
+              </p>
+            </div>
+            <div className="w-full md:w-auto lg:w-[90%]">
+              <Link href={PAGES.signup} className="w-full">
+                <Button className="w-full bg-black text-white rounded-lg hover:bg-black shadow-none">
+                  Get started
+                </Button>
+              </Link>
+              <p className="mt-4 text-center text-sm text-[#898989]">
+                No credit card required
+              </p>
+            </div>
+          </div>
         </div>
 
-        <h1 className="text-5xl font-extrabold text-center text-gray-900 leading-tight">
-          Get <span className="text-firebase-orange">realtime charts</span>
-          <br /> from your data
-        </h1>
-
-        <p className="max-w-lg text-lg text-center text-gray-700">
-          Connect your data source, create your charts and start tracking your
-          key metrics.
-        </p>
-
-        <Link href={PAGES.signup}>
-          <Button className="bg-firebase-orange text-white py-3 px-8 rounded-lg hover:scale-105 hover:bg-firebase-orange transition">
-            Get started
-          </Button>
-        </Link>
-      </div>
-
-      <div className="text-gray-400">
-        Built by{" "}
-        <Link
-          href="https://victoribironke.com"
-          className="underline hover:text-black"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Victor Ibironke
-        </Link>
+        <div className="w-full max-w-xl md:max-w-2xl lg:max-w-full lg:w-1/2 overflow-hidden">
+          <div className="border rounded-lg overflow-hidden p-2 bg-gray-100 translate-y-8 lg:translate-y-0 lg:translate-x-8">
+            <img src={"/projects-display.png"} className="border rounded-lg" />
+          </div>
+        </div>
       </div>
     </section>
   );

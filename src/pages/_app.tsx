@@ -32,7 +32,7 @@ const App = ({ Component, pageProps }: AppProps) => {
             }
           }
         />
-        <main className="w-full min-h-screen flex justify-start items-center flex-col gap-6 p-6 max-w-7xl">
+        <main className="w-full min-h-screen flex justify-start items-center flex-col gap-6 p-6 max-w-6xl">
           <Head>
             <title>Ventivo</title>
             <meta
