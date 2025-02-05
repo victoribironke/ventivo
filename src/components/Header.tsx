@@ -5,7 +5,7 @@ import { Button } from "./ui/button";
 
 const Header = () => {
   return (
-    <header className="bg-white border flex items-center justify-between flex-col w-full p-2 gap-20 rounded-xl fixed max-w-7xl">
+    <header className="bg-white border flex items-center justify-between flex-col top-0 xl:top-6 w-full p-2 gap-20 xl:rounded-xl fixed z-20 xl:max-w-6xl">
       <div className="w-full flex items-center justify-between gap-4">
         <Link href="/" className="mr-auto">
           <Image
