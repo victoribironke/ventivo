@@ -6,6 +6,10 @@ import Pricing from "@/components/Pricing";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { Database } from "lucide-react";
+import { PAGES } from "@/constants/constants";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import Features from "@/components/Features";
 
 const Home = () => {
   return (
@@ -15,6 +19,7 @@ const Home = () => {
       <Header />
       <Hero />
       <Steps />
+      <Features />
 
       {/* <Databases />
       <Pricing />

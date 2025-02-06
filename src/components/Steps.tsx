@@ -20,9 +20,9 @@ const Steps = () => {
   ];
 
   return (
-    <section className="w-full py-20">
-      <div className="flex flex-col items-center text-center">
-        <h1 className="font-semibold text-4xl lg:text-5xl pb-3">
+    <section className="w-full mt-40">
+      <div className="flex flex-col items-center text-center gap-4">
+        <h1 className="font-medium text-4xl lg:text-5xl">
           It is easy to get started
         </h1>
         <p className="max-w-md text-base text-[#898989] lg:max-w-2xl lg:text-lg">
