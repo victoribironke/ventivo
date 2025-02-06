@@ -56,65 +56,69 @@ const Databases = () => {
   };
 
   return (
-    <section className="w-full flex items-stretch justify-center gap-6 flex-col sm:flex-row">
-      <div className="bg-white border-2 flex items-center justify-center flex-col gap-6 w-full sm:w-1/2 p-6 rounded-xl">
-        <p className="text-lg font-medium text-center">
-          <span className="text-firebase-orange">Document-oriented</span>{" "}
-          databases
-        </p>
+    <section className="w-full max-w-3xl flex items-stretch justify-center gap-6 flex-col sm:flex-row">
+      <div className="p-1 bg-gray-100 rounded-xl border sm:w-1/2">
+        <div className="bg-white border flex items-center justify-center flex-col gap-6 w-full p-6 rounded-lg">
+          <p className="text-lg font-medium text-center">
+            <span className="text-firebase-orange">Document-oriented</span>{" "}
+            databases
+          </p>
 
-        <div className="w-full flex items-center justify-center gap-6">
-          {dbs.documentOriented.map((db, i) => (
-            <TooltipProvider key={i}>
-              <Tooltip>
-                <TooltipTrigger>
-                  <div
-                    className={cn(
-                      "aspect-square p-2.5 bg-gray-50 rounded-lg grid place-content-center",
-                      db.isAvailable ? "opacity-100" : "opacity-50"
-                    )}
-                  >
-                    <db.icon fill={db.color} size={35} />
-                  </div>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>
-                    {db.content} {!db.isAvailable && "(Coming soon)"}
-                  </p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          ))}
+          <div className="w-full flex items-center justify-center gap-6">
+            {dbs.documentOriented.map((db, i) => (
+              <TooltipProvider key={i}>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <div
+                      className={cn(
+                        "aspect-square p-2.5 bg-gray-50 rounded-lg grid place-content-center",
+                        db.isAvailable ? "opacity-100" : "opacity-50"
+                      )}
+                    >
+                      <db.icon fill={db.color} size={35} />
+                    </div>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>
+                      {db.content} {!db.isAvailable && "(Coming soon)"}
+                    </p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            ))}
+          </div>
         </div>
       </div>
 
-      <div className="bg-white border-2 flex items-center justify-center flex-col gap-6 w-full sm:w-1/2 p-6 rounded-xl">
-        <p className="text-lg font-medium text-center">
-          <span className="text-firebase-orange">Relational</span> databases
-        </p>
+      <div className="p-1 bg-gray-100 rounded-xl border w-full sm:w-1/2">
+        <div className="bg-white border flex items-center justify-center flex-col gap-6 w-full p-6 rounded-lg">
+          <p className="text-lg font-medium text-center">
+            <span className="text-firebase-orange">Relational</span> databases
+          </p>
 
-        <div className="w-full flex items-center justify-center gap-6">
-          {dbs.relational.map((db, i) => (
-            <TooltipProvider key={i}>
-              <Tooltip>
-                <TooltipTrigger>
-                  <div
-                    className={cn(
-                      "aspect-square p-2.5 bg-gray-50 rounded-lg grid place-content-center",
-                      db.isAvailable ? "opacity-100" : "opacity-50"
-                    )}
-                  >
-                    <db.icon fill={db.color} size={35} />
-                  </div>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>
-                    {db.content} {!db.isAvailable && "(Coming soon)"}
-                  </p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          ))}
+          <div className="w-full flex items-center justify-center gap-6">
+            {dbs.relational.map((db, i) => (
+              <TooltipProvider key={i}>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <div
+                      className={cn(
+                        "aspect-square p-2.5 bg-gray-50 rounded-lg grid place-content-center",
+                        db.isAvailable ? "opacity-100" : "opacity-50"
+                      )}
+                    >
+                      <db.icon fill={db.color} size={35} />
+                    </div>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>
+                      {db.content} {!db.isAvailable && "(Coming soon)"}
+                    </p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            ))}
+          </div>
         </div>
       </div>
     </section>
