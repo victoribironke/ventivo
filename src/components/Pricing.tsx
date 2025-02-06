@@ -54,7 +54,7 @@ const Pricing = () => {
               <span className="text-3xl font-bold text-firebase-orange">
                 ${isMonthly ? 4 : 45}{" "}
               </span>
-              / month
+              / {isMonthly ? "month" : "year"}
             </p>
           </div>
 
@@ -78,7 +78,8 @@ const Pricing = () => {
             Get started for free
           </Button>
           <p className="text-gray-400 text-center mt-2 text-sm">
-            Pay ${isMonthly ? 4 : 45} per month. Cancel anytime
+            Pay ${isMonthly ? 4 : 45} per {isMonthly ? "month" : "year"}. Cancel
+            anytime.
           </p>
         </div>
       </div>
