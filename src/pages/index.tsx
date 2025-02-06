@@ -23,10 +23,10 @@ const Home = () => {
       <Hero />
       <Steps />
       <Features />
+      <Pricing />
       <Footer />
 
       {/* <Databases />
-      <Pricing />
        */}
     </>
   );

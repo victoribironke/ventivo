@@ -52,7 +52,7 @@ const Features = () => {
             <div className="border grid h-full grid-rows-[auto_auto_1fr] gap-4 overflow-hidden rounded-lg bg-white p-5">
               <span className="w-fit inline-block text-lg">{f.emoji}</span>
               <p className="break-words text-xl font-medium">{f.title}</p>
-              <p className="break-words text-[16px] text-gray-500">
+              <p className="break-words text-base text-gray-500">
                 {f.description}
               </p>
             </div>

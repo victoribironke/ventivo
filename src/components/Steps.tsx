@@ -38,8 +38,8 @@ const Steps = () => {
                 <span className="mb-3 inline-block rounded-md bg-gray-200 px-2 py-1 text-sm font-bold text-gray-500">
                   0{i + 1}
                 </span>
-                <p className="text-md mb-1.5 font-semibold">{s.title}</p>
-                <p className="text-content-subtle max-w-[300px] text-[#898989] text-[16px]">
+                <p className="text-lg mb-1.5 font-semibold">{s.title}</p>
+                <p className="md:max-w-[300px] text-[#898989] text-base">
                   {s.description}
                 </p>
               </div>
