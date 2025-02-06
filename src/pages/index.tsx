@@ -5,6 +5,7 @@ import Steps from "@/components/Steps";
 import Pricing from "@/components/Pricing";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { Database } from "lucide-react";
 
 const Home = () => {
   return (
@@ -13,10 +14,11 @@ const Home = () => {
 
       <Header />
       <Hero />
-      <Databases />
       <Steps />
+
+      {/* <Databases />
       <Pricing />
-      <Footer />
+      <Footer /> */}
     </>
   );
 };

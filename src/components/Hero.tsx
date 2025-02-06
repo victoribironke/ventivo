@@ -14,7 +14,7 @@ import { cn } from "@/lib/utils";
 
 const Hero = () => {
   return (
-    <section className="bg-gray-100 border w-full mt-14 xl:mt-20 p-2 rounded-xl">
+    <section className="bg-gray-100 border w-full mt-14 xl:mt-20 p-1 rounded-xl">
       <div className="bg-white border flex items-center justify-between flex-col lg:flex-row w-full px-8 lg:px-0 lg:py-16 gap-0 lg:gap-10 rounded-lg">
         <div className="w-full max-w-xl md:max-w-2xl lg:max-w-full lg:w-1/2 py-8 lg:py-0 px-8">
           <div className="z-[3] w-full flex-col items-center p-4 text-center lg:items-start lg:text-left">
@@ -41,7 +41,7 @@ const Hero = () => {
         </div>
 
         <div className="w-full max-w-xl md:max-w-2xl lg:max-w-full lg:w-1/2 overflow-hidden">
-          <div className="border rounded-lg overflow-hidden p-2 bg-gray-100 translate-y-8 lg:translate-y-0 lg:translate-x-8">
+          <div className="border rounded-lg overflow-hidden p-1 bg-gray-100 translate-y-8 lg:translate-y-0 lg:translate-x-8">
             <Image
               src={IMAGES.projects_display.src}
               width={IMAGES.projects_display.w}
