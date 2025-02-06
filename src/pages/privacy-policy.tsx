@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import HeadTemplate from "@/components/general/HeadTemplate";
+import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import { PAGES } from "@/constants/constants";
 
@@ -15,9 +16,9 @@ const PrivacyPolicy = () => {
     <>
       <HeadTemplate meta={meta} />
 
-      <Hero />
+      <Header />
 
-      <main className="my-20 max-w-3xl w-full">
+      <main className="mt-40 mb-20 max-w-3xl w-full">
         <h1 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-6">
           Privacy Policy
         </h1>

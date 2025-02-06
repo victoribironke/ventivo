@@ -8,6 +8,7 @@ import GetData from "@/components/tools/query-generator/GetData";
 import AddData from "@/components/tools/query-generator/AddData";
 import UpdateData from "@/components/tools/query-generator/UpdateData";
 import DeleteData from "@/components/tools/query-generator/DeleteData";
+import Header from "@/components/Header";
 
 const QueryGenerator = () => {
   const meta = {
@@ -23,10 +24,10 @@ const QueryGenerator = () => {
     <>
       <HeadTemplate meta={meta} />
 
-      <Hero />
+      <Header />
 
-      <section className="w-full mx-auto my-36 flex justify-center flex-col">
-        <h1 className="text-4xl font-bold mb-6 text-firebase-orange">
+      <section className="w-full mx-auto mt-40 mb-20 flex justify-center flex-col">
+        <h1 className="text-4xl font-bold mb-6">
           Cloud Firestore Query Generator
         </h1>
 
