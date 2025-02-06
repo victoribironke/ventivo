@@ -1,6 +1,5 @@
 import Footer from "@/components/Footer";
 import HeadTemplate from "@/components/general/HeadTemplate";
-import Hero from "@/components/Hero";
 import { PAGES } from "@/constants/constants";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { getValueFromTitle } from "@/lib/utils";

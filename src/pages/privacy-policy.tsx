@@ -1,7 +1,6 @@
 import Footer from "@/components/Footer";
 import HeadTemplate from "@/components/general/HeadTemplate";
 import Header from "@/components/Header";
-import Hero from "@/components/Hero";
 import { PAGES } from "@/constants/constants";
 
 const PrivacyPolicy = () => {

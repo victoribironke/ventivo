@@ -1,5 +1,3 @@
-import { ChartLine, Database, FileChartColumnIncreasing } from "lucide-react";
-
 const Steps = () => {
   const steps = [
     {

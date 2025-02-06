@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { IoCheckmarkOutline } from "react-icons/io5";
 import { Button } from "./ui/button";
 import { PAGES } from "@/constants/constants";
 import { Switch } from "./ui/switch";

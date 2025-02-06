@@ -1,16 +1,7 @@
 import { IMAGES, PAGES } from "@/constants/constants";
-import { ChartLine, Database, FileChartColumnIncreasing } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "./ui/button";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "./ui/tooltip";
-import { useRouter } from "next/router";
-import { cn } from "@/lib/utils";
 
 const Hero = () => {
   return (
