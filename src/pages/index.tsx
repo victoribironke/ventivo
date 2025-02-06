@@ -21,13 +21,13 @@ const Home = () => {
 
       <Header />
       <Hero />
+      <Databases />
       <Steps />
       <Features />
       <Pricing />
+      {/* FAQ
+      Blog */}
       <Footer />
-
-      {/* <Databases />
-       */}
     </>
   );
 };
