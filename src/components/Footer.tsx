@@ -4,85 +4,86 @@ import Link from "next/link";
 import { FaXTwitter, FaInstagram, FaTiktok } from "react-icons/fa6";
 
 const Footer = () => {
-  const socials = [
-    {
-      name: "Twitter",
-      href: PAGES.twitter,
-      icon: FaXTwitter,
-    },
-    {
-      name: "Instagram",
-      href: PAGES.instagram,
-      icon: FaInstagram,
-    },
-    {
-      name: "TikTok",
-      href: PAGES.tiktok,
-      icon: FaTiktok,
-    },
-  ];
-
   return (
-    <footer className="w-full my-10">
-      <div className="mx-auto flex flex-col items-center text-center gap-6">
-        <Image
-          alt="Logo"
-          src={IMAGES.logo_transparent.src}
-          width={IMAGES.logo_transparent.w}
-          height={IMAGES.logo_transparent.h}
-          className="w-10 h-10"
-        />
-
-        <p className="text-gray-400 text-sm">
-          ©️ {new Date().getFullYear()} Ventivo.
-        </p>
-
-        <div className="flex flex-row items-center gap-6">
-          {socials.map((s, i) => (
-            <Link
-              key={i}
-              href={s.href}
-              className="hover:underline"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <s.icon size={20} fill="#374151" />
+    <footer className="w-full mt-40 mb-40 p-6">
+      <div className="flex w-full flex-col gap-20 md:flex-row md:justify-between">
+        <div className="w-full md:w-1/4 flex flex-col gap-8 text-sm">
+          <div className="flex">
+            <Link href="/" className="mr-auto">
+              <Image
+                src={IMAGES.logo_transparent.src}
+                alt="Ventivo Logo"
+                width={IMAGES.logo_transparent.w}
+                height={IMAGES.logo_transparent.h}
+                className="w-8 aspect-square"
+              />
             </Link>
-          ))}
+          </div>
+          <div className="flex gap-4 mt-2">
+            <Link href={PAGES.twitter}>
+              <FaXTwitter className="text-xl" />
+            </Link>
+            <Link href={PAGES.instagram}>
+              <FaInstagram className="text-xl" />
+            </Link>
+            <Link href={PAGES.tiktok}>
+              <FaTiktok className="text-xl" />
+            </Link>
+          </div>
         </div>
-
-        <div className="text-sm text-gray-400 flex flex-row items-center gap-2">
-          <Link href={PAGES.terms} className="hover:underline">
-            Terms
-          </Link>
-          <span>•</span>
-          <Link href={PAGES.privacy_policy} className="hover:underline">
-            Privacy Policy
-          </Link>
-          <span>•</span>
-          <Link href={PAGES.blog} className="hover:underline">
-            Blog
-          </Link>
+        <div className="w-full md:w-3/4 md:flex">
+          <nav className="grid grid-cols-2 gap-x-8 gap-y-10 md:grid-cols-3">
+            <ul>
+              <li className="text-lg font-semibold">Resources</li>
+              <li className="pt-4 text-base">
+                <Link
+                  className="flex items-start text-base hover:underline"
+                  href={PAGES.blog}
+                >
+                  Blog
+                </Link>
+              </li>
+              <li className="pt-4 text-base">
+                <Link
+                  className="flex items-start text-base hover:underline"
+                  href="mailto:support@ventivo.co"
+                >
+                  Support
+                </Link>
+              </li>
+            </ul>
+            <ul>
+              <li className="text-lg font-semibold">Legal</li>
+              <li className="pt-4 text-base">
+                <Link
+                  className="flex items-start text-base hover:underline"
+                  href={PAGES.terms}
+                >
+                  Terms
+                </Link>
+              </li>
+              <li className="pt-4 text-base">
+                <Link
+                  className="flex items-start text-base hover:underline"
+                  href={PAGES.privacy_policy}
+                >
+                  Privacy policy
+                </Link>
+              </li>
+            </ul>
+            <ul>
+              <li className="text-lg font-semibold">Tools</li>
+              <li className="pt-4 text-base">
+                <a
+                  className="flex items-start text-base hover:underline"
+                  href={PAGES.firestore_query_generator}
+                >
+                  Firestore query generator
+                </a>
+              </li>
+            </ul>
+          </nav>
         </div>
-
-        <Link
-          href={PAGES.firestore_query_generator}
-          className="hover:underline text-sm text-firebase-orange"
-        >
-          Free tool - Firestore Query Generator
-        </Link>
-
-        <a
-          href="https://www.producthunt.com/posts/ventivo?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-ventivo"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <img
-            src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=474416&theme=light"
-            alt="Ventivo - Real-time charts around your Firebase data | Product Hunt"
-            className="w-[250px] h-[54px]"
-          />
-        </a>
       </div>
     </footer>
   );
