@@ -35,17 +35,19 @@ const QueryGenerator = () => {
           defaultValue={getValueFromTitle(tabs[0])}
           className="w-full flex justify-center flex-col"
         >
-          <TabsList className="w-fit h-fit flex flex-wrap bg-gray-50 border-2">
-            {tabs.map((t, i) => (
-              <TabsTrigger
-                value={getValueFromTitle(t)}
-                key={i}
-                className="font-normal data-[state=active]:bg-firebase-orange data-[state=active]:text-white"
-              >
-                {t}
-              </TabsTrigger>
-            ))}
-          </TabsList>
+          <div className="p-1 border bg-gray-100 rounded-xl w-fit">
+            <TabsList className="w-fit h-fit flex flex-wrap bg-white border">
+              {tabs.map((t, i) => (
+                <TabsTrigger
+                  value={getValueFromTitle(t)}
+                  key={i}
+                  className="font-normal data-[state=active]:bg-firebase-orange data-[state=active]:text-white"
+                >
+                  {t}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+          </div>
 
           {tabs.map((t, i) => (
             <TabsContent
