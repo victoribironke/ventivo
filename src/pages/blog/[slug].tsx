@@ -1,6 +1,7 @@
 import NotionBlockRenderer from "@/components/blog/NotionBlockRenderer";
 import Footer from "@/components/Footer";
 import HeadTemplate from "@/components/general/HeadTemplate";
+import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import { PAGES } from "@/constants/constants";
 import { BlogPostData } from "@/types/general";
@@ -58,9 +59,9 @@ const BlogPost = ({ data }: { data: BlogPostData }) => {
     <>
       <HeadTemplate meta={meta} />
 
-      <Hero />
+      <Header />
 
-      <main className="my-20 max-w-3xl w-full space-y-4">
+      <main className="mt-40 mb-20 max-w-3xl w-full space-y-4">
         <h1 className="w-full text-center text-4xl font-bold text-gray-800 px-4">
           {data.title}
         </h1>
