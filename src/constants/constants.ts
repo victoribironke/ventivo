@@ -1,3 +1,6 @@
+import { Project } from "@/types/dashboard";
+import { Database, Flame } from "lucide-react";
+
 export const BASE_URL =
   process.env.NODE_ENV === "development"
     ? "http://localhost:3000"
@@ -5,51 +8,71 @@ export const BASE_URL =
 
 export const IMAGES = {
   logo: { src: "/logo.png", w: 500, h: 500 },
-  logo_dark: { src: "/logo-dark.png", w: 500, h: 500 },
-  logo_transparent: { src: "/logo-transparent.png", w: 500, h: 500 },
-  projects_display: { src: "/projects-display.png", w: 795, h: 530 },
-  charts_display: { src: "/charts-display.png", w: 1920, h: 880 },
-
-  data_visualization: { src: "/blog/data-visualization.jpg", w: 3008, h: 1504 },
-  coding: { src: "/blog/coding.jpg", w: 5184, h: 2592 },
-  security_rules: { src: "/blog/security-rules.jpg", w: 3840, h: 1920 },
+  og_image: { src: "/og-image.png", w: 1280, h: 720 },
 };
 
 export const PAGES = {
   home: "/",
 
-  login: "https://app.ventivo.co/auth/login",
-  signup: "https://app.ventivo.co/auth/signup",
+  login: "/auth/login",
+  signup: "/auth/signup",
+  confirm: "/auth/confirm",
+
+  dashboard: "/dashboard",
+  admin: "/dashboard/admin",
+  project: {
+    firebase: (id: string) => `/dashboard/project/firebase/${id}`,
+    postgres: (id: string) => `/dashboard/project/postgres/${id}`,
+  },
+  settings: "/dashboard/settings",
 
   terms: "/terms",
   privacy_policy: "/privacy-policy",
-  blog: "/blog",
-
-  twitter: "https://twitter.com/ventivo_",
-  instagram: "https://instagram.com/ventivo_",
-  tiktok: "https://tiktok.com/ventivo_",
-
-  firestore_query_generator: "/tools/firestore-query-generator",
-
-  blog_post: (slug: string) => `/blog/${slug}`,
-  // blog: {
-  //   importance_of_data_visualization:
-  //     BASE_URL + "/blog/importance-of-data-visualization",
-  //   firebase_the_best_option:
-  //     BASE_URL + "/blog/why-firebase-is-the-go-to-for-developers",
-  //   security_rules:
-  //     BASE_URL +
-  //     "/blog/optimizing-firebase-security-rules-for-your-application",
-  // },
 };
 
 export const TABLES = {
   projects: "projects",
   charts: "charts",
-  waitlist: "waitlist",
+  customers: "customers",
+  coupons: "coupons",
 };
 
-export const PAYMENT_LINKS = {
-  nigeria: "https://paystack.com/pay/5rxhm8bjn-",
-  other: "https://paystack.com/pay/536yd2cf23",
+export const DEFAULT_SETTINGS = {
+  bar: {
+    color: "#ff9100",
+    showCount: false,
+    paginateBars: false,
+    barsPerPage: 1,
+  },
+  line: {
+    color: "#ff9100",
+    showCount: false,
+    paginateDots: false,
+    dotsPerPage: 1,
+  },
+};
+
+export const OPERATORS = [
+  "<",
+  "<=",
+  "==",
+  ">",
+  ">=",
+  "!=",
+  "array-contains",
+  "array-contains-any",
+  "in",
+  "not-in",
+];
+
+export const ICONS = (type: Project["type"]) => {
+  if (type === "firebase") return { icon: Flame, color: "#ff9100" };
+  //   if (type === "postgres") return { icon: BiLogoPostgresql, color: "#3b82f6" };
+  else return { icon: Database, color: "#3b82f6" };
+};
+
+export const LINKS = (type: Project["type"], slug: string) => {
+  if (type === "firebase") return PAGES.project.firebase(slug);
+  if (type === "postgres") return PAGES.project.postgres(slug);
+  else return "";
 };
