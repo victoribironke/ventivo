@@ -45,6 +45,15 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  --color-blue: #3b82f6;
+  --color-red: #ef4444;
+  --color-green: #22c55e;
+  --color-yellow: #eab308;
+  --color-firebase-red": #dd2c00;
+  --color-firebase-orange": #ff9100;
+  --color-firebase-yellow": #ffc400;
+  --color-firebase-dark-blue": #031525;
 }
 
 :root {
