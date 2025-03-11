@@ -11,7 +11,7 @@ const RootLayout = ({
 }>) => {
   return (
     <html lang="en">
-      <body className="antialiased dark">
+      <body className="antialiased dark flex items-center justify-center">
         <RecoilRoot>
           <Toaster
             toastOptions={{
@@ -22,9 +22,7 @@ const RootLayout = ({
             }}
           />
 
-          <main className="w-full min-h-screen flex items-center justify-center">
-            {children}
-          </main>
+          {children}
         </RecoilRoot>
       </body>
     </html>

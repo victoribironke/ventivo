@@ -1,5 +1,10 @@
-const Dashboard = () => {
-  return <div>page</div>;
+"use client";
+
+import { checkAuthentication } from "@/components/hoc/protected-route";
+
+const Page = () => {
+  return <p>hi</p>;
 };
 
-export default Dashboard;
+// export default Page;
+export default checkAuthentication(Page);

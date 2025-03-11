@@ -2,9 +2,6 @@
 
 // import type { Metadata } from "next";
 import "../globals.css";
-import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
-import { SiteHeader } from "@/components/dashboard/site-header";
-import { AppSidebar } from "@/components/dashboard/app-sidebar";
 import { useEffect, useState } from "react";
 import { redirect, useRouter } from "next/navigation";
 import { PAGES } from "@/constants/constants";
@@ -13,6 +10,21 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { getCustomer, getUserSession } from "@/lib/supabase";
 import { RecoilRoot, useSetRecoilState } from "recoil";
 import { customer_info, user_session } from "@/atoms/atoms";
+import { AppSidebar } from "@/components/dashboard/app-sidebar";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import { Separator } from "@/components/ui/separator";
+import {
+  SidebarInset,
+  SidebarProvider,
+  SidebarTrigger,
+} from "@/components/ui/sidebar";
 
 // export const metadata: Metadata = {
 //   title: "Home ~ Valse",
@@ -33,40 +45,62 @@ const RootLayout = ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
-  const [loading, setLoading] = useState(true);
   const setUserSession = useSetRecoilState(user_session);
   const setCustomerInfo = useSetRecoilState(customer_info);
 
-  useEffect(() => {
-    (async () => {
-      const { data } = await getUserSession();
+  // useEffect(() => {
+  //   (async () => {
+  //     const { data } = await getUserSession();
 
-      if (data.session === null) redirect(PAGES.login);
-      else {
-        const customer = await getCustomer(data.session.user.email as string);
+  //     if (data.session === null) redirect(PAGES.login);
+  //     else {
+  //       const customer = await getCustomer(data.session.user.email as string);
 
-        setCustomerInfo(customer);
-        setUserSession(data.session);
+  //       setCustomerInfo(customer);
+  //       setUserSession(data.session);
 
-        setLoading(false);
-      }
-    })();
-  }, []);
+  //       setLoading(false);
+  //     }
+  //   })();
+  // }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="[--header-height:calc(theme(spacing.14))]">
-        {loading ? (
-          <PageLoader fullScreen />
-        ) : (
-          <SidebarProvider className="flex flex-col">
-            <SiteHeader />
-            <div className="flex flex-1 max-w-[1600px]">
-              <AppSidebar />
-              <SidebarInset>{children}</SidebarInset>
+      <div className="[--header-height:calc(theme(spacing.14))] w-full">
+        <SidebarProvider
+          style={
+            {
+              "--sidebar-width": "19rem",
+            } as React.CSSProperties
+          }
+        >
+          <AppSidebar />
+          <SidebarInset>
+            <header className="flex h-16 shrink-0 items-center gap-2 px-4">
+              <SidebarTrigger className="-ml-1" />
+              <Separator
+                orientation="vertical"
+                className="mr-2 data-[orientation=vertical]:h-4"
+              />
+              <Breadcrumb>
+                <BreadcrumbList>
+                  <BreadcrumbItem className="hidden md:block">
+                    <BreadcrumbLink href="#">
+                      Building Your Application
+                    </BreadcrumbLink>
+                  </BreadcrumbItem>
+                  <BreadcrumbSeparator className="hidden md:block" />
+                  <BreadcrumbItem>
+                    <BreadcrumbPage>Data Fetching</BreadcrumbPage>
+                  </BreadcrumbItem>
+                </BreadcrumbList>
+              </Breadcrumb>
+            </header>
+            <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
+              {children}
             </div>
-          </SidebarProvider>
-        )}
+          </SidebarInset>
+        </SidebarProvider>
       </div>
     </QueryClientProvider>
   );
