@@ -1,95 +1,104 @@
+import { jwtDecode } from "jwt-decode";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
 export const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs));
 
-const months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
+export const formatNumber = (n: number) => new Intl.NumberFormat().format(n);
 
-export const parseDate = (date: string, type: "text" | "object" = "text") => {
-  const splitted = date.split("-").map((a) => parseInt(a));
+export const validatePassword = (password: string) => {
+  if (password.length < 8) {
+    return {
+      valid: false,
+      reason: "Password must be at least 8 characters long.",
+    };
+  }
 
-  if (type === "object")
-    return { year: splitted[0], month: splitted[1], day: splitted[2] };
+  if (!/[A-Z]/.test(password)) {
+    return {
+      valid: false,
+      reason: "Password must contain at least 1 uppercase letter.",
+    };
+  }
 
-  const getSuffix = (day: string) => {
-    if (day.split("").every((k) => k === "1")) return "th";
+  if (!/[a-z]/.test(password)) {
+    return {
+      valid: false,
+      reason: "Password must contain at least 1 lowercase letter.",
+    };
+  }
 
-    if (day === "1" || day[1] === "1") return "st";
-    if (day === "2" || day[1] === "2") return "nd";
-    if (day === "3" || day[1] === "3") return "rd";
+  if (!/\d/.test(password)) {
+    return {
+      valid: false,
+      reason: "Password must contain at least 1 number.",
+    };
+  }
 
-    return "th";
+  return {
+    valid: true,
+    reason: "Password meets all requirements.",
   };
-
-  const day = splitted[2];
-  const month = months[splitted[1] - 1];
-  const year = splitted[0];
-  const suffix = getSuffix(day.toString());
-
-  return `${day}${suffix} ${month}, ${year}`;
 };
 
-export const isValidEmail = (email: string) => {
-  return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,})+$/.test(email);
-};
+export const validateEmail = (value: string) =>
+  /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/.test(value);
 
-export const checkPasswordStrength = (
-  password: string,
-  checkStrength = false
-) => {
-  const hasMinChar = password.length >= 8;
-  const hasNum = /\d/.test(password);
-  const hasSym = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(password);
-  const hasUpp = /[A-Z]/.test(password);
+export const getJwtExpiration = (token: string) => {
+  try {
+    const decoded = jwtDecode(token);
 
-  if (checkStrength)
-    return [hasMinChar, hasNum, hasSym, hasUpp].every((k) => k === true);
+    if (!decoded.exp) {
+      return null;
+    }
 
-  return { hasMinChar, hasNum, hasSym, hasUpp };
-};
-
-export const formatNumber = (num: number) => num.toLocaleString("en-US");
-
-export const generateRandomString = (len: number) => {
-  const letters = "abcdefghijklmnopqrstuvwxyz";
-  let str = "";
-
-  for (let i = 0; i < len; i++) {
-    str += letters[Math.floor(Math.random() * 26)];
+    return new Date(decoded.exp * 1000).getTime();
+  } catch (error) {
+    console.error("Error decoding JWT:", error);
+    return null;
   }
-
-  return str;
 };
 
-export const generateUniqueURL = () => {
-  const now = Date.now().toString().slice(0, 4);
+export const formatDateTime = (dateString: string | Date) => {
+  if (!dateString) return "";
 
-  return `${generateRandomString(2)}${now}${generateRandomString(2)}`;
+  const date = new Date(dateString);
+
+  return date.toLocaleString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+  });
 };
 
-export const getRandomColor = () => {
-  const letters = "0123456789ABCDEF";
-  let color = "#";
+export const getUniqueNumber = () => Date.now();
 
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
+export const convertTextFromUppercase = (str: string | undefined) => {
+  if (!str) return "";
 
-  return color;
+  return str
+    .toLowerCase() // Convert the entire string to lowercase
+    .split("_") // Split the string by underscores
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize the first letter of each word
+    .join(" "); // Join the words with a space
 };
 
-export const getValueFromTitle = (title: string) =>
-  title.toLowerCase().split(" ").join("-");
+export const convertToUpperUnderscoreFormat = (str: string) => {
+  return str
+    .toUpperCase() // Convert the entire string to uppercase
+    .replace(/\s+/g, "_") // Replace spaces with underscores
+    .replace(/_+/g, "_") // Replace multiple underscores with a single underscore
+    .trim(); // Remove any leading or trailing whitespace
+};
+
+export const getRangeString = (number: number) => {
+  if (number >= 0 && number <= 29) return "We avoid";
+  else if (number >= 30 && number <= 49) return "Not good enough";
+  else if (number >= 50 && number <= 69) return "It's a start";
+  else if (number >= 70 && number <= 89) return "Good";
+  else if (number >= 90 && number <= 100) return "Great";
+  else return "Number out of range (1-100)";
+};
