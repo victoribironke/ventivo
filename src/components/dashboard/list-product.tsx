@@ -25,7 +25,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { ChangeEvent, DragEvent, useEffect, useState } from "react";
-import MultiSelect from "../general/multi-select";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "../ui/button";
 import {
@@ -413,11 +412,6 @@ const ListProduct = () => {
             <Label htmlFor="features">
               Sustainability features <span className="text-red">*</span>
             </Label>
-            <MultiSelect
-              fullList={SUSTAINABILITY_FEATURES.map(convertTextFromUppercase)}
-              selected={susFeats}
-              setSelected={setSusFeats}
-            />
           </div>
 
           <div className="grid gap-2 col-span-1 md:col-span-2">

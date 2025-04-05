@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Suspense } from "react";
 import { Toaster } from "react-hot-toast";
-import { Toaster as Sonner } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "Create Next App",

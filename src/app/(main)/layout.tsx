@@ -9,7 +9,7 @@ import {
   PAGES,
   ws,
 } from "@/constants/constants";
-import { cn, getJwtExpiration } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import { useSetAtom } from "jotai";
 import { Search, ShoppingCart, User } from "lucide-react";
 import Link from "next/link";
@@ -17,7 +17,6 @@ import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { user_details } from "../atoms/atoms";
 import toast from "react-hot-toast";
-import { toast as sonner } from "sonner";
 import AIChat from "@/components/main/ai-chat";
 import { ChatReceived } from "@/interfaces/general";
 
@@ -41,15 +40,6 @@ const RootLayout = ({
         } else if (event.type === "message") {
           if (!pathname.includes("chat")) {
             const data = JSON.parse(event.data).data as ChatReceived;
-
-            sonner("You have a new message from one of our sellers.", {
-              action: {
-                label: "Go to chat",
-                onClick: () =>
-                  push(PAGES.main.shop.chat(data.conversationId, "", "")),
-              },
-              duration: 60000,
-            });
           }
         }
       } catch (error) {
@@ -59,48 +49,6 @@ const RootLayout = ({
   }
 
   useEffect(() => {
-    // localStorage.removeItem("willow_auth_data");
-
-    if (pathname === PAGES.main.more_about_willow) {
-      setLoading(false);
-      return;
-    }
-
-    const data = localStorage.getItem(LOCAL_STORAGE_KEY);
-
-    if (!data) {
-      push(PAGES.auth.login);
-      return;
-    }
-
-    if (JSON.parse(data).user.role === "SELLER") {
-      push(PAGES.dashboard.home);
-      return;
-    }
-
-    const { access_token, user } = JSON.parse(data);
-
-    const date_ms = new Date().getTime();
-    const expires_at = getJwtExpiration(access_token);
-
-    if (!expires_at || date_ms >= expires_at) {
-      localStorage.removeItem(LOCAL_STORAGE_KEY);
-      push(PAGES.auth.login);
-      return;
-    }
-
-    setUserDetails(user);
-
-    ws.onopen = () => {
-      console.log("WebSocket connection opened!");
-    };
-
-    ws.onerror = (error) => {
-      console.error("Error received:", error);
-
-      toast.error("Internal socket error.");
-    };
-
     setLoading(false);
   }, [push]);
 
