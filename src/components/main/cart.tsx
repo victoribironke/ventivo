@@ -24,6 +24,7 @@ import PageLoader from "../general/page-loader";
 import { convertTextFromUppercase, formatNumber } from "@/lib/utils";
 import Link from "next/link";
 import { LOCAL_STORAGE_KEY, PAGES } from "@/constants/constants";
+import PaystackPop from "@paystack/inline-js";
 import { Input } from "../ui/input";
 
 const Cart = () => {
@@ -182,6 +183,16 @@ const Cart = () => {
     setIsLoading(false);
 
     if (error) return toast.error(error);
+
+    const popup = new PaystackPop() as any;
+    popup.resumeTransaction(data?.accessCode, {
+      onSuccess: () => {
+        toast.success("Payment successful!");
+      },
+      onCancel: () => {
+        toast.error("Transaction canceled.");
+      },
+    });
   };
 
   useEffect(() => {

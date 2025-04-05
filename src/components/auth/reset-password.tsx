@@ -9,9 +9,10 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { resetPassword } from "@/lib/requests/auth";
 import { LoaderCircle } from "lucide-react";
+import { Checkbox } from "../ui/checkbox";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
-import { validatePassword } from "@/lib/utils";
+import { getJwtExpiration, validatePassword } from "@/lib/utils";
 
 const ResetPassword = () => {
   const searchParams = useSearchParams();
@@ -52,6 +53,15 @@ const ResetPassword = () => {
     toast.success(data);
     router.push(PAGES.auth.login);
   };
+
+  useEffect(() => {
+    if (!resetToken) setError(true);
+
+    const expires_at = getJwtExpiration(resetToken as string);
+    const date_ms = new Date().getTime();
+
+    if (!expires_at || date_ms >= expires_at) setError(true);
+  }, [resetToken]);
 
   useEffect(() => setReqError(""), [password, passwordConfirm]);
 
@@ -95,6 +105,11 @@ const ResetPassword = () => {
           )}
 
           <div className="flex items-center space-x-2">
+            <Checkbox
+              id="show-password"
+              checked={showPassword}
+              onClick={() => setShowPassword((k) => !k)}
+            />
             <Label htmlFor="show-password">Show password</Label>
           </div>
 

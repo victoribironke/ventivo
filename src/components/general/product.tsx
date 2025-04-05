@@ -1,6 +1,13 @@
 "use client";
 
 import { Separator } from "../ui/separator";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import { Button } from "../ui/button";
 import { Leaf, Minus, Plus } from "lucide-react";
 import { cn, convertTextFromUppercase, formatNumber } from "@/lib/utils";
@@ -110,6 +117,24 @@ const ProductPage = ({ productId }: { productId: string }) => {
 
       <div className="flex flex-col lg:flex-row gap-6">
         <div className="w-full flex items-center justify-center gap-4 flex-col">
+          <Carousel className="w-full border shadow rounded-lg">
+            <CarouselContent>
+              {product?.images.map((img, index) => (
+                <CarouselItem key={index}>
+                  <div className="overflow-hidden aspect-square rounded-xl">
+                    <img
+                      src={img.url}
+                      alt="Image"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="left-4 rounded-md" />
+            <CarouselNext className="right-4 rounded-md" />
+          </Carousel>
+
           <div className="grid grid-cols-5 w-full gap-4">
             {product?.images.map((img, index) => (
               <div

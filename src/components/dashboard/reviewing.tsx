@@ -1,5 +1,6 @@
 import { Button } from "../ui/button";
 import { Separator } from "../ui/separator";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 const Reviewing = () => {
   return (
@@ -15,6 +16,13 @@ const Reviewing = () => {
       </p>
 
       <Separator />
+
+      <DotLottieReact
+        src="https://lottie.host/9134bf01-8e43-49a5-9f56-505620de1286/cSHsHXAREx.lottie"
+        loop
+        autoplay
+        className="w-full max-w-sm mx-auto -mb-5 mt-4"
+      />
 
       <h1 className="text-lg lg:text-xl font-medium w-full text-center">
         Performing Willow magic
