@@ -34,11 +34,13 @@ import {
 import { logOut } from "@/lib/auth";
 import { Menu, Search } from "lucide-react";
 import { useSetAtom } from "jotai";
-import { user_details } from "@/app/atoms/atoms";
 import toast from "react-hot-toast";
 import { Input } from "@/components/ui/input";
 import { ChatReceived } from "@/interfaces/general";
 import { toast as sonner } from "sonner";
+import { PAGES } from "@/constants/constants";
+import { getUserSession, getCustomer } from "@/lib/supabase";
+import { customer_info, user_session } from "@/atoms/atoms";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -58,86 +60,28 @@ const RootLayout = ({
   const [avatar, setAvatar] = useState("");
   const { push } = useRouter();
   const pathname = usePathname();
-  const setUserDetails = useSetAtom(user_details);
   const [search, setSearch] = useState("");
 
-  const searchParams = useSearchParams();
-  const f = searchParams.get("status") as string;
-
-  const [filter, setFilter] = useState(f || "Listed");
-
-  if (ws.readyState === 1) {
-    ws.onmessage = (event) => {
-      try {
-        if (event.type === "error") {
-          // show that the message was not sent
-
-          console.error("Received error message:", event.data);
-        } else if (event.type === "message") {
-          if (!pathname.includes("chat")) {
-            const data = JSON.parse(event.data).data as ChatReceived;
-
-            sonner("You have a new message from one of your customers.", {
-              action: {
-                label: "Go to chat",
-                onClick: () => push(PAGES.dashboard.chat(data.conversationId)),
-              },
-              duration: 60000,
-            });
-          }
-        }
-      } catch (error) {
-        console.error("Failed to parse message:", error);
-      }
-    };
-  }
+  const setUserSession = useSetAtom(user_session);
+  const setCustomerInfo = useSetAtom(customer_info);
 
   useEffect(() => {
-    // localStorage.removeItem("willow_auth_data");
+    (async () => {
+      const { data } = await getUserSession();
 
-    const data = localStorage.getItem(LOCAL_STORAGE_KEY);
+      if (data.session === null) push(PAGES.login);
+      else {
+        const customer = await getCustomer(data.session.user.email as string);
 
-    if (!data) {
-      push(PAGES.auth.login);
-      return;
-    }
+        setCustomerInfo(customer);
+        setUserSession(data.session);
+      }
 
-    if (JSON.parse(data).user.role !== "SELLER") {
-      push(PAGES.main.shop.home);
-      return;
-    }
+      setLoading(false);
+    })();
+  }, []);
 
-    const { access_token, user, seller } = JSON.parse(data);
-
-    const date_ms = new Date().getTime();
-    const expires_at = getJwtExpiration(access_token);
-
-    if (!expires_at || date_ms >= expires_at) {
-      localStorage.removeItem(LOCAL_STORAGE_KEY);
-      push(PAGES.auth.login);
-      return;
-    }
-
-    setUserDetails(user);
-    setAvatar(
-      seller.avatar?.url ||
-        `https://api.dicebear.com/9.x/fun-emoji/svg?seed=${user.seller.businessName}`
-    );
-
-    ws.onopen = () => {
-      console.log("WebSocket connection opened!");
-    };
-
-    ws.onerror = (error) => {
-      console.error("Error received:", error);
-
-      toast.error("Internal socket error.");
-    };
-
-    setLoading(false);
-  }, [push]);
-
-  if (loading) return <PageLoader fullScreen />;
+  if (loading) return <PageLoader type="full" />;
 
   return (
     <QueryClientProvider client={queryClient}>

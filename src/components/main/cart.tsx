@@ -12,7 +12,7 @@ import {
 import { useEffect, useState } from "react";
 import { CartItem, WillowAuthData } from "@/interfaces/general";
 import { useAtomValue } from "jotai";
-import { user_details } from "@/app/atoms/atoms";
+import { user_details } from "@/atoms/atoms";
 import toast from "react-hot-toast";
 import {
   getCart,

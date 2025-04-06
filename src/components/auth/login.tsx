@@ -1,137 +1,156 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import { FaGithub } from "react-icons/fa";
+import { useState } from "react";
+import { cn, isValidEmail } from "@/lib/utils";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import Link from "next/link";
-import { PAGES } from "@/constants/constants";
-import { useEffect, useState } from "react";
-import { loginUser } from "@/lib/requests/auth";
-import { Eye, EyeOff, LoaderCircle } from "lucide-react";
-import { validateEmail } from "@/lib/utils";
+import { IMAGES, PAGES } from "@/constants/constants";
+import {
+  signInWithEmail,
+  signInWithGithub,
+  signInWithGoogle,
+} from "@/lib/supabase";
+import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import { user_details } from "@/app/atoms/atoms";
-import { useSetAtom } from "jotai";
-import VerifyAccount from "./verify-account";
+import Image from "next/image";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const setUserDetails = useSetAtom(user_details);
   const { push } = useRouter();
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const login = async () => {
-    if (!validateEmail(email) || !password) {
-      setError("Please enter a valid email and password.");
-      return;
-    }
-
+  const signIn = async (type: "email" | "github" | "google") => {
     setLoading(true);
 
-    const { data, error } = await loginUser(email, password);
+    if (type === "email") {
+      if (!isValidEmail(email)) {
+        toast.error("Email address is invalid.");
+        setLoading(false);
 
-    setLoading(false);
+        return;
+      }
 
-    if (error) {
-      setError(error);
-      return;
+      const { error } = await signInWithEmail(email, false);
+
+      if (error) {
+        if (error.message === "Signups not allowed for otp.")
+          toast.error("User not found.");
+        else toast.error("A server error occured.");
+      } else toast.success("A link has been sent to your email.");
+    } else if (type === "github") {
+      const { error } = await signInWithGithub();
+
+      if (error) {
+        toast.error("A server error occured.");
+        setLoading(false);
+
+        return;
+      }
+
+      push(PAGES.dashboard);
+    } else if (type === "google") {
+      const { error } = await signInWithGoogle();
+
+      if (error) {
+        toast.error("A server error occured.");
+        setLoading(false);
+
+        return;
+      }
+
+      push(PAGES.dashboard);
     }
 
-    // console.log(data);
-
-    setUserDetails(data);
-    push(data.role === "SELLER" ? PAGES.dashboard.home : PAGES.main.shop.home);
+    setLoading(false);
   };
 
-  useEffect(() => setError(""), [email, password]);
-
   return (
-    <div className="flex flex-col gap-6">
-      <div className="flex flex-col items-center gap-2 text-center">
-        <h1 className="text-2xl font-semibold">Login to your account</h1>
-        <p className="text-balance text-sm text-muted-foreground">
-          Enter your details below to login to your account
-        </p>
-      </div>
-
-      <div className="grid gap-6">
-        <div className="grid gap-2">
-          <Label htmlFor="email">Email</Label>
-          <Input
-            id="email"
-            type="email"
-            placeholder="m@example.com"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+    <>
+      <div className="w-full max-w-xl aspect-square bg-white flex items-center justify-center flex-col p-6 gap-2 border-2 rounded-xl">
+        <div className="w-full max-w-sm mb-4">
+          <Image
+            src={IMAGES.logo_transparent.src}
+            width={IMAGES.logo_transparent.w}
+            height={IMAGES.logo_transparent.h}
+            alt="Logo"
+            className="w-10 rounded-md self-start"
+            priority={true}
           />
         </div>
 
-        <div className="grid gap-2">
-          <div className="flex items-center">
-            <Label htmlFor="password">Password</Label>
-            <Link
-              href={PAGES.auth.forgot_password}
-              className="ml-auto text-sm underline-offset-4 hover:underline"
-            >
-              Forgot your password?
-            </Link>
-          </div>
+        {/* <p className="text-3xl font-semibold w-full max-w-sm">Welcome back</p> */}
 
-          <div className="w-full relative flex items-center justify-center">
-            <Input
-              id="password"
-              type={showPassword ? "text" : "password"}
-              required
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="••••••••"
-            />
+        <p className="w-full max-w-sm font-medium text-3xl mb-4">
+          Sign in to your account
+        </p>
 
-            {showPassword ? (
-              <EyeOff
-                className="absolute right-3 cursor-pointer"
-                size={18}
-                onClick={() => setShowPassword((k) => !k)}
-              />
-            ) : (
-              <Eye
-                className="absolute right-3 cursor-pointer"
-                size={18}
-                onClick={() => setShowPassword((k) => !k)}
-              />
-            )}
-          </div>
-        </div>
-
-        {error && (
-          <p className="text-red text-sm w-full text-center">
-            {error} <VerifyAccount e={error} email={email} />
-          </p>
-        )}
+        <Input
+          type="email"
+          placeholder="Email"
+          value={email}
+          className="max-w-sm border-2 focus-within:border-firebase-orange"
+          onChange={(e) => setEmail(e.target.value)}
+        />
 
         <Button
-          className="w-full bg-main hover:bg-main/90"
-          onClick={login}
+          className="bg-black font-normal text-white w-full max-w-sm hover:bg-black/90 flex items-center justify-center gap-2"
+          onClick={() => signIn("email")}
           disabled={loading}
         >
-          Login {loading && <LoaderCircle className="animate-spin" />}
+          <p>
+            <AiOutlineLoading3Quarters
+              className={cn("animate-spin", loading ? "block" : "hidden")}
+            />
+          </p>
+          Login
         </Button>
-      </div>
 
-      <div className="text-center text-sm">
-        Don&apos;t have an account?{" "}
-        <Link
-          href={PAGES.auth.register}
-          className="underline underline-offset-4 text-main"
+        <div className="w-full max-w-sm flex gap-2 items-center justify-center my-2">
+          <Separator className="w-[45%] border" />
+          <p className="text-gray-400 text-sm">OR</p>
+          <Separator className="w-[45%] border" />
+        </div>
+
+        <Button
+          className="bg-zinc-700 text-white w-full font-normal max-w-sm hover:bg-zinc-700/90 flex items-center justify-center gap-2"
+          onClick={() => signIn("github")}
+          disabled={loading}
         >
-          Sign up
+          <p>
+            <FaGithub className={cn("text-lg", loading ? "hidden" : "block")} />
+            <AiOutlineLoading3Quarters
+              className={cn("animate-spin", loading ? "block" : "hidden")}
+            />
+          </p>
+          Github
+        </Button>
+
+        {/* <Button
+          className="bg-zinc-700 text-white w-full font-normal max-w-sm hover:bg-zinc-700/90 flex items-center justify-center gap-2"
+          onClick={() => signIn("google")}
+          disabled={loading}
+        >
+          <p>
+            <FaGoogle className={cn("text-lg", loading ? "hidden" : "block")} />
+            <AiOutlineLoading3Quarters
+              className={cn("animate-spin", loading ? "block" : "hidden")}
+            />
+          </p>
+          Google
+        </Button> */}
+
+        <Link
+          href={PAGES.signup}
+          className="mt-4 underline underline-offset-4 text-sm text-gray-400"
+        >
+          Don&apos;t have an account? sign up
         </Link>
       </div>
-    </div>
+    </>
   );
 };
 

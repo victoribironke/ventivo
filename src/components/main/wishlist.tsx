@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Separator } from "../ui/separator";
 import { LikedProduct } from "@/interfaces/general";
 import { useAtomValue } from "jotai";
-import { user_details } from "@/app/atoms/atoms";
+import { user_details } from "@/atoms/atoms";
 import { getCart, getLikedProducts } from "@/lib/requests/customer";
 import toast from "react-hot-toast";
 import PageLoader from "../general/page-loader";

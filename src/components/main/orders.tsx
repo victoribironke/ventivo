@@ -11,7 +11,7 @@ import {
 import { Separator } from "../ui/separator";
 import { PAGES } from "@/constants/constants";
 import { useEffect, useState } from "react";
-import { user_details } from "@/app/atoms/atoms";
+import { user_details } from "@/atoms/atoms";
 import { useAtomValue } from "jotai";
 import { Order } from "@/interfaces/general";
 import PageLoader from "../general/page-loader";

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { ChatReceived, Conversation } from "@/interfaces/general";
-import { user_details } from "@/app/atoms/atoms";
+import { user_details } from "@/atoms/atoms";
 import { useAtomValue } from "jotai";
 import { getConversation } from "@/lib/requests/customer";
 import toast from "react-hot-toast";

@@ -1,12 +1,13 @@
 "use client";
 
-import { Suspense, useEffect } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { LOCAL_STORAGE_KEY, PAGES } from "@/constants/constants";
 import { usePathname, useRouter } from "next/navigation";
 import Logo from "@/components/general/logo";
 import VerticalImageCarousel from "@/components/auth/vertical-image-carousel";
-import { user_details } from "@/app/atoms/atoms";
+import { customer_info, user_session } from "@/atoms/atoms";
 import { useSetAtom } from "jotai";
+import PageLoader from "@/components/general/page-loader";
 
 const RootLayout = ({
   children,
@@ -15,23 +16,28 @@ const RootLayout = ({
 }>) => {
   const { push } = useRouter();
   const pathname = usePathname();
-  const setUserDetails = useSetAtom(user_details);
+  const setUserSession = useSetAtom(user_session);
+  const setCustomerInfo = useSetAtom(customer_info);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // localStorage.removeItem("willow_auth_data");
+    (async () => {
+      const { data } = await getUserSession();
 
-    const data = localStorage.getItem(LOCAL_STORAGE_KEY);
+      if (data.session) {
+        const customer = await getCustomer(data.session.user.email as string);
 
-    if (data && pathname === PAGES.auth.login) {
-      const d = JSON.parse(data);
+        setCustomerInfo(customer);
+        setUserSession(data.session);
 
-      setUserDetails(d.user);
+        push(PAGES.dashboard);
+      }
 
-      push(
-        d.user.role === "SELLER" ? PAGES.dashboard.home : PAGES.main.shop.home
-      );
-    }
-  }, [pathname]);
+      setLoading(false);
+    })();
+  }, []);
+
+  if (loading) return <PageLoader type="full" />;
 
   return (
     <Suspense>

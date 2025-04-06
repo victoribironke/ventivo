@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 import { MessageCircleMore } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useAtomValue } from "jotai";
-import { user_details } from "@/app/atoms/atoms";
+import { user_details } from "@/atoms/atoms";
 import { Seller } from "@/interfaces/general";
 import { getSellerDetails } from "@/lib/requests/seller";
 import toast from "react-hot-toast";

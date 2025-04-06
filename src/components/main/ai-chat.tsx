@@ -1,4 +1,4 @@
-import { user_details } from "@/app/atoms/atoms";
+import { user_details } from "@/atoms/atoms";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {

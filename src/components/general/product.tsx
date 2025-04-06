@@ -21,7 +21,7 @@ import Link from "next/link";
 import { PAGES } from "@/constants/constants";
 import { Product } from "@/interfaces/general";
 import { getSellerProduct } from "@/lib/requests/seller";
-import { user_details } from "@/app/atoms/atoms";
+import { user_details } from "@/atoms/atoms";
 import { useAtomValue } from "jotai";
 import toast from "react-hot-toast";
 import PageLoader from "./page-loader";

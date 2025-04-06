@@ -6,7 +6,7 @@ import { Input } from "../ui/input";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { Customer } from "@/interfaces/general";
-import { user_details } from "@/app/atoms/atoms";
+import { user_details } from "@/atoms/atoms";
 import { useAtomValue } from "jotai";
 import {
   getCustomerDetails,

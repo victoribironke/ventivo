@@ -2,7 +2,7 @@ import ProductCard from "../general/product-card";
 import { useEffect, useState } from "react";
 import { Recommendation } from "@/interfaces/general";
 import { useAtomValue } from "jotai";
-import { user_details } from "@/app/atoms/atoms";
+import { user_details } from "@/atoms/atoms";
 import { getRecommendations } from "@/lib/requests/customer";
 import toast from "react-hot-toast";
 

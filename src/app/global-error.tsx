@@ -1,26 +1,13 @@
 "use client";
 
-import { useEffect } from "react";
 import { Button } from "../components/ui/button";
-import { LOCAL_STORAGE_KEY } from "@/constants/constants";
 
 interface GlobalErrorProps {
   error: Error;
   reset: () => void;
 }
 
-const GlobalError = ({ error, reset }: GlobalErrorProps) => {
-  useEffect(() => {
-    // Log the error to an error reporting service
-    console.error("Global error:", error);
-  }, [error]);
-
-  const reload = () => {
-    localStorage.removeItem(LOCAL_STORAGE_KEY);
-
-    reset();
-  };
-
+const GlobalError = ({ reset }: GlobalErrorProps) => {
   return (
     <html>
       <body>
@@ -32,7 +19,7 @@ const GlobalError = ({ error, reset }: GlobalErrorProps) => {
             </h1>
             <p className="mt-6 text-lg leading-7">Please refresh the page.</p>
             <div className="mt-6 flex items-center justify-center gap-x-6">
-              <Button onClick={reload} className="bg-main hover:bg-main/90">
+              <Button onClick={reset} className="bg-main hover:bg-main/90">
                 Refresh
               </Button>
             </div>

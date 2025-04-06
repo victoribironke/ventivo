@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { Separator } from "../ui/separator";
 import { Conversation } from "@/interfaces/general";
-import { user_details } from "@/app/atoms/atoms";
+import { user_details } from "@/atoms/atoms";
 import { useAtomValue } from "jotai";
 import { getConversations } from "@/lib/requests/customer";
 import toast from "react-hot-toast";

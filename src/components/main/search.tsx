@@ -12,7 +12,7 @@ import {
 import { Product } from "@/interfaces/general";
 import PageLoader from "../general/page-loader";
 import { useAtomValue } from "jotai";
-import { user_details } from "@/app/atoms/atoms";
+import { user_details } from "@/atoms/atoms";
 import { useSearchParams } from "next/navigation";
 
 const Search = () => {

@@ -1,4 +1,4 @@
-import { user_details } from "@/app/atoms/atoms";
+import { user_details } from "@/atoms/atoms";
 import { PAGES } from "@/constants/constants";
 import { ProductCardProps } from "@/interfaces/general";
 import {

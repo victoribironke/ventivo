@@ -8,7 +8,7 @@ import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import Link from "next/link";
 import { PAGES } from "@/constants/constants";
 import { useAtomValue } from "jotai";
-import { user_details } from "@/app/atoms/atoms";
+import { user_details } from "@/atoms/atoms";
 import { useEffect, useState } from "react";
 import { Order } from "@/interfaces/general";
 import { useRouter } from "next/navigation";

@@ -7,7 +7,7 @@ import PageLoader from "./page-loader";
 import { useEffect, useState } from "react";
 import { Product, WillowAuthData } from "@/interfaces/general";
 import { useAtomValue } from "jotai";
-import { user_details } from "@/app/atoms/atoms";
+import { user_details } from "@/atoms/atoms";
 import { getLastViewedProducts, getProducts } from "@/lib/requests/general";
 import toast from "react-hot-toast";
 import {
