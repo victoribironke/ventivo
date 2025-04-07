@@ -8,8 +8,8 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { FiPlus } from "react-icons/fi";
-import NewFirebaseProject from "./new/Firebase";
-import NewPostgresProject from "./new/Postgres";
+import NewFirebaseProject from "./new/firebase";
+import NewPostgresProject from "./new/postgres";
 
 const NewProject = () => {
   return (

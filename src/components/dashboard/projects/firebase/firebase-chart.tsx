@@ -5,21 +5,21 @@ import {
 } from "@/types/dashboard";
 import { useEffect, useState } from "react";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
-import BarChartComp from "../charts/BarChart";
-import EditFirebaseChart from "./EditFirebaseChart";
-import DeleteChart from "../DeleteChart";
-import PieChartComp from "../charts/PieChart";
 import { getRandomColor } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
-import LineChartComp from "../charts/LineChart";
 import { Button } from "@/components/ui/button";
 import { AiOutlinePicture } from "react-icons/ai";
 import { saveAs } from "file-saver";
 import domtoimage from "dom-to-image";
 import toast from "react-hot-toast";
-import { useRecoilValue } from "recoil";
+import { useAtomValue } from "jotai";
 import { customer_info } from "@/atoms/atoms";
 import { DEFAULT_SETTINGS } from "@/constants/constants";
+import EditFirebaseChart from "./edit-firebase-chart";
+import DeleteChart from "../delete-chart";
+import BarChartComp from "../charts/bar-chart";
+import PieChartComp from "../charts/pie-chart";
+import LineChartComp from "../charts/line-chart";
 
 const ChartComp = ({ chart, db, p, sUC }: FirebaseChartCompProps) => {
   const [data, setData] = useState<ChartData[]>([]);
@@ -29,19 +29,20 @@ const ChartComp = ({ chart, db, p, sUC }: FirebaseChartCompProps) => {
   const { field, name, pathToCollection, type } =
     chart.chart_info as FirebaseChartInfo;
   const { bar, line } = p.customization || DEFAULT_SETTINGS;
-  const customer = useRecoilValue(customer_info);
+  const customer = useAtomValue(customer_info);
   const nodeName = name.toLowerCase().split(" ").join("-");
 
   const handleDownload = async () => {
     const node = document.getElementById(nodeName)!;
 
     try {
-      !customer[0]?.has_access && setVisible(true);
+      if (!customer[0]?.has_access) setVisible(true);
       setCapturing(true);
 
       const blob = await domtoimage.toBlob(node);
       saveAs(blob, `${name} (${p.project_info.projectName}).png`);
     } catch (e) {
+      console.error(e);
       toast.error("An error occured while exporting the chart.");
     } finally {
       setVisible(false);
@@ -57,12 +58,13 @@ const ChartComp = ({ chart, db, p, sUC }: FirebaseChartCompProps) => {
       const mapped = d.docs
         .map((a) => a.data())
         .reduce((acc, curr) => {
-          acc[curr[field]] ? (acc[curr[field]] += 1) : (acc[curr[field]] = 1);
+          if (acc[curr[field]]) acc[curr[field]] += 1;
+          else acc[curr[field]] = 1;
 
           return acc;
         }, {});
 
-      for (let i in mapped) {
+      for (const i in mapped) {
         t.push({
           field: i,
           value: mapped[i],

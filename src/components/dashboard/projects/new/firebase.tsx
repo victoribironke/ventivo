@@ -18,7 +18,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import { useRecoilValue } from "recoil";
+import { useAtomValue } from "jotai";
 import { IoCopyOutline } from "react-icons/io5";
 import { SiFirebase } from "react-icons/si";
 
@@ -37,7 +37,7 @@ const NewFirebaseProject = () => {
   const [disabled, setDisabled] = useState(false);
   const [slug, setSlug] = useState("");
   const [loading, setLoading] = useState(false);
-  const userSession = useRecoilValue(user_session);
+  const userSession = useAtomValue(user_session);
   const [formData, setFormData] = useState({
     apiKey: "",
     authDomain: "",
@@ -97,7 +97,7 @@ const NewFirebaseProject = () => {
       );
     else setSlug("");
 
-    for (let i in formData) {
+    for (const i in formData) {
       if (formData[i as keyof typeof formData] === "") {
         setDisabled(true);
         return;

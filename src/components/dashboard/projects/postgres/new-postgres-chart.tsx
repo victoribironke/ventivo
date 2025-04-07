@@ -93,7 +93,7 @@ const NewPostgresChart = ({ p, s, tables, sUC }: NewPostgresChartProps) => {
   };
 
   useEffect(() => {
-    for (let i in formData) {
+    for (const i in formData) {
       if (formData[i as keyof typeof formData] === "") {
         setDisabled(true);
         return;

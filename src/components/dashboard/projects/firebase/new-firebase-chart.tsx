@@ -27,7 +27,7 @@ import {
 import { supabase } from "@/services/supabase";
 import { TABLES } from "@/constants/constants";
 import { user_session } from "@/atoms/atoms";
-import { useRecoilValue } from "recoil";
+import { useAtomValue } from "jotai";
 
 const NewFirebaseChart = ({ db, p, s, sUC }: NewFirebaseChartProps) => {
   const [disabled, setDisabled] = useState(false);
@@ -39,7 +39,7 @@ const NewFirebaseChart = ({ db, p, s, sUC }: NewFirebaseChartProps) => {
   // });
   const [loadingFields, setLoadingFields] = useState(false);
   const [fields, setFields] = useState<string[]>([]);
-  const userSession = useRecoilValue(user_session);
+  const userSession = useAtomValue(user_session);
   const buttons = [{ text: "Bar" }, { text: "Pie" }, { text: "Line" }];
   const [formData, setFormData] = useState<FirebaseChartInfo>({
     pathToCollection: "",
@@ -117,7 +117,7 @@ const NewFirebaseChart = ({ db, p, s, sUC }: NewFirebaseChartProps) => {
   };
 
   useEffect(() => {
-    for (let i in formData) {
+    for (const i in formData) {
       if (formData[i as keyof typeof formData] === "") {
         setDisabled(true);
         return;

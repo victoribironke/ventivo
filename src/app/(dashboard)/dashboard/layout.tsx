@@ -4,43 +4,23 @@ import PageLoader from "@/components/general/page-loader";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import {
-  LOCAL_STORAGE_KEY,
-  PAGES,
-  SIDEBAR_ITEMS,
-  ws,
-} from "@/constants/constants";
+import { PAGES, SIDEBAR_ITEMS } from "@/constants/constants";
 import { Button } from "@/components/ui/button";
-import { cn, getJwtExpiration } from "@/lib/utils";
-import { usePathname, useSearchParams } from "next/navigation";
+import { cn } from "@/lib/utils";
+import { usePathname } from "next/navigation";
 import Logo from "@/components/general/logo";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { useRouter } from "next/navigation";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { logOut } from "@/lib/auth";
-import { Menu, Search } from "lucide-react";
+import { Menu } from "lucide-react";
 import { useSetAtom } from "jotai";
-import toast from "react-hot-toast";
 import { Input } from "@/components/ui/input";
-import { ChatReceived } from "@/interfaces/general";
-import { toast as sonner } from "sonner";
-import { PAGES } from "@/constants/constants";
 import { getUserSession, getCustomer } from "@/lib/supabase";
-import { customer_info, user_session } from "@/atoms/atoms";
+import { customer_info, search, user_session } from "@/atoms/atoms";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -57,13 +37,27 @@ const RootLayout = ({
   children: React.ReactNode;
 }>) => {
   const [loading, setLoading] = useState(true);
-  const [avatar, setAvatar] = useState("");
   const { push } = useRouter();
   const pathname = usePathname();
-  const [search, setSearch] = useState("");
+  const setSearch = useSetAtom(search);
 
   const setUserSession = useSetAtom(user_session);
   const setCustomerInfo = useSetAtom(customer_info);
+
+  const searchPlaceholder =
+    pathname === PAGES.dashboard ? "projects" : "charts";
+
+  // const signOutUser = async () => {
+  //   const { error } = await signOut();
+
+  //   if (error) {
+  //     toast.error("An error occured.");
+
+  //     return;
+  //   }
+
+  //   push(PAGES.login);
+  // };
 
   useEffect(() => {
     (async () => {
@@ -115,72 +109,14 @@ const RootLayout = ({
 
               <Logo />
 
-              <div className="w-full max-w-lg border gap-1 rounded-full relative flex items-center justify-center pr-1.5">
-                <Input
-                  className="w-full shadow-none border-none focus-visible:ring-0 focus-visible:border-none px-4"
-                  placeholder="Search products"
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                  onKeyUp={(e) => {
-                    if (e.currentTarget.value && e.key === "Enter") {
-                      push(
-                        PAGES.dashboard.search(e.currentTarget.value, filter)
-                      );
-                    }
-                  }}
-                />
-
-                <Select value={filter} onValueChange={setFilter}>
-                  <SelectTrigger
-                    className="w-fit border-none bg-white shadow-none focus-visible:ring-0 focus-visible:border-none"
-                    id="filters"
-                  >
-                    <SelectValue
-                      placeholder="Select a source"
-                      className="pr-2"
-                    />
-                  </SelectTrigger>
-                  <SelectContent id="filters" className="bg-white">
-                    <SelectGroup>
-                      {["Listed", "Pending", "Rejected"].map((s, i) => (
-                        <SelectItem value={s} key={i}>
-                          {s}
-                        </SelectItem>
-                      ))}
-                    </SelectGroup>
-                  </SelectContent>
-                </Select>
-
-                <div
-                  className="bg-main rounded-full p-1.5 text-white cursor-pointer"
-                  onClick={() => {
-                    if (search) {
-                      push(PAGES.dashboard.search(search, filter));
-                    }
-                  }}
-                >
-                  <Search size={15} />
-                </div>
-              </div>
-
-              <DropdownMenu>
-                <DropdownMenuTrigger>
-                  <div className="size-9 rounded-full overflow-hidden aspect-square">
-                    <img
-                      src={avatar}
-                      alt="Profile pic"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="mx-4">
-                  <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem onClick={logOut} className="cursor-pointer">
-                    Log out
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+              <Input
+                className={cn(
+                  "max-w-lg rounded-lg focus-within:border-2 focus-within:border-firebase-orange mr-auto",
+                  pathname === PAGES.settings ? "hidden" : "block"
+                )}
+                placeholder={`Search your ${searchPlaceholder}...`}
+                onChange={(e) => setSearch(e.target.value)}
+              />
             </div>
           </div>
 

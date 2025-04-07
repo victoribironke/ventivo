@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -12,7 +14,7 @@ import {
 } from "@/components/ui/dialog";
 import { PAGES, TABLES } from "@/constants/constants";
 import { supabase } from "@/services/supabase";
-import { useRouter } from "next/router";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
@@ -43,9 +45,10 @@ const EditFirebaseProject = ({ project }: EditProjectProps) => {
     email: "",
     password: "",
   };
-  const { push, asPath, reload } = useRouter();
+  const { push } = useRouter();
   const [disabled, setDisabled] = useState(false);
   const [loading, setLoading] = useState(false);
+  const pathname = usePathname();
   const [formData, setFormData] = useState(
     project?.project_info ?? initialState
   );
@@ -82,7 +85,8 @@ const EditFirebaseProject = ({ project }: EditProjectProps) => {
 
     toast.success("Project saved.");
 
-    asPath.includes(slug) ? reload() : push(PAGES.project.firebase(slug));
+    if (pathname.includes(slug)) window.location.reload();
+    else push(PAGES.project.firebase(slug));
   };
 
   useEffect(() => {
@@ -96,7 +100,7 @@ const EditFirebaseProject = ({ project }: EditProjectProps) => {
       );
     else setSlug("");
 
-    for (let i in formData) {
+    for (const i in formData) {
       if (formData[i as keyof typeof formData] === "") {
         setDisabled(true);
         return;

@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/dialog";
 import { PAGES, TABLES } from "@/constants/constants";
 import { supabase } from "@/services/supabase";
-import { useRouter } from "next/router";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
@@ -30,7 +30,8 @@ const EditPostgresProject = ({ project }: EditProjectProps) => {
     password: "",
     projectName: "",
   };
-  const { push, asPath, reload } = useRouter();
+  const { push } = useRouter();
+  const pathname = usePathname();
   const [disabled, setDisabled] = useState(false);
   const [slug, setSlug] = useState("");
   const [loading, setLoading] = useState(false);
@@ -79,7 +80,8 @@ const EditPostgresProject = ({ project }: EditProjectProps) => {
 
     toast.success("Project saved.");
 
-    asPath.includes(slug) ? reload() : push(PAGES.project.postgres(slug));
+    if (pathname.includes(slug)) window.location.reload();
+    else push(PAGES.project.postgres(slug));
   };
 
   useEffect(() => {
@@ -93,7 +95,7 @@ const EditPostgresProject = ({ project }: EditProjectProps) => {
       );
     else setSlug("");
 
-    for (let i in formData) {
+    for (const i in formData) {
       if (formData[i as keyof typeof formData] === "") {
         setDisabled(true);
         return;

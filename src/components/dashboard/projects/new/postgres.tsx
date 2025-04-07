@@ -18,7 +18,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import { useRecoilValue } from "recoil";
+import { useAtomValue } from "jotai";
 import { BiLogoPostgresql } from "react-icons/bi";
 import { testConnection } from "@/services/postgres";
 
@@ -29,7 +29,7 @@ const NewPostgresProject = () => {
   const [disabled, setDisabled] = useState(false);
   const [slug, setSlug] = useState("");
   const [loading, setLoading] = useState(false);
-  const userSession = useRecoilValue(user_session);
+  const userSession = useAtomValue(user_session);
   // const [connectionString, setConnectionString] = useState("");
   const [test, setTest] = useState({ testing: false, tested: false });
   const [formData, setFormData] = useState({
@@ -97,7 +97,7 @@ const NewPostgresProject = () => {
       );
     else setSlug("");
 
-    for (let i in formData) {
+    for (const i in formData) {
       if (formData[i as keyof typeof formData] === "") {
         setDisabled(true);
         return;

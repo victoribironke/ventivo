@@ -133,6 +133,7 @@ export const setupFirebase = async (
 
     return { app, db, auth, signOutUser, getCurrentUser };
   } catch (e) {
+    console.error(e);
     return "An error occured";
   }
 };
@@ -142,7 +143,7 @@ export const getCollectionFields = async (db: Firestore, path: string) => {
     const data = (await getDocs(collection(db, path))).docs[0].data();
     const fields = [];
 
-    for (let i in data) fields.push(i);
+    for (const i in data) fields.push(i);
 
     return fields;
   } catch (e) {
@@ -155,7 +156,7 @@ export const getRandomColor = () => {
   const letters = "0123456789ABCDEF";
   let color = "#";
 
-  for (var i = 0; i < 6; i++) {
+  for (let i = 0; i < 6; i++) {
     color += letters[Math.floor(Math.random() * 16)];
   }
 
@@ -172,6 +173,7 @@ export const getFishyDomains = async () => {
 
     return { data: res, error: null };
   } catch (e) {
+    console.error(e);
     return { data: null, error: "A server error occured." };
   }
 };

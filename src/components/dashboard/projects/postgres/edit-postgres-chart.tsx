@@ -76,7 +76,7 @@ const EditPostgresChart = ({
   };
 
   useEffect(() => {
-    for (let i in formData) {
+    for (const i in formData) {
       if (formData[i as keyof typeof formData] === "") {
         setDisabled(true);
         return;

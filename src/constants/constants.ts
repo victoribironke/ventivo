@@ -2,20 +2,12 @@ import { Project } from "@/types/dashboard";
 import { BiLogoPostgresql } from "react-icons/bi";
 import { FaDatabase } from "react-icons/fa";
 import { SiFirebase } from "react-icons/si";
-import { ApprovalStatus } from "@/interfaces/general";
-import {
-  MessageCircleMore,
-  MonitorUp,
-  Package,
-  ShoppingBag,
-  Table2,
-  User,
-} from "lucide-react";
+import { Table2 } from "lucide-react";
 
 export const BASE_URL =
   process.env.NODE_ENV === "development"
     ? "http://localhost:3000"
-    : "https://app.ventivo.co";
+    : "https://ventivo.co";
 
 export const IMAGES = {
   logo: { src: "/logo.png", w: 500, h: 500 },
@@ -93,54 +85,12 @@ export const LINKS = (type: Project["type"], slug: string) => {
 };
 
 export const SIDEBAR_ITEMS = (pathname: string) => [
-  // {
-  //   title: "Dashboard",
-  //   icon: Table2,
-  //   isActive: pathname === PAGES.dashboard.home,
-  //   link: PAGES.dashboard.home,
-  // },
-  // {
-  //   title: "Chat",
-  //   icon: MessageCircleMore,
-  //   isActive:
-  //     pathname === PAGES.dashboard.chats ||
-  //     pathname.includes(PAGES.dashboard.chats),
-  //   link: PAGES.dashboard.chats,
-  // },
-  // // {
-  // //   title: "Analytics",
-  // //   icon: ChartNoAxesColumn,
-  // //   isActive: pathname === PAGES.dashboard.analytics,
-  // //   link: PAGES.dashboard.analytics,
-  // // },
-  // {
-  //   title: "List product",
-  //   icon: MonitorUp,
-  //   isActive: pathname === PAGES.dashboard.list_product,
-  //   link: PAGES.dashboard.list_product,
-  // },
-  // {
-  //   title: "Products",
-  //   icon: Package,
-  //   isActive:
-  //     pathname === PAGES.dashboard.products ||
-  //     pathname.includes(PAGES.dashboard.products),
-  //   link: PAGES.dashboard.products,
-  // },
-  // {
-  //   title: "Orders",
-  //   icon: ShoppingBag,
-  //   isActive:
-  //     pathname === PAGES.dashboard.orders ||
-  //     pathname.includes(PAGES.dashboard.orders),
-  //   link: PAGES.dashboard.orders,
-  // },
-  // {
-  //   title: "Profile",
-  //   icon: User,
-  //   isActive: pathname === PAGES.dashboard.profile,
-  //   link: PAGES.dashboard.profile,
-  // },
+  {
+    title: "Dashboard",
+    icon: Table2,
+    isActive: pathname === PAGES.dashboard,
+    link: PAGES.dashboard,
+  },
 ];
 
 // export const HEADER_LINKS = (pathname: string) => [

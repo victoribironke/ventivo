@@ -32,6 +32,7 @@ export const getTables = async (data: PostgresProjectInfo) => {
       error: null,
     };
   } catch (e) {
+    console.error(e);
     return {
       data: null,
       error:
@@ -59,6 +60,7 @@ export const getColumns = async (
 
     setColumns(columns);
   } catch (e) {
+    console.error(e);
     toast.error("Error fetching columns.");
   } finally {
     setLoading(false);

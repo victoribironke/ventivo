@@ -4,7 +4,6 @@ import { customer_info, search, user_session } from "@/atoms/atoms";
 import { PAGES, TABLES } from "@/constants/constants";
 import { supabase } from "@/services/supabase";
 import { Chart, FirebaseProjectInfo, Project } from "@/types/dashboard";
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useAtomValue } from "jotai";
@@ -21,7 +20,6 @@ import EditFirebaseProject from "./projects/firebase/edit-firebase-project";
 import DeleteProject from "./projects/delete-project";
 import NewFirebaseChart from "./projects/firebase/new-firebase-chart";
 import ChartComp from "./projects/firebase/firebase-chart";
-import { useSearchParams } from "next/navigation";
 
 const FirebaseProjectPage = ({ slug }: { slug: string }) => {
   const [project, setProject] = useState<Project | null>(null);

@@ -1,13 +1,13 @@
 "use client";
 
 import { Suspense, useEffect, useState } from "react";
-import { LOCAL_STORAGE_KEY, PAGES } from "@/constants/constants";
-import { usePathname, useRouter } from "next/navigation";
+import { PAGES } from "@/constants/constants";
+import { useRouter } from "next/navigation";
 import Logo from "@/components/general/logo";
-import VerticalImageCarousel from "@/components/auth/vertical-image-carousel";
 import { customer_info, user_session } from "@/atoms/atoms";
 import { useSetAtom } from "jotai";
 import PageLoader from "@/components/general/page-loader";
+import { getCustomer, getUserSession } from "@/lib/supabase";
 
 const RootLayout = ({
   children,
@@ -15,7 +15,6 @@ const RootLayout = ({
   children: React.ReactNode;
 }>) => {
   const { push } = useRouter();
-  const pathname = usePathname();
   const setUserSession = useSetAtom(user_session);
   const setCustomerInfo = useSetAtom(customer_info);
   const [loading, setLoading] = useState(true);
@@ -59,8 +58,6 @@ const RootLayout = ({
               className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
             />
           </div> */}
-
-        <VerticalImageCarousel />
       </div>
     </Suspense>
   );
