@@ -30,6 +30,8 @@ const RootLayout = ({
         setUserSession(data.session);
 
         push(PAGES.dashboard);
+
+        return;
       }
 
       setLoading(false);

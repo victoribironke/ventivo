@@ -11,29 +11,33 @@ const Confirm = () => {
   const { push } = useRouter();
   const searchParams = useSearchParams();
 
-  const t = searchParams.get("type");
-  const th = searchParams.get("token_hash");
-
   useEffect(() => {
-    supabase.auth
-      .verifyOtp({
-        token_hash: th as string,
-        type: t as "magiclink",
-      })
-      .then(({ data, error }) => {
-        if (data.user || data.session) {
-          toast.success("Link verified.");
-          push(PAGES.dashboard);
-        } else {
-          toast.error("Invalid link.");
+    const th = searchParams.get("token_hash");
+    const t = searchParams.get("type");
+
+    if (th && t) {
+      supabase.auth
+        .verifyOtp({
+          token_hash: th as string,
+          type: t as "magiclink",
+        })
+        .then(({ data, error }) => {
+          if (data) {
+            toast.success("Link verified.");
+            push(PAGES.dashboard);
+          }
+
+          if (error) {
+            // toast.error("Invalid link.");
+            push(PAGES.login);
+          }
+        })
+        .catch(() => {
+          toast.error("An error occured.");
           push(PAGES.login);
-        }
-      })
-      .catch(() => {
-        toast.error("An error occured.");
-        push(PAGES.login);
-      });
-  }, [th, t]);
+        });
+    }
+  }, [searchParams]);
 
   return (
     <>

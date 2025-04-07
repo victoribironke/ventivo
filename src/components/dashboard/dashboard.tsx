@@ -52,11 +52,11 @@ const Dashboard = () => {
   return (
     <>
       <div className="w-full flex items-center justify-between mb-6">
-        <p className="text-xl font-medium">
+        <p className="text-xl font-medium flex items-center justify-center gap-2">
           Projects{" "}
-          <Badge className="bg-firebase-orange text-white">
+          <div className="size-7 bg-firebase-orange border p-1 flex items-center justify-center text-xs rounded-full font-medium whitespace-nowrap">
             {projects.length}
-          </Badge>
+          </div>
         </p>
 
         {customer[0]?.has_access ? (
@@ -82,7 +82,7 @@ const Dashboard = () => {
             <Link
               href={link}
               key={i}
-              className="w-full max flex flex-col shadow gap-16 rounded-lg bg-white p-4 backdrop-blur-sm border hover:border-gray-300"
+              className="w-full max flex flex-col shadow gap-16 rounded-lg p-4 backdrop-blur-sm border bg-muted/50 hover:bg-muted/60 transition-all duration-200 ease-in-out"
             >
               <div className="w-full flex items-center justify-between">
                 <p>{p.project_info.projectName}</p>

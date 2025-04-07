@@ -2,7 +2,19 @@ import { Project } from "@/types/dashboard";
 import { BiLogoPostgresql } from "react-icons/bi";
 import { FaDatabase } from "react-icons/fa";
 import { SiFirebase } from "react-icons/si";
-import { Table2 } from "lucide-react";
+import {
+  Database,
+  Flame,
+  LogOut,
+  Mail,
+  MessageSquareText,
+  Settings,
+  Table2,
+} from "lucide-react";
+import NewFirebaseProject from "@/components/dashboard/projects/new/firebase";
+import NewPostgresProject from "@/components/dashboard/projects/new/postgres";
+import { signOut } from "@/lib/supabase";
+import toast from "react-hot-toast";
 
 export const BASE_URL =
   process.env.NODE_ENV === "development"
@@ -84,6 +96,77 @@ export const SIDEBAR_ITEMS = (pathname: string) => [
     icon: Table2,
     isActive: pathname === PAGES.dashboard,
     link: PAGES.dashboard,
+    type: "link",
+  },
+  {
+    title: "CREATE A NEW PROJECT",
+    type: "sep",
+    icon: Table2,
+    isActive: false,
+    link: "",
+  },
+  {
+    title: "Firebase",
+    type: "button",
+    icon: Flame,
+    isActive: false,
+    link: "",
+    element: NewFirebaseProject,
+  },
+  {
+    title: "PostgreSQL",
+    type: "button",
+    icon: Database,
+    isActive: false,
+    link: "",
+    element: NewPostgresProject,
+  },
+  {
+    title: "HELP & SUPPORT",
+    type: "sep",
+    icon: Table2,
+    isActive: false,
+    link: "",
+  },
+  {
+    title: "Feedback",
+    icon: MessageSquareText,
+    isActive: false,
+    link: "https://ventivo.userjot.com/",
+    type: "link",
+  },
+  {
+    title: "Contact support",
+    icon: Mail,
+    isActive: false,
+    link: "mailto:support@ventivo.co",
+    type: "link",
+  },
+
+  {
+    title: "ACCOUNT",
+    type: "sep",
+    icon: Table2,
+    isActive: false,
+    link: "",
+  },
+  {
+    title: "Settings",
+    icon: Settings,
+    isActive: pathname.includes(PAGES.settings),
+    link: PAGES.settings,
+    type: "link",
+  },
+  {
+    title: "Log out",
+    icon: LogOut,
+    isActive: false,
+    link: "",
+    type: "button",
+    onclick: () =>
+      signOut()
+        .then(({ error }) => window.location.href === BASE_URL + PAGES.login)
+        .catch(() => toast.error("An error occured.")),
   },
 ];
 

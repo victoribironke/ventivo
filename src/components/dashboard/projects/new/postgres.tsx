@@ -1,3 +1,5 @@
+"use client";
+
 import { user_session } from "@/atoms/atoms";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -14,7 +16,6 @@ import {
 import { TABLES } from "@/constants/constants";
 import { generateUniqueURL } from "@/lib/utils";
 import { supabase } from "@/services/supabase";
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
@@ -25,7 +26,6 @@ import { testConnection } from "@/services/postgres";
 const uniqueURL = generateUniqueURL();
 
 const NewPostgresProject = () => {
-  const { reload } = useRouter();
   const [disabled, setDisabled] = useState(false);
   const [slug, setSlug] = useState("");
   const [loading, setLoading] = useState(false);
@@ -83,7 +83,7 @@ const NewPostgresProject = () => {
     }
 
     toast.success("Project added.");
-    reload();
+    window.location.reload();
   };
 
   useEffect(() => {
@@ -110,7 +110,7 @@ const NewPostgresProject = () => {
   return (
     <Dialog>
       <DialogTrigger>
-        <Button className="w-full shadow-none flex items-center justify-start gap-2 px-4 rounded-lg text-left text-black bg-white hover:text-black hover:bg-gray-100">
+        <Button className="w-full bg-transparent hover:bg-muted text-white flex justify-start gap-4">
           <BiLogoPostgresql fill="#3b82f6" />
           <p>PostgreSQL</p>
         </Button>
@@ -194,7 +194,7 @@ const NewPostgresProject = () => {
           </div>
 
           <Button
-            className="bg-firebase-orange mt-4 font-normal text-white w-full hover:bg-firebase-orange/90 gap-2"
+            className="bg-firebase-orange mt-4 text-white w-full hover:bg-firebase-orange/90 gap-2"
             disabled={test.testing}
             onClick={testPGConnection}
           >
@@ -214,12 +214,10 @@ const NewPostgresProject = () => {
                 placeholder="Project name *"
                 onChange={(e) => updateFormData(e.target.value, "projectName")}
               />
-              <Label htmlFor="projectName" className="font-normal">
-                Slug: {slug}
-              </Label>
+              <Label htmlFor="projectName">Slug: {slug}</Label>
             </div>
             <Button
-              className="bg-firebase-orange font-normal text-white w-full max-w-[10rem] hover:bg-firebase-orange/90 gap-2"
+              className="bg-firebase-orange text-white w-full max-w-[10rem] hover:bg-firebase-orange/90 gap-2"
               disabled={disabled}
               onClick={saveProject}
             >

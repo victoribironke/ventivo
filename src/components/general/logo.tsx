@@ -14,7 +14,7 @@ const Logo = () => {
         width={IMAGES.logo.w}
         height={IMAGES.logo.h}
         alt="Logo"
-        className="w-10 h-auto"
+        className="w-8 h-auto"
       />
       {/* </div> */}
     </div>

@@ -28,7 +28,7 @@ const NewProject = () => {
           </DialogDescription>
         </DialogHeader>
 
-        <div className="grid grid-cols-4 items-center justify-center w-full gap-4 my-2 h-auto max-h-[calc(100vh-15rem)] overflow-x-scroll p-0.5">
+        <div className="grid grid-cols-3 items-center justify-center w-full gap-4 my-2 h-auto max-h-[calc(100vh-15rem)] overflow-x-scroll p-0.5">
           <NewFirebaseProject />
           <NewPostgresProject />
         </div>
