@@ -15,7 +15,7 @@ import {
   signInWithGoogle,
 } from "@/lib/supabase";
 import toast from "react-hot-toast";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 const SignUp = () => {
@@ -70,65 +70,53 @@ const SignUp = () => {
   };
 
   return (
-    <>
-      <div className="w-full max-w-xl aspect-square bg-white flex items-center justify-center flex-col p-6 gap-2 border-2 rounded-xl">
-        <div className="w-full max-w-sm mb-4">
-          <Image
-            src={IMAGES.logo.src}
-            width={IMAGES.logo.w}
-            height={IMAGES.logo.h}
-            alt="Logo"
-            className="w-10 rounded-md self-start"
-            priority={true}
+    <div className="w-full max-w-xl p-6 flex items-center justify-center flex-col gap-4 rounded-xl border">
+      <p className="w-full font-medium text-xl md:text-2xl mb-4">
+        Create an account
+      </p>
+
+      <Input
+        type="email"
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+
+      <Button
+        className="bg-firebase-orange text-white hover:bg-firebase-orange/90 w-full"
+        onClick={() => signUp("email")}
+        disabled={loading}
+      >
+        <p>
+          <AiOutlineLoading3Quarters
+            className={cn("animate-spin", loading ? "block" : "hidden")}
           />
-        </div>
-
-        <p className="text-3xl font-medium w-full max-w-sm mb-4">
-          Create an account
         </p>
+        Sign up
+      </Button>
 
-        <Input
-          type="email"
-          placeholder="Email"
-          value={email}
-          className="max-w-sm border-2 focus-within:border-firebase-orange"
-          onChange={(e) => setEmail(e.target.value)}
-        />
+      <div className="w-full flex gap-2 items-center justify-center my-2">
+        <Separator className="w-[45%] border" />
+        <p className="text-gray-400 text-sm">OR</p>
+        <Separator className="w-[45%] border" />
+      </div>
 
-        <Button
-          className="bg-black font-normal text-white w-full max-w-sm hover:bg-black/90 flex items-center justify-center gap-2"
-          onClick={() => signUp("email")}
-          disabled={loading}
-        >
-          <p>
-            <AiOutlineLoading3Quarters
-              className={cn("animate-spin", loading ? "block" : "hidden")}
-            />
-          </p>
-          Sign up
-        </Button>
+      <Button
+        className="w-full"
+        onClick={() => signUp("github")}
+        disabled={loading}
+        variant="outline"
+      >
+        <p>
+          <FaGithub className={cn("text-lg", loading ? "hidden" : "block")} />
+          <AiOutlineLoading3Quarters
+            className={cn("animate-spin", loading ? "block" : "hidden")}
+          />
+        </p>
+        Github
+      </Button>
 
-        <div className="w-full max-w-sm flex gap-2 items-center justify-center my-2">
-          <Separator className="w-[45%] border" />
-          <p className="text-gray-400 text-sm">OR</p>
-          <Separator className="w-[45%] border" />
-        </div>
-
-        <Button
-          className="bg-zinc-700 text-white w-full font-normal max-w-sm hover:bg-zinc-700/90 flex items-center justify-center gap-2"
-          onClick={() => signUp("github")}
-          disabled={loading}
-        >
-          <p>
-            <FaGithub className={cn("text-lg", loading ? "hidden" : "block")} />
-            <AiOutlineLoading3Quarters
-              className={cn("animate-spin", loading ? "block" : "hidden")}
-            />
-          </p>
-          Github
-        </Button>
-
-        {/* <Button
+      {/* <Button
           className="bg-zinc-700 text-white w-full font-normal max-w-sm hover:bg-zinc-700/90 flex items-center justify-center gap-2"
           onClick={() => signUp("google")}
           disabled={loading}
@@ -142,14 +130,13 @@ const SignUp = () => {
           Google
         </Button> */}
 
-        <Link
-          href={PAGES.login}
-          className="mt-4 underline underline-offset-4 text-sm text-gray-400"
-        >
-          Already have an account? login
-        </Link>
-      </div>
-    </>
+      <Link
+        href={PAGES.login}
+        className="mt-4 underline underline-offset-4 text-sm text-gray-400"
+      >
+        Already have an account? Login
+      </Link>
+    </div>
   );
 };
 

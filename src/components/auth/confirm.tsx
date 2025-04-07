@@ -1,3 +1,5 @@
+"use client";
+
 import { PAGES } from "@/constants/constants";
 import { supabase } from "@/services/supabase";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -19,13 +21,11 @@ const Confirm = () => {
         type: t as "magiclink",
       })
       .then(({ data, error }) => {
-        if (data) {
+        if (data.user || data.session) {
           toast.success("Link verified.");
           push(PAGES.dashboard);
-        }
-
-        if (error) {
-          // toast.error("Invalid link.");
+        } else {
+          toast.error("Invalid link.");
           push(PAGES.login);
         }
       })

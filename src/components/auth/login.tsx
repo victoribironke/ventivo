@@ -16,7 +16,6 @@ import {
 } from "@/lib/supabase";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
 
 const Login = () => {
   const { push } = useRouter();
@@ -69,67 +68,53 @@ const Login = () => {
   };
 
   return (
-    <>
-      <div className="w-full max-w-xl aspect-square bg-white flex items-center justify-center flex-col p-6 gap-2 border-2 rounded-xl">
-        <div className="w-full max-w-sm mb-4">
-          <Image
-            src={IMAGES.logo_transparent.src}
-            width={IMAGES.logo_transparent.w}
-            height={IMAGES.logo_transparent.h}
-            alt="Logo"
-            className="w-10 rounded-md self-start"
-            priority={true}
+    <div className="w-full max-w-xl p-6 flex items-center justify-center flex-col gap-4 rounded-xl border">
+      <p className="w-full font-medium text-xl md:text-2xl mb-4">
+        Sign in to your account
+      </p>
+
+      <Input
+        type="email"
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+
+      <Button
+        className="bg-firebase-orange text-white hover:bg-firebase-orange/90 w-full"
+        onClick={() => signIn("email")}
+        disabled={loading}
+      >
+        <p>
+          <AiOutlineLoading3Quarters
+            className={cn("animate-spin", loading ? "block" : "hidden")}
           />
-        </div>
-
-        {/* <p className="text-3xl font-semibold w-full max-w-sm">Welcome back</p> */}
-
-        <p className="w-full max-w-sm font-medium text-3xl mb-4">
-          Sign in to your account
         </p>
+        Login
+      </Button>
 
-        <Input
-          type="email"
-          placeholder="Email"
-          value={email}
-          className="max-w-sm border-2 focus-within:border-firebase-orange"
-          onChange={(e) => setEmail(e.target.value)}
-        />
+      <div className="w-full flex gap-2 items-center justify-center my-2">
+        <Separator className="w-[45%] border" />
+        <p className="text-gray-400 text-sm">OR</p>
+        <Separator className="w-[45%] border" />
+      </div>
 
-        <Button
-          className="bg-black font-normal text-white w-full max-w-sm hover:bg-black/90 flex items-center justify-center gap-2"
-          onClick={() => signIn("email")}
-          disabled={loading}
-        >
-          <p>
-            <AiOutlineLoading3Quarters
-              className={cn("animate-spin", loading ? "block" : "hidden")}
-            />
-          </p>
-          Login
-        </Button>
+      <Button
+        className="w-full"
+        onClick={() => signIn("github")}
+        disabled={loading}
+        variant="outline"
+      >
+        <p>
+          <FaGithub className={cn("text-lg", loading ? "hidden" : "block")} />
+          <AiOutlineLoading3Quarters
+            className={cn("animate-spin", loading ? "block" : "hidden")}
+          />
+        </p>
+        Github
+      </Button>
 
-        <div className="w-full max-w-sm flex gap-2 items-center justify-center my-2">
-          <Separator className="w-[45%] border" />
-          <p className="text-gray-400 text-sm">OR</p>
-          <Separator className="w-[45%] border" />
-        </div>
-
-        <Button
-          className="bg-zinc-700 text-white w-full font-normal max-w-sm hover:bg-zinc-700/90 flex items-center justify-center gap-2"
-          onClick={() => signIn("github")}
-          disabled={loading}
-        >
-          <p>
-            <FaGithub className={cn("text-lg", loading ? "hidden" : "block")} />
-            <AiOutlineLoading3Quarters
-              className={cn("animate-spin", loading ? "block" : "hidden")}
-            />
-          </p>
-          Github
-        </Button>
-
-        {/* <Button
+      {/* <Button
           className="bg-zinc-700 text-white w-full font-normal max-w-sm hover:bg-zinc-700/90 flex items-center justify-center gap-2"
           onClick={() => signIn("google")}
           disabled={loading}
@@ -143,14 +128,13 @@ const Login = () => {
           Google
         </Button> */}
 
-        <Link
-          href={PAGES.signup}
-          className="mt-4 underline underline-offset-4 text-sm text-gray-400"
-        >
-          Don&apos;t have an account? sign up
-        </Link>
-      </div>
-    </>
+      <Link
+        href={PAGES.signup}
+        className="mt-4 underline underline-offset-4 text-sm text-gray-400"
+      >
+        Don&apos;t have an account? Sign up
+      </Link>
+    </div>
   );
 };
 

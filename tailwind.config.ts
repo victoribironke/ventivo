@@ -23,11 +23,15 @@ export default {
         },
       },
       colors: {
-        main: "#00a606",
-        red: "#ff4141",
         blue: "#3b82f6",
-        yellow: "#ffc400",
-        purple: "#9f39fe",
+        red: "#ef4444",
+        green: "#22c55e",
+        yellow: "#eab308",
+        "firebase-red": "#dd2c00",
+        "firebase-orange": "#ff9100",
+        "firebase-yellow": "#ffc400",
+        "firebase-dark-blue": "#031525",
+
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {

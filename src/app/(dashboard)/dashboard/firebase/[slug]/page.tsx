@@ -4,7 +4,7 @@ import { Metadata } from "next";
 export const generateMetadata = async (props: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> => {
-  // const {slug} = await props.params;
+  const { slug } = await props.params;
 
   return {
     // work on this

@@ -10,15 +10,9 @@ export const BASE_URL =
     : "https://ventivo.co";
 
 export const IMAGES = {
-  logo: { src: "/logo.png", w: 500, h: 500 },
+  logo: { src: "/logo-transparent.png", w: 500, h: 500 },
   logo_dark: { src: "/logo-dark.png", w: 500, h: 500 },
   logo_transparent: { src: "/logo-transparent.png", w: 500, h: 500 },
-  projects_display: { src: "/projects-display.png", w: 1920, h: 880 },
-  charts_display: { src: "/charts-display.png", w: 1920, h: 880 },
-
-  data_visualization: { src: "/blog/data-visualization.jpg", w: 3008, h: 1504 },
-  coding: { src: "/blog/coding.jpg", w: 5184, h: 2592 },
-  security_rules: { src: "/blog/security-rules.jpg", w: 3840, h: 1920 },
 };
 
 export const PAGES = {

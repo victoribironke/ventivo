@@ -14,13 +14,9 @@ const Logo = () => {
         width={IMAGES.logo.w}
         height={IMAGES.logo.h}
         alt="Logo"
-        className="w-5 h-auto"
+        className="w-10 h-auto"
       />
       {/* </div> */}
-      <span className="hidden sm:inline-block text-lg font-semibold mt-0.5">
-        WILLOW
-      </span>
-      {/* </Link> */}
     </div>
   );
 };
