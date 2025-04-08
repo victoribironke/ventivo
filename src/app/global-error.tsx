@@ -19,7 +19,10 @@ const GlobalError = ({ reset }: GlobalErrorProps) => {
             </h1>
             <p className="mt-6 text-lg leading-7">Please refresh the page.</p>
             <div className="mt-6 flex items-center justify-center gap-x-6">
-              <Button onClick={reset} className="bg-main hover:bg-main/90">
+              <Button
+                onClick={reset}
+                className="bg-firebase-orange hover:bg-firebase-orange/90"
+              >
                 Refresh
               </Button>
             </div>
