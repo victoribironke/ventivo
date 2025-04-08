@@ -19,8 +19,9 @@ import {
 import { Menu } from "lucide-react";
 import { useSetAtom } from "jotai";
 import { Input } from "@/components/ui/input";
-import { getUserSession, getCustomer } from "@/lib/supabase";
+import { getUserSession, getCustomer, signOut } from "@/lib/supabase";
 import { customer_info, search, user_session } from "@/atoms/atoms";
+import toast from "react-hot-toast";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -47,6 +48,18 @@ const RootLayout = ({
   const searchPlaceholder =
     pathname === PAGES.dashboard ? "projects" : "charts";
 
+  const signOutUser = async () => {
+    const { error } = await signOut();
+
+    if (error) {
+      toast.error("Error signing out.");
+
+      return;
+    }
+
+    push(PAGES.login);
+  };
+
   useEffect(() => {
     (async () => {
       const { data } = await getUserSession();
@@ -67,7 +80,7 @@ const RootLayout = ({
   }, []);
 
   if (loading) return <PageLoader type="full" />;
-  // LOG OUT NOT WORKING
+
   return (
     <QueryClientProvider client={queryClient}>
       <div className="w-full [--header-height:calc(theme(spacing.14))]">
@@ -128,12 +141,12 @@ const RootLayout = ({
 
                   if (s.type === "button" && s.element) return <s.element />;
 
-                  if (s.type === "button" && s.onclick)
+                  if (s.type === "logout")
                     return (
                       <Button
                         className="w-full justify-start hover:bg-muted gap-4"
                         variant="ghost"
-                        onClick={s.onclick}
+                        onClick={signOutUser}
                       >
                         <s.icon
                           className={s.isActive ? "text-firebase-orange" : ""}

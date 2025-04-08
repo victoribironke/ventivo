@@ -54,4 +54,8 @@ export const getCustomer = async (email: string) => {
   return data;
 };
 
-export const signOut = () => supabase.auth.signOut();
+export const signOut = async () => {
+  const { error } = await supabase.auth.signOut();
+
+  return { error };
+};

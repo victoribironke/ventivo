@@ -162,11 +162,7 @@ export const SIDEBAR_ITEMS = (pathname: string) => [
     icon: LogOut,
     isActive: false,
     link: "",
-    type: "button",
-    onclick: () =>
-      signOut()
-        .then(({ error }) => window.location.href === BASE_URL + PAGES.login)
-        .catch(() => toast.error("An error occured.")),
+    type: "logout",
   },
 ];
 
