@@ -63,18 +63,18 @@ export const DEFAULT_SETTINGS = {
   },
 };
 
-export const OPERATORS = [
-  "<",
-  "<=",
-  "==",
-  ">",
-  ">=",
-  "!=",
-  "array-contains",
-  "array-contains-any",
-  "in",
-  "not-in",
-];
+// export const OPERATORS = [
+//   "<",
+//   "<=",
+//   "==",
+//   ">",
+//   ">=",
+//   "!=",
+//   "array-contains",
+//   "array-contains-any",
+//   "in",
+//   "not-in",
+// ];
 
 export const ICONS = (type: Project["type"]) => {
   if (type === "firebase") return { icon: SiFirebase, color: "#ff9100" };

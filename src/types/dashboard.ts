@@ -1,14 +1,5 @@
 import { Firestore } from "firebase/firestore";
-import React, { Dispatch, SetStateAction } from "react";
-
-export type SidebarProps = {
-  show: boolean;
-  setShow: Dispatch<SetStateAction<boolean>>;
-};
-
-export type DashboardTemplateProps = {
-  children: React.ReactNode;
-};
+import { Dispatch, SetStateAction } from "react";
 
 type Customization = {
   bar: {
@@ -144,12 +135,12 @@ export type NewPostgresChartProps = {
   sUC: Dispatch<SetStateAction<string>>;
 };
 
-export type Coupon = {
-  code: string;
-  created_at: string;
-  id: number;
-  used: boolean;
-};
+// export type Coupon = {
+//   code: string;
+//   created_at: string;
+//   id: number;
+//   used: boolean;
+// };
 
 export type Customer = {
   email: string;
