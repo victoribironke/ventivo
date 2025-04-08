@@ -11,12 +11,7 @@ const Plans = () => {
   let plan;
 
   if (customer.length === 0 || customer[0].has_access === false) plan = "Free";
-  else {
-    if (customer[0].plan_id === "price_1QevdiKBQOuJW2sTVmn0wV8Q")
-      // CHANGE THIS TO THE ACTUAL PLAN ID FOR THE MONTHLY PLAN
-      plan = "Monthly";
-    else plan = "Yearly";
-  }
+  else plan = "Yearly";
 
   const tiers = [
     {
@@ -29,21 +24,6 @@ const Plans = () => {
         userSession?.user.email,
       priceId: "",
       isCurrent: plan === "Free",
-    },
-    {
-      plan: "Pro",
-      price: 4,
-      per: "month",
-      features: [
-        "Unlimited projects",
-        "Unlimited charts",
-        "No watermark on exported charts",
-      ],
-      paymentLink:
-        "https://buy.stripe.com/9AQ15F5X8bf03Di3cd?prefilled_email=" +
-        userSession?.user.email,
-      priceId: "price_1QevdiKBQOuJW2sTVmn0wV8Q",
-      isCurrent: plan === "Monthly",
     },
     {
       plan: "Pro",
@@ -63,7 +43,7 @@ const Plans = () => {
   ];
 
   return (
-    <section className="w-full max-w-6xl gap-6">
+    <section className="w-full max-w-3xl gap-6">
       <div className="w-full flex items-stretch justify-center gap-6 flex-col sm:flex-row mb-6">
         {tiers.map((t, i) => (
           <div
