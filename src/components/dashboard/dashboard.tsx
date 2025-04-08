@@ -1,7 +1,6 @@
 "use client";
 
 import { customer_info, search, user_session } from "@/atoms/atoms";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ICONS, LINKS, PAGES, TABLES } from "@/constants/constants";
 import { supabase } from "@/services/supabase";

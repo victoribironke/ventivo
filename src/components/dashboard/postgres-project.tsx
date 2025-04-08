@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useAtomValue } from "jotai";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { FiPlus } from "react-icons/fi";
 import Link from "next/link";

@@ -13,8 +13,6 @@ import {
 } from "lucide-react";
 import NewFirebaseProject from "@/components/dashboard/projects/new/firebase";
 import NewPostgresProject from "@/components/dashboard/projects/new/postgres";
-import { signOut } from "@/lib/supabase";
-import toast from "react-hot-toast";
 
 export const BASE_URL =
   process.env.NODE_ENV === "development"

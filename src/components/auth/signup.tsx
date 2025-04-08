@@ -8,7 +8,7 @@ import { useState } from "react";
 import { cn, isValidEmail } from "@/lib/utils";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import Link from "next/link";
-import { IMAGES, PAGES } from "@/constants/constants";
+import { PAGES } from "@/constants/constants";
 import {
   signInWithEmail,
   signInWithGithub,
@@ -16,7 +16,6 @@ import {
 } from "@/lib/supabase";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
 
 const SignUp = () => {
   const { push } = useRouter();

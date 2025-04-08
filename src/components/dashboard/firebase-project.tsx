@@ -10,7 +10,6 @@ import { useAtomValue } from "jotai";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { setupFirebase } from "@/lib/utils";
 import { Firestore } from "firebase/firestore";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { FiPlus } from "react-icons/fi";
 import Link from "next/link";

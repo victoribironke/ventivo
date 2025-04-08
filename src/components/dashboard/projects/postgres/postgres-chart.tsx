@@ -6,7 +6,6 @@ import {
 } from "@/types/dashboard";
 import { useEffect, useState } from "react";
 import { getRandomColor } from "@/lib/utils";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { AiOutlinePicture } from "react-icons/ai";
 import { saveAs } from "file-saver";

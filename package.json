@@ -59,6 +59,7 @@
     "@types/file-saver": "^2.0.7",
     "@types/node": "^20",
     "@types/paystack__inline-js": "^1.0.1",
+    "@types/pg": "^8.11.11",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",

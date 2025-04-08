@@ -8,7 +8,7 @@ import { useState } from "react";
 import { cn, isValidEmail } from "@/lib/utils";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import Link from "next/link";
-import { IMAGES, PAGES } from "@/constants/constants";
+import { PAGES } from "@/constants/constants";
 import {
   signInWithEmail,
   signInWithGithub,

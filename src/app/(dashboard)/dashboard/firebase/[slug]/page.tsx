@@ -1,6 +1,5 @@
 import FirebaseProjectPage from "@/components/dashboard/firebase-project";
-import { BASE_URL, PAGES, TABLES } from "@/constants/constants";
-import { supabase } from "@/services/supabase";
+import { BASE_URL, PAGES } from "@/constants/constants";
 import { Metadata } from "next";
 
 export const generateMetadata = async (props: {
