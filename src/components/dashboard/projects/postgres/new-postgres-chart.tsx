@@ -194,7 +194,7 @@ const NewPostgresChart = ({ p, s, tables, sUC }: NewPostgresChartProps) => {
                     className={cn(
                       "border font-normal w-full flex items-center justify-center gap-2",
                       formData.type === b.text.toLowerCase()
-                        ? "bg-black text-white border-transparent hover:bg-black/90"
+                        ? "bg-firebase-orange text-white border-transparent hover:bg-firebase-orange/90"
                         : "bg-white text-black hover:bg-white/90"
                     )}
                     key={i}
