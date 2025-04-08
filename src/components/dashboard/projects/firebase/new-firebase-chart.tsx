@@ -129,7 +129,7 @@ const NewFirebaseChart = ({ db, p, s, sUC }: NewFirebaseChartProps) => {
 
   return (
     <Dialog>
-      <DialogTrigger>
+      <DialogTrigger asChild>
         <Button className="bg-firebase-orange font-normal text-white w-full max-w-[10rem] hover:bg-firebase-orange/90 flex items-center justify-center gap-2">
           <FiPlus className="text-lg" />
           New chart
@@ -199,7 +199,7 @@ const NewFirebaseChart = ({ db, p, s, sUC }: NewFirebaseChartProps) => {
                     className={cn(
                       "border font-normal w-full flex items-center justify-center gap-2",
                       formData.type === b.text.toLowerCase()
-                        ? "bg-black text-white border-transparent hover:bg-black/90"
+                        ? "bg-firebase-orange text-white border-transparent hover:bg-firebase-orange/90"
                         : "bg-white text-black hover:bg-white/90"
                     )}
                     key={i}

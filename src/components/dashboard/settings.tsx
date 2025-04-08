@@ -22,7 +22,7 @@ const Settings = () => {
           defaultValue={t === "account" || t === "billing" ? t : "account"}
           className="w-full flex justify-center flex-col"
         >
-          <TabsList className="w-fit h-fit flex flex-wrap bg-gray-50 border">
+          <TabsList className="w-fit h-fit flex flex-wrap border">
             {tabs.map((t, i) => (
               <TabsTrigger
                 value={t.toLowerCase()}

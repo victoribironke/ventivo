@@ -105,11 +105,11 @@ const PostgresProjectPage = ({ slug }: { slug: string }) => {
   return (
     <>
       <div className="w-full flex items-center justify-between mb-6 gap-4">
-        <p className="text-xl font-medium mr-auto">
+        <p className="text-xl font-medium flex items-center justify-center gap-2 mr-auto">
           {project?.project_info.projectName}{" "}
-          <Badge className="bg-firebase-orange text-white">
+          <div className="size-7 bg-firebase-orange border p-1 flex items-center justify-center text-xs rounded-full font-medium whitespace-nowrap">
             {project?.charts.length}
-          </Badge>
+          </div>
         </p>
 
         <CustomizeCharts project={project} sUC={setUpdateCharts} />
@@ -140,7 +140,7 @@ const PostgresProjectPage = ({ slug }: { slug: string }) => {
         )}
       </div>
 
-      <div className="w-full grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 justify-center gap-4">
+      <div className="w-full grid grid-cols-1 lg:grid-cols-2 justify-center gap-4">
         {filteredCharts.map((c, i) => (
           <ChartComp
             chart={c}

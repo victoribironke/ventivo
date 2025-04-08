@@ -134,12 +134,14 @@ const RootLayout = ({
                         className="w-full justify-start hover:bg-transparent my-2"
                         variant="ghost"
                         disabled
+                        key={i}
                       >
                         {s.title}
                       </Button>
                     );
 
-                  if (s.type === "button" && s.element) return <s.element />;
+                  if (s.type === "button" && s.element)
+                    return <s.element key={i} />;
 
                   if (s.type === "logout")
                     return (
@@ -147,6 +149,7 @@ const RootLayout = ({
                         className="w-full justify-start hover:bg-muted gap-4"
                         variant="ghost"
                         onClick={signOutUser}
+                        key={i}
                       >
                         <s.icon
                           className={s.isActive ? "text-firebase-orange" : ""}

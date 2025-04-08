@@ -67,7 +67,7 @@ const Plans = () => {
       <div className="w-full flex items-stretch justify-center gap-6 flex-col sm:flex-row mb-6">
         {tiers.map((t, i) => (
           <div
-            className="bg-white border flex items-start justify-center flex-col gap-4 w-full sm:w-1/2 p-6 rounded-xl"
+            className="bg-muted/50 border flex items-start justify-center flex-col gap-4 w-full sm:w-1/2 p-6 rounded-xl"
             key={i}
           >
             <h1 className="font-semibold text-lg text-firebase-orange">
@@ -83,7 +83,7 @@ const Plans = () => {
 
             <ul className="w-full flex flex-col gap-4 my-6">
               {t.features.map((f, j) => (
-                <li key={j} className="flex items-center text-gray-700">
+                <li key={j} className="flex items-center">
                   <IoCheckmarkOutline className="text-firebase-orange mr-2" />{" "}
                   {f}
                 </li>

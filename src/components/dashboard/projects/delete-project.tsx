@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { PAGES, TABLES } from "@/constants/constants";
 import { supabase } from "@/services/supabase";
 import { DeleteProjectProps } from "@/types/dashboard";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
@@ -44,8 +44,8 @@ const DeleteProject = ({ p }: DeleteProjectProps) => {
 
   return (
     <Dialog>
-      <DialogTrigger>
-        <Button className="bg-white font-normal w-fit hover:bg-white/90 border text-red">
+      <DialogTrigger asChild>
+        <Button className="bg-black w-fit hover:bg-black/90 border text-red">
           <IoTrashOutline />
         </Button>
       </DialogTrigger>

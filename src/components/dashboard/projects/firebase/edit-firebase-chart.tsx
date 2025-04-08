@@ -104,9 +104,9 @@ const EditFirebaseChart = ({ db, chart, sUC }: EditFirebaseChartProps) => {
 
   return (
     <Dialog>
-      <DialogTrigger>
-        <Button className="bg-white font-normal text-black w-fit hover:bg-white/90 border">
-          <BsGear />
+      <DialogTrigger asChild>
+        <Button className="w-fit border bg-black hover:bg-black/90">
+          <BsGear className="text-white" />
         </Button>
       </DialogTrigger>
       <DialogContent className="w-full border max-w-2xl">
@@ -178,7 +178,7 @@ const EditFirebaseChart = ({ db, chart, sUC }: EditFirebaseChartProps) => {
                     className={cn(
                       "border font-normal w-full flex items-center justify-center gap-2",
                       formData.type === b.text.toLowerCase()
-                        ? "bg-black text-white border-transparent hover:bg-black/90"
+                        ? "bg-firebase-orange text-white border-transparent hover:bg-firebase-orange/90"
                         : "bg-white text-black hover:bg-white/90"
                     )}
                     key={i}

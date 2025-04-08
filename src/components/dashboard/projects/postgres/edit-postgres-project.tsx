@@ -107,9 +107,9 @@ const EditPostgresProject = ({ project }: EditProjectProps) => {
 
   return (
     <Dialog>
-      <DialogTrigger>
-        <Button className="bg-white font-normal text-black w-fit hover:bg-white/90 border">
-          <BsGear className="text-lg" />
+      <DialogTrigger asChild>
+        <Button className="bg-black w-fit hover:bg-black/90 border">
+          <BsGear className="text-lg text-white" />
         </Button>
       </DialogTrigger>
       <DialogContent className="w-full border max-w-2xl">

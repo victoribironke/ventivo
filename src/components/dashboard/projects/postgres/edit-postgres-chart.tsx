@@ -88,9 +88,9 @@ const EditPostgresChart = ({
 
   return (
     <Dialog>
-      <DialogTrigger>
-        <Button className="bg-white font-normal text-black w-fit hover:bg-white/90 border">
-          <BsGear />
+      <DialogTrigger asChild>
+        <Button className="w-fit border bg-black hover:bg-black/90">
+          <BsGear className="text-white" />
         </Button>
       </DialogTrigger>
       <DialogContent className="w-full border max-w-2xl">

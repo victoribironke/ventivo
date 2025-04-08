@@ -64,7 +64,7 @@ const CustomizeCharts = ({ project, sUC }: CustomizeChartsProps) => {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
-        <Button className="bg-white font-normal text-black w-fit hover:bg-white/90 border">
+        <Button className="w-fit border bg-black hover:bg-black/90 text-white">
           Customize
         </Button>
       </SheetTrigger>
@@ -97,7 +97,7 @@ const CustomizeCharts = ({ project, sUC }: CustomizeChartsProps) => {
               <Switch
                 checked={barSettings.showCount}
                 onCheckedChange={(e) => updateBarSettings(e, "showCount")}
-                className="data-[state=checked]:bg-firebase-orange"
+                className="data-[state=checked]:bg-white"
               />
             </div>
 
@@ -107,7 +107,7 @@ const CustomizeCharts = ({ project, sUC }: CustomizeChartsProps) => {
               <Switch
                 checked={barSettings.paginateBars}
                 onCheckedChange={(e) => updateBarSettings(e, "paginateBars")}
-                className="data-[state=checked]:bg-firebase-orange"
+                className="data-[state=checked]:bg-white"
               />
             </div>
 
@@ -152,7 +152,7 @@ const CustomizeCharts = ({ project, sUC }: CustomizeChartsProps) => {
               <Switch
                 checked={lineSettings.showCount}
                 onCheckedChange={(e) => updateLineSettings(e, "showCount")}
-                className="data-[state=checked]:bg-firebase-orange"
+                className="data-[state=checked]:bg-white"
               />
             </div>
 
@@ -162,7 +162,7 @@ const CustomizeCharts = ({ project, sUC }: CustomizeChartsProps) => {
               <Switch
                 checked={lineSettings.paginateDots}
                 onCheckedChange={(e) => updateLineSettings(e, "paginateDots")}
-                className="data-[state=checked]:bg-firebase-orange"
+                className="data-[state=checked]:bg-white"
               />
             </div>
 

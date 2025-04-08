@@ -13,7 +13,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { PAGES, TABLES } from "@/constants/constants";
 import { supabase } from "@/services/supabase";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
@@ -75,17 +75,17 @@ const DeleteAccount = () => {
       <AlertDialogContent className="w-full border">
         <AlertDialogHeader>
           <AlertDialogTitle>Delete your data</AlertDialogTitle>
-          <AlertDialogDescription className="text-black">
+          <AlertDialogDescription>
             Are you sure you want to delete your data? This action will delete
             all your projects and charts.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel className="bg-black text-white hover:bg-black hover:text-white border-0 font-normal">
+          <AlertDialogCancel className="bg-black text-white hover:bg-black hover:text-white w-full">
             Cancel
           </AlertDialogCancel>
           <AlertDialogAction
-            className="bg-white text-black hover:bg-white hover:text-black border-0 gap-2 font-normal"
+            className="bg-red text-white hover:bg-red hover:text-white gap-2 w-full"
             disabled={loading}
             onClick={deleteAccount}
           >
