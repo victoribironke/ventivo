@@ -87,7 +87,7 @@ const Plans = () => {
         ))}
       </div>
 
-      {customer.length !== 0 && (
+      {/* {customer.length !== 0 && (
         <Link
           href={
             "https://billing.stripe.com/p/login/00g5oeakt7NU3mweUU?prefilled_email=" +
@@ -100,7 +100,7 @@ const Plans = () => {
             Billing
           </Button>
         </Link>
-      )}
+      )} */}
     </section>
   );
 };
