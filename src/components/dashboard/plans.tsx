@@ -19,9 +19,7 @@ const Plans = () => {
       price: 0,
       per: "month",
       features: ["1 project", "3 charts", "Watermark on exported charts"],
-      paymentLink:
-        "https://billing.stripe.com/p/login/00g5oeakt7NU3mweUU?prefilled_email=" +
-        userSession?.user.email,
+      paymentLink: "",
       priceId: "",
       isCurrent: plan === "Free",
     },
@@ -34,9 +32,7 @@ const Plans = () => {
         "Unlimited charts",
         "No watermark on exported charts",
       ],
-      paymentLink:
-        "https://buy.stripe.com/8wM7u3adoaaW2ze8ww?prefilled_email=" +
-        userSession?.user.email,
+      paymentLink: "",
       priceId: "price_1QeveiKBQOuJW2sTl7UtIa78",
       isCurrent: plan === "Yearly",
     },
