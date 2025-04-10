@@ -19,6 +19,8 @@ export const BASE_URL =
     ? "http://localhost:3000"
     : "https://ventivo.co";
 
+export const THEME_KEY = "ventivo-theme";
+
 export const IMAGES = {
   logo: { src: "/logo-transparent.png", w: 500, h: 500 },
   logo_dark: { src: "/logo-dark.png", w: 500, h: 500 },

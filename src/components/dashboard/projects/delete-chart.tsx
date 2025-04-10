@@ -43,7 +43,7 @@ const DeleteChart = ({ chart, p, sUC }: DeleteChartProps) => {
   return (
     <Dialog>
       <DialogTrigger>
-        <Button className="w-fit border bg-black hover:bg-black/90 text-red">
+        <Button className="w-fit border bg-white hover:bg-white/90 dark:bg-black hover:dark:bg-black/90 text-red">
           <IoTrashOutline />
         </Button>
       </DialogTrigger>

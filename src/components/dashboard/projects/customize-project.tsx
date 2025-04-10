@@ -64,7 +64,7 @@ const CustomizeCharts = ({ project, sUC }: CustomizeChartsProps) => {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
-        <Button className="w-fit border bg-black hover:bg-black/90 text-white">
+        <Button className="w-fit border bg-white hover:bg-white/90 dark:bg-black hover:dark:bg-black/90 text-black dark:text-white">
           Customize
         </Button>
       </SheetTrigger>

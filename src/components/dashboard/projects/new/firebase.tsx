@@ -110,7 +110,7 @@ const NewFirebaseProject = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="w-full bg-transparent hover:bg-muted text-white flex justify-start gap-4">
+        <Button className="w-full bg-transparent hover:bg-muted text-black dark:text-white flex justify-start gap-4 shadow-none">
           <SiFirebase fill="#ff9100" />
           <p>Firebase</p>
         </Button>

@@ -110,7 +110,7 @@ const NewPostgresProject = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="w-full bg-transparent hover:bg-muted text-white flex justify-start gap-4">
+        <Button className="w-full bg-transparent hover:bg-muted text-black dark:text-white flex justify-start gap-4 shadow-none">
           <BiLogoPostgresql fill="#3b82f6" />
           <p>PostgreSQL</p>
         </Button>

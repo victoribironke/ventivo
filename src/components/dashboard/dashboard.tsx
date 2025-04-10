@@ -53,7 +53,7 @@ const Dashboard = () => {
       <div className="w-full flex items-center justify-between mb-6">
         <p className="text-xl font-medium flex items-center justify-center gap-2">
           Projects{" "}
-          <div className="size-7 bg-firebase-orange border p-1 flex items-center justify-center text-xs rounded-full font-medium whitespace-nowrap">
+          <div className="w-fit h-7 bg-firebase-orange text-white border py-1 px-3 flex items-center justify-center text-xs rounded-lg font-medium whitespace-nowrap">
             {projects.length}
           </div>
         </p>

@@ -93,7 +93,7 @@ const ChartComp = ({ chart, db, p, sUC }: FirebaseChartCompProps) => {
       <div className="w-full flex items-center justify-between mb-6 gap-2">
         <p className="font-medium flex items-center justify-center gap-2 mr-auto">
           {name}{" "}
-          <div className="size-6 bg-firebase-orange border p-1 flex items-center justify-center text-xs rounded-full font-medium whitespace-nowrap">
+          <div className="w-fit h-6 bg-firebase-orange text-white border py-1 px-3 flex items-center justify-center text-xs rounded-lg font-medium whitespace-nowrap">
             {total}
           </div>
         </p>
@@ -101,10 +101,10 @@ const ChartComp = ({ chart, db, p, sUC }: FirebaseChartCompProps) => {
         {!capturing && (
           <>
             <Button
-              className="w-fit border bg-black hover:bg-black/90"
+              className="w-fit border bg-white hover:bg-white/90 dark:bg-black hover:dark:bg-black/90"
               onClick={handleDownload}
             >
-              <AiOutlinePicture className="text-lg text-white" />
+              <AiOutlinePicture className="text-lg text-black dark:text-white" />
             </Button>
             <EditFirebaseChart db={db} chart={chart} sUC={sUC} />
             <DeleteChart chart={chart} p={p} sUC={sUC} />{" "}

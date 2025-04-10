@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Suspense } from "react";
 import { Toaster } from "react-hot-toast";
+import ThemeToggle from "@/components/general/theme-toggle";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,9 +16,10 @@ const RootLayout = ({
 }>) => {
   return (
     <html lang="en">
-      <body className="antialiased flex items-center justify-center dark">
+      <body className="antialiased flex items-center justify-center">
         <Toaster />
         <Suspense>{children}</Suspense>
+        <ThemeToggle />
       </body>
     </html>
   );

@@ -7,6 +7,7 @@ import { useAutosizeTextArea } from "@/hooks/general";
 import toast from "react-hot-toast";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import Output from "./output";
 
 const UpdateData = () => {
   const [snippet, setSnippet] = useState("");
@@ -33,19 +34,7 @@ const UpdateData = () => {
           ref={textAreaRef}
         /> */}
 
-        <SyntaxHighlighter
-          language="javascript"
-          style={atomDark}
-          customStyle={{
-            borderRadius: "0.5rem",
-            fontSize: "0.875rem",
-            lineHeight: "1.5",
-            padding: "1rem",
-            backgroundColor: "#27272a",
-          }}
-        >
-          {snippet}
-        </SyntaxHighlighter>
+        <Output snippet={snippet} />
 
         <Button
           className="w-1/5 bg-firebase-orange hover:bg-firebase-orange/90 text-white hover:text-white"

@@ -68,7 +68,7 @@ const Login = () => {
   };
 
   return (
-    <div className="w-full max-w-xl p-6 flex items-center justify-center flex-col gap-4 rounded-xl border">
+    <div className="w-full bg-muted/30 max-w-xl p-6 flex items-center justify-center flex-col gap-4 rounded-xl border">
       <p className="w-full font-medium text-xl md:text-2xl mb-4">
         Sign in to your account
       </p>

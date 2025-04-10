@@ -85,7 +85,7 @@ const RootLayout = ({
     <QueryClientProvider client={queryClient}>
       <div className="w-full [--header-height:calc(theme(spacing.14))]">
         <section className="w-full min-h-screen flex items-center flex-col relative pt-[4.5rem]">
-          <div className="w-full border-b p-4 flex items-center justify-center fixed z-50 top-0 bg-black">
+          <div className="w-full border-b p-4 flex items-center justify-center fixed z-50 top-0 bg-gray-100 dark:bg-black">
             <div className="w-full max-w-[1600px] flex gap-4 items-center justify-between">
               <DropdownMenu>
                 <DropdownMenuTrigger className="md:hidden">
@@ -115,7 +115,7 @@ const RootLayout = ({
 
               <Input
                 className={cn(
-                  "max-w-lg rounded-lg focus-within:border-2 focus-within:border-firebase-orange",
+                  "max-w-lg bg-white dark:bg-transparent rounded-lg focus-within:border-2 focus-within:border-firebase-orange",
                   pathname === PAGES.settings ? "hidden" : "block"
                 )}
                 placeholder={`Search your ${searchPlaceholder}...`}
@@ -164,13 +164,17 @@ const RootLayout = ({
                         className={cn(
                           "w-full justify-start hover:bg-muted gap-4",
                           s.isActive
-                            ? "bg-firebase-orange/5 hover:bg-firebase-orange/5"
-                            : ""
+                            ? "bg-firebase-orange hover:bg-firebase-orange  dark:bg-firebase-orange/5 hover:dark:bg-firebase-orange/5 text-white hover:text-white"
+                            : "text-black hover:text-black dark:text-white hover:dark:text-white"
                         )}
                         variant="ghost"
                       >
                         <s.icon
-                          className={s.isActive ? "text-firebase-orange" : ""}
+                          className={
+                            s.isActive
+                              ? "text:white dark:text-firebase-orange"
+                              : "text-black dark:text-white"
+                          }
                         />
                         {s.title}
                       </Button>

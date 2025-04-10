@@ -105,8 +105,8 @@ const EditFirebaseChart = ({ db, chart, sUC }: EditFirebaseChartProps) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="w-fit border bg-black hover:bg-black/90">
-          <BsGear className="text-white" />
+        <Button className="w-fit border bg-white hover:bg-white/90 dark:bg-black hover:dark:bg-black/90">
+          <BsGear className="text-black dark:text-white" />
         </Button>
       </DialogTrigger>
       <DialogContent className="w-full border max-w-2xl">
