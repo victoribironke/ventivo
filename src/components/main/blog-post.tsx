@@ -4,9 +4,22 @@ import { BlogPostData } from "@/types/general";
 import NotionBlockRenderer from "./notion-block-renderer";
 
 const BlogPost = ({ data }: { data: BlogPostData }) => {
-  const date = new Date(data.date_published).toLocaleDateString("en-US", {
+  const d = data.date_published || new Date().toISOString();
+
+  const date = new Date(d).toLocaleDateString("en-US", {
     dateStyle: "full",
   });
+
+  if (!data.content)
+    return (
+      <>
+        <h1 className="w-full max-w-3xl text-center text-3xl md:text-4xl font-semibold px-4">
+          Article not found
+        </h1>
+
+        <p className="w-full text-center text-muted-foreground px-4">{date}</p>
+      </>
+    );
 
   return (
     <>

@@ -23,6 +23,14 @@ export const getArticleContent = async (slug: string) => {
     return { data, error: null };
   } catch (e) {
     console.error(e);
-    return { data: null, error: "A server error occured." };
+    return {
+      data: {
+        content: [],
+        title: "Article not found",
+        date_published: new Date().toISOString(),
+        description: "",
+      },
+      error: "A server error occured.",
+    };
   }
 };
