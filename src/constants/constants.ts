@@ -39,6 +39,15 @@ export const PAGES = {
     postgres: (id: string) => `/dashboard/postgres/${id}`,
   },
   settings: "/dashboard/settings",
+
+  terms: "/terms",
+  privacy_policy: "/privacy-policy",
+  blog: "/blog",
+  tools: "/tools",
+
+  twitter: "https://twitter.com/ventivo_",
+  instagram: "https://instagram.com/ventivo_",
+  tiktok: "https://tiktok.com/ventivo_",
 };
 
 export const TABLES = {

@@ -4,7 +4,7 @@ const RootLayout = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <main className="w-full min-h-screen flex items-center flex-col relative pt-20">
+    <main className="w-full min-h-screen flex items-center justify-center flex-col relative gap-8">
       {children}
     </main>
   );
