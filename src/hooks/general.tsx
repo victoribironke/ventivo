@@ -1,26 +1,47 @@
-// import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
-// export const useToggle = (defaultValue: boolean): [boolean, () => void] => {
-//   const [value, setValue] = useState(defaultValue);
+export const useToggle = (defaultValue: boolean): [boolean, () => void] => {
+  const [value, setValue] = useState(defaultValue);
 
-//   const toggleValue = () => setValue((currentValue) => !currentValue);
+  const toggleValue = () => setValue((currentValue) => !currentValue);
 
-//   return [value, toggleValue];
-// };
+  return [value, toggleValue];
+};
 
-// export const useAutosizeTextArea = (
-//   textAreaRef: HTMLTextAreaElement | null,
-//   value: string
-// ) => {
-//   useEffect(() => {
-//     if (textAreaRef) {
-//       // We need to reset the height momentarily to get the correct scrollHeight for the textarea
-//       textAreaRef.style.height = "0px";
-//       const scrollHeight = textAreaRef.scrollHeight;
+export const useAutosizeTextArea = (
+  textAreaRef: HTMLTextAreaElement | null,
+  value: string
+) => {
+  useEffect(() => {
+    if (textAreaRef) {
+      // We need to reset the height momentarily to get the correct scrollHeight for the textarea
+      textAreaRef.style.height = "0px";
+      const scrollHeight = textAreaRef.scrollHeight;
 
-//       // We then set the height directly, outside of the render loop
-//       // Trying to set this with state or a ref will product an incorrect value.
-//       textAreaRef.style.height = scrollHeight + "px";
-//     }
-//   }, [textAreaRef, value]);
-// };
+      // We then set the height directly, outside of the render loop
+      // Trying to set this with state or a ref will product an incorrect value.
+      textAreaRef.style.height = scrollHeight + "px";
+    }
+  }, [textAreaRef, value]);
+};
+
+export const useCopyToClipboard = (resetInterval: number, code: string) => {
+  const [isCopied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(code);
+  };
+
+  useEffect(() => {
+    let timeout: any;
+
+    if (isCopied && resetInterval)
+      timeout = setTimeout(() => setCopied(false), resetInterval);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [isCopied, resetInterval]);
+
+  return [isCopied, handleCopy] as const;
+};
