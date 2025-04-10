@@ -11,9 +11,11 @@ const secretKey =
 
 const verifySignature = (eventData: any, signature: string): boolean => {
   const hmac = crypto.createHmac("sha512", secretKey!);
+
   const expectedSignature = hmac
     .update(JSON.stringify(eventData))
     .digest("hex");
+
   return expectedSignature === signature;
 };
 
