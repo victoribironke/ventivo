@@ -4,6 +4,8 @@ import { getArticleContent } from "@/lib/notion";
 import { BlogPostData } from "@/types/general";
 import { Metadata } from "next";
 
+export const dynamic = "force-dynamic";
+
 export const generateMetadata = async (props: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> => {

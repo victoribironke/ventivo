@@ -5,6 +5,8 @@ import Link from "next/link";
 import { FaAnglesRight } from "react-icons/fa6";
 import slugify from "slugify";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Blog ~ Ventivo",
   description: "Blog posts for Ventivo.",
