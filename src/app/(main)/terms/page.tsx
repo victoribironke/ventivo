@@ -1,4 +1,3 @@
-import Footer from "@/components/main/footer";
 import { BASE_URL, PAGES } from "@/constants/constants";
 import { Metadata } from "next";
 

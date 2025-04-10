@@ -1,10 +1,6 @@
-import Footer from "@/components/main/footer";
 import Homepage from "@/components/main/home";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
-import { BASE_URL, PAGES } from "@/constants/constants";
+import { BASE_URL } from "@/constants/constants";
 import { Metadata } from "next";
-import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Home ~ Ventivo",

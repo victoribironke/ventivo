@@ -3,10 +3,9 @@ import { IoCheckmarkOutline } from "react-icons/io5";
 import { Button } from "../ui/button";
 import { useAtomValue } from "jotai";
 import { cn } from "@/lib/utils";
-import { customer_info, user_session } from "@/atoms/atoms";
+import { customer_info } from "@/atoms/atoms";
 
 const Plans = () => {
-  const userSession = useAtomValue(user_session);
   const customer = useAtomValue(customer_info);
   let plan;
 

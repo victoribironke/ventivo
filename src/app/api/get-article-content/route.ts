@@ -1,3 +1,4 @@
+import { BASE_URL } from "@/constants/constants";
 import { notion } from "@/services/notion";
 import { Article } from "@/types/general";
 import { NextRequest, NextResponse } from "next/server";
@@ -7,11 +8,6 @@ export const GET = async (req: NextRequest) => {
   const { slug } = Object.fromEntries(req.nextUrl.searchParams);
 
   try {
-    const BASE_URL =
-      process.env.NODE_ENV === "development"
-        ? "http://localhost:3000"
-        : "https://ventivo.co";
-
     const response = await fetch(`${BASE_URL}/api/get-all-articles`); // Corrected route
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`); // Handle error

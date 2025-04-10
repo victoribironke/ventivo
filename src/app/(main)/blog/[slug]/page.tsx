@@ -1,4 +1,3 @@
-import FirebaseProjectPage from "@/components/dashboard/firebase-project";
 import BlogPost from "@/components/main/blog-post";
 import { BASE_URL, PAGES } from "@/constants/constants";
 import { getArticleContent } from "@/lib/notion";
@@ -70,6 +69,7 @@ export const generateMetadata = async (props: {
         },
       };
   } catch (e) {
+    console.error(e);
     return {
       title: "Article not found ~ Ventivo",
       description: "This article was not found.",
