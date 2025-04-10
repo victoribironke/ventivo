@@ -5,8 +5,6 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import toast from "react-hot-toast";
 import { useAutosizeTextArea } from "@/hooks/general";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import Output from "./output";
 
 const DeleteData = () => {

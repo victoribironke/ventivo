@@ -1,7 +1,7 @@
 "use client";
 
 import { THEME_KEY } from "@/constants/constants";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Button } from "../ui/button";
 import { useAtom } from "jotai";
 import { app_theme } from "@/atoms/atoms";
