@@ -43,6 +43,7 @@ export const PAGES = {
   terms: "/terms",
   privacy_policy: "/privacy-policy",
   blog: "/blog",
+  blog_post: (slug: string) => `/blog/${slug}`,
   tools: "/tools",
 
   twitter: "https://twitter.com/ventivo_",

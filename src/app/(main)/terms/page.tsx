@@ -4,10 +4,10 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Terms ~ Ventivo",
-  description: "Get realtime charts from your data.",
+  description: "Terms of service for Ventivo.",
   openGraph: {
     title: "Terms ~ Ventivo",
-    description: "Get realtime charts from your data.",
+    description: "Terms of service for Ventivo.",
     type: "website",
     url: BASE_URL + PAGES.terms,
     images: [
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Terms ~ Ventivo",
-    description: "Get realtime charts from your data.",
+    description: "Terms of service for Ventivo.",
 
     images: [
       {
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 const Page = () => {
   return (
     <section className="w-full max-w-3xl">
-      <h1 className="text-2xl md:text-3xl font-bold leading-tight mb-6">
+      <h1 className="text-2xl md:text-3xl font-semibold leading-tight mb-6">
         Terms of Service
       </h1>
 
