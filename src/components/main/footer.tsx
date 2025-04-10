@@ -50,8 +50,8 @@ const Footer = () => {
 
         <span>/</span>
 
-        <Link href={PAGES.twitter} className="w-fit hover:text-firebase-orange">
-          Twitter
+        <Link href={PAGES.tiktok} className="w-fit hover:text-firebase-orange">
+          TikTok
         </Link>
       </div>
     </>
