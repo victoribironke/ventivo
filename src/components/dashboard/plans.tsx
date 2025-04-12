@@ -24,7 +24,7 @@ const Plans = () => {
     },
     {
       plan: "Pro",
-      price: 45,
+      price: 35,
       per: "year",
       features: [
         "Unlimited projects",
@@ -36,6 +36,8 @@ const Plans = () => {
       isCurrent: plan === "Yearly",
     },
   ];
+
+  // 30 dollars for the LTD from the platforms and 40 for the LTD from the app itself
 
   return (
     <section className="w-full max-w-3xl gap-6">
@@ -81,6 +83,24 @@ const Plans = () => {
           </div>
         ))}
       </div>
+
+      {/* <div className="bg-muted/50 border rounded-xl p-6 w-full flex items-center justify-between">
+        <p className="text-lg">
+          <span className="text-3xl font-extrabold text-firebase-orange">
+            $ 40{" "}
+          </span>
+          one-time payment
+        </p>
+
+        <Link href="">
+          <Button
+            className="font-semibold w-fit py-3 rounded-lg text-white bg-firebase-orange hover:bg-firebase-orange/90"
+            disabled // this, and all other buttons, should be disabled if they have bought this plan
+          >
+            Buy plan
+          </Button>
+        </Link>
+      </div> */}
 
       {/* {customer.length !== 0 && (
         <Link
