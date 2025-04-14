@@ -3,10 +3,18 @@ import { IoCheckmarkOutline } from "react-icons/io5";
 import { Button } from "../ui/button";
 import { useAtomValue } from "jotai";
 import { cn } from "@/lib/utils";
-import { customer_info } from "@/atoms/atoms";
+import { customer_info, user_session } from "@/atoms/atoms";
+import { Input } from "../ui/input";
+import { useState } from "react";
+import { redeemCode } from "@/lib/supabase";
+import toast from "react-hot-toast";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 const Plans = () => {
+  const [code, setCode] = useState("");
+  const [loading, setLoading] = useState(false);
   const customer = useAtomValue(customer_info);
+  const userSession = useAtomValue(user_session);
   let plan;
 
   if (customer.length === 0 || customer[0].has_access === false) plan = "Free";
@@ -34,6 +42,23 @@ const Plans = () => {
       isCurrent: plan === "Yearly",
     },
   ];
+
+  const redeem = async () => {
+    setLoading(true);
+
+    const { data, error } = await redeemCode(
+      userSession?.user.email || "",
+      code
+    );
+
+    setLoading(false);
+
+    if (error) return toast.error(error);
+
+    toast.success(data);
+
+    window.location.reload();
+  };
 
   return (
     <section className="w-full max-w-3xl gap-6">
@@ -66,7 +91,7 @@ const Plans = () => {
             <Link href={t.isCurrent ? "" : t.paymentLink} className="w-full">
               <Button
                 className={cn(
-                  "font-semibold w-full py-3 rounded-lg text-white",
+                  "w-full text-white",
                   t.isCurrent
                     ? "bg-black hover:bg-black"
                     : "bg-firebase-orange hover:bg-firebase-orange/90"
@@ -80,23 +105,29 @@ const Plans = () => {
         ))}
       </div>
 
-      {/* <div className="bg-muted/50 border rounded-xl p-6 w-full flex items-center justify-between">
-        <p className="text-lg">
-          <span className="text-3xl font-extrabold text-firebase-orange">
-            $ 40{" "}
-          </span>
-          one-time payment
-        </p>
+      <p className="mb-6 font-medium lg:text-lg">
+        Coming from AppSumo? Redeem your code below
+      </p>
 
-        <Link href="">
-          <Button
-            className="font-semibold w-fit py-3 rounded-lg text-white bg-firebase-orange hover:bg-firebase-orange/90"
-            disabled // this, and all other buttons, should be disabled if they have bought this plan
-          >
-            Buy plan
-          </Button>
-        </Link>
-      </div> */}
+      <div className="w-full flex items-center justify-between max-w-sm gap-4">
+        <Input
+          type="text"
+          placeholder="Code"
+          value={code}
+          onChange={(e) => setCode(e.target.value)}
+        />
+
+        <Button
+          className="w-fit py-3 text-white bg-firebase-orange hover:bg-firebase-orange/90"
+          onClick={redeem}
+          disabled={loading}
+        >
+          Redeem{" "}
+          <AiOutlineLoading3Quarters
+            className={cn("animate-spin", loading ? "block" : "hidden")}
+          />
+        </Button>
+      </div>
 
       {/* {customer.length !== 0 && (
         <Link

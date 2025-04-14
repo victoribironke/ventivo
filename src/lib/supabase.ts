@@ -54,6 +54,37 @@ export const getCustomer = async (email: string) => {
   return data;
 };
 
+export const redeemCode = async (email: string, code: string) => {
+  const { data, error } = await supabase
+    .from(TABLES.coupons)
+    .select()
+    .eq("code", code);
+
+  if (error || data.length === 0) return { data: null, error: "Invalid code." };
+
+  if (data[0].used)
+    return { data: null, error: "This code has been redeemed." };
+
+  await supabase.from(TABLES.coupons).update({ used: true }).eq("code", code);
+
+  const c = await getCustomer(email);
+
+  if (c.length === 0) {
+    await supabase.from(TABLES.customers).insert({
+      email,
+      name: "",
+      customer_id: `CUS_appsumo_${Date.now()}`,
+    });
+  }
+
+  await supabase
+    .from(TABLES.customers)
+    .update({ plan_id: `PLN_appsumo_${Date.now()}`, has_access: true })
+    .eq("email", email);
+
+  return { data: "Your code has been redeemed.", error: null };
+};
+
 export const signOut = async () => {
   const { error } = await supabase.auth.signOut();
 
