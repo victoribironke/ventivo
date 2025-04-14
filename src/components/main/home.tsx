@@ -56,6 +56,18 @@ const Home = () => {
           </>
         )}
       </div>
+
+      <Link
+        href="https://startupfa.me/s/ventivo?utm_source=ventivo.co"
+        target="_blank"
+      >
+        <img
+          src="https://startupfa.me/badges/featured-badge-small.webp"
+          alt="Featured on Startup Fame"
+          width="224"
+          height="36"
+        />
+      </Link>
     </>
   );
 };
