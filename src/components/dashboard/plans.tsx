@@ -30,7 +30,7 @@ const Plans = () => {
         "Unlimited charts",
         "No watermark on exported charts",
       ],
-      paymentLink: "https://paystack.com/pay/q0-cnug7um",
+      paymentLink: "https://paystack.com/pay/ventivo-pro",
       isCurrent: plan === "Yearly",
     },
   ];
