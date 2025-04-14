@@ -98,7 +98,7 @@ export const POST = async (req: NextRequest) => {
 
         const { error } = await supabase
           .from(TABLES.customers)
-          .update({ price_id: priceId, has_access: true })
+          .update({ plan_id: priceId, has_access: true })
           .eq("customer_id", customerId);
 
         if (error) throw new Error("Error updating the user.");

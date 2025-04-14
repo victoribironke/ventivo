@@ -19,7 +19,6 @@ const Plans = () => {
       per: "month",
       features: ["1 project", "3 charts", "Watermark on exported charts"],
       paymentLink: "",
-      priceId: "",
       isCurrent: plan === "Free",
     },
     {
@@ -31,13 +30,10 @@ const Plans = () => {
         "Unlimited charts",
         "No watermark on exported charts",
       ],
-      paymentLink: "",
-      priceId: "price_1QeveiKBQOuJW2sTl7UtIa78",
+      paymentLink: "https://paystack.com/pay/q0-cnug7um",
       isCurrent: plan === "Yearly",
     },
   ];
-
-  // 30 dollars for the LTD from the platforms and 40 for the LTD from the app itself
 
   return (
     <section className="w-full max-w-3xl gap-6">
