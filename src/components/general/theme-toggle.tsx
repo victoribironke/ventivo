@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { Button } from "../ui/button";
 import { useAtom } from "jotai";
 import { app_theme } from "@/atoms/atoms";
+import { Moon, Sun } from "lucide-react";
 
 const ThemeToggle = () => {
   const [theme, setTheme] = useAtom(app_theme);
@@ -34,7 +35,7 @@ const ThemeToggle = () => {
   return (
     <div className="fixed bottom-8 right-8">
       <Button variant="outline" onClick={changeTheme}>
-        Switch to {theme === "dark" ? "light" : "dark"} mode
+        {theme === "dark" ? <Sun /> : <Moon />}
       </Button>
     </div>
   );
