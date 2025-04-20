@@ -20,13 +20,11 @@ const Home = () => {
   return (
     <>
       <h1 className="text-2xl sm:text-3xl md:text-4xl font-medium max-w-4xl text-center">
-        Get <span className="text-firebase-orange">realtime</span> charts from
-        your data
+        Get <span className="text-firebase-orange">realtime</span> charts from your data
       </h1>
 
       <p className="sm:text-lg md:text-xl max-w-xl text-center">
-        Connect your data source, create your charts and start tracking your key
-        metrics.
+        Connect your data source, create your charts and start tracking your key metrics.
       </p>
 
       <div className="flex items-center justify-center gap-4">
@@ -57,7 +55,7 @@ const Home = () => {
         )}
       </div>
 
-      <Link
+      {/* <Link
         href="https://startupfa.me/s/ventivo?utm_source=ventivo.co"
         target="_blank"
       >
@@ -67,7 +65,7 @@ const Home = () => {
           width="224"
           height="36"
         />
-      </Link>
+      </Link> */}
     </>
   );
 };
