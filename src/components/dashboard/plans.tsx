@@ -3,18 +3,12 @@ import { IoCheckmarkOutline } from "react-icons/io5";
 import { Button } from "../ui/button";
 import { useAtomValue } from "jotai";
 import { cn } from "@/lib/utils";
-import { customer_info, user_session } from "@/atoms/atoms";
-import { Input } from "../ui/input";
-import { useState } from "react";
-import { redeemCode } from "@/lib/supabase";
-import toast from "react-hot-toast";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { customer_info } from "@/atoms/atoms";
 
 const Plans = () => {
-  const [code, setCode] = useState("");
-  const [loading, setLoading] = useState(false);
+  // const [code, setCode] = useState("");
+  // const [loading, setLoading] = useState(false);
   const customer = useAtomValue(customer_info);
-  const userSession = useAtomValue(user_session);
   let plan;
 
   if (customer.length === 0 || customer[0].has_access === false) plan = "Free";
@@ -39,19 +33,19 @@ const Plans = () => {
     },
   ];
 
-  const redeem = async () => {
-    setLoading(true);
+  // const redeem = async () => {
+  //   setLoading(true);
 
-    const { data, error } = await redeemCode(userSession?.user.email || "", code);
+  //   const { data, error } = await redeemCode(userSession?.user.email || "", code);
 
-    setLoading(false);
+  //   setLoading(false);
 
-    if (error) return toast.error(error);
+  //   if (error) return toast.error(error);
 
-    toast.success(data);
+  //   toast.success(data);
 
-    window.location.reload();
-  };
+  //   window.location.reload();
+  // };
 
   return (
     <section className="w-full max-w-3xl gap-6">
