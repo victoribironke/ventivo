@@ -33,11 +33,7 @@ const Plans = () => {
       plan: "Pro",
       price: 35,
       per: "year",
-      features: [
-        "Unlimited projects",
-        "Unlimited charts",
-        "No watermark on exported charts",
-      ],
+      features: ["Unlimited projects", "Unlimited charts", "No watermark on exported charts"],
       paymentLink: "https://paystack.com/pay/ventivo-pro",
       isCurrent: plan === "Yearly",
     },
@@ -46,10 +42,7 @@ const Plans = () => {
   const redeem = async () => {
     setLoading(true);
 
-    const { data, error } = await redeemCode(
-      userSession?.user.email || "",
-      code
-    );
+    const { data, error } = await redeemCode(userSession?.user.email || "", code);
 
     setLoading(false);
 
@@ -68,22 +61,17 @@ const Plans = () => {
             className="bg-muted/50 border flex items-start justify-center flex-col gap-4 w-full sm:w-1/2 p-6 rounded-xl"
             key={i}
           >
-            <h1 className="font-semibold text-lg text-firebase-orange">
-              {t.plan}
-            </h1>
+            <h1 className="font-semibold text-lg text-firebase-orange">{t.plan}</h1>
 
             <p className="text-lg">
-              <span className="text-3xl font-extrabold text-firebase-orange">
-                $ {t.price}{" "}
-              </span>
-              / {t.per}
+              <span className="text-3xl font-extrabold text-firebase-orange">$ {t.price} </span>/{" "}
+              {t.per}
             </p>
 
             <ul className="w-full flex flex-col gap-4 my-6">
               {t.features.map((f, j) => (
                 <li key={j} className="flex items-center">
-                  <IoCheckmarkOutline className="text-firebase-orange mr-2" />{" "}
-                  {f}
+                  <IoCheckmarkOutline className="text-firebase-orange mr-2" /> {f}
                 </li>
               ))}
             </ul>
@@ -105,7 +93,7 @@ const Plans = () => {
         ))}
       </div>
 
-      <p className="mb-6 font-medium lg:text-lg">
+      {/* <p className="mb-6 font-medium lg:text-lg">
         Coming from AppSumo? Redeem your code below
       </p>
 
@@ -127,7 +115,7 @@ const Plans = () => {
             className={cn("animate-spin", loading ? "block" : "hidden")}
           />
         </Button>
-      </div>
+      </div> */}
 
       {/* {customer.length !== 0 && (
         <Link
