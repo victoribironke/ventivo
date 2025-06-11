@@ -66,7 +66,7 @@ const BarChartComp = ({ data, customization }: ChartProps) => {
           >
             {bar.showCount && (
               <LabelList
-                position="top"
+                position="insideBottom"
                 offset={12}
                 className="fill-foreground"
                 fontSize={12}
